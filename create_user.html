@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>WattMail Create User</title>
+	<link rel="stylesheet" href="styles.css">
 	<link rel="icon" href="images/WattMail_Logo.png">
 </head>
 <body>
@@ -19,7 +20,7 @@
                         placeholder="name" required>
 
         <p>
-            Email* <input type="text" name="email" pattern="[A-Za-z0-9!#$%&'*+-/=?^_`{|}~]{3,50}" placeholder="username" required>@
+            Email* <input type="text" name="email" pattern="[A-Za-z0-9!#$%&'*+-/=?^_`{|}~]{3,50}" placeholder="username" required/>@
             <select name="domain" id="email_domain" required>
                     <option label="hw.ac.uk" value="hw.ac.uk"></option>
                     <option label="gmail.com" value="gmail.com"></option>
@@ -38,10 +39,10 @@
 
 <p> <input type="submit">
     </form>
-    <a onclick="window.location.href =
-                  'http://validator.w3.org/check?uri=' +
-                  window.location.href">
+	<div class="fixed">
+    <a onclick="window.location.href = 'http://validator.w3.org/check?uri=' + window.location.href">
         <img src="images/HTML5_logo.png" alt="HTML5_logo" />
     </a>
+	</div>
 </body>
 </html>

@@ -1,0 +1,13 @@
+body {
+    background-color: lightgrey;
+}
+
+p {
+    margin-left: 80px;
+}
+
+div.fixed {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
