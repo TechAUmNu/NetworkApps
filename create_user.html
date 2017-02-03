@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>WattMail Create User</title>
+</head>
+<body>
+    <form action="">
+        <p>
+            First name* <input type="text" name="name"
+                        pattern="[A-Za-z\-\s]{3,}"
+                        placeholder="name" required>
+
+        <p>
+            Surname* <input type="text" name="name"
+                        pattern="[A-Za-z\-\s]{3,}"
+                        placeholder="name" required>
+
+        <p>
+            Email* <input type="text" name="email" pattern="[A-Za-z0-9!#$%&'*+-/=?^_`{|}~]{3,50}" placeholder="username" required>@
+            <select name="domain" id="email_domain" required>
+                    <option label="hw.ac.uk" value="hw.ac.uk"></option>
+                    <option label="gmail.com" value="gmail.com"></option>
+            </select>
+        </p>
+
+        <p>
+            Home phone <input type="tel" name="home phone"
+                              pattern="[0-9]{11}"
+                              placeholder="11 digits">
+
+        <p>
+            Mobile phone <input type="tel" name="home phone"
+                              pattern="[0-9]{11}"
+                              placeholder="11 digits">
+
+<p> <input type="submit">
+    </form>
+    <a onclick="window.location.href =
+                  'http://validator.w3.org/check?uri=' +
+                  window.location.href">
+        <img src="images/HTML5_logo.png" alt="HTML5_logo" />
+    </a>
+</body>
+</html>
