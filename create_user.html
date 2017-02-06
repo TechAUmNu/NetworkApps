@@ -8,41 +8,33 @@
 	<link rel="icon" href="images/WattMail_Logo.png">
 </head>
 <body>
-    <form action="">
-        <p>
-            First name* <input type="text" name="name"
-                        pattern="[A-Za-z\-\s]{3,}"
-                        placeholder="name" required>
-
-        <p>
-            Surname* <input type="text" name="name"
-                        pattern="[A-Za-z\-\s]{3,}"
-                        placeholder="name" required>
-
-        <p>
-            Email* <input type="text" name="email" pattern="[A-Za-z0-9!#$%&'*+-/=?^_`{|}~]{3,50}" placeholder="username" required/>@
-            <select name="domain" id="email_domain" required>
-                    <option label="hw.ac.uk" value="hw.ac.uk"></option>
-                    <option label="gmail.com" value="gmail.com"></option>
-            </select>
-        </p>
-
-        <p>
-            Home phone <input type="tel" name="home phone"
-                              pattern="[0-9]{11}"
-                              placeholder="11 digits">
-
-        <p>
-            Mobile phone <input type="tel" name="home phone"
-                              pattern="[0-9]{11}"
-                              placeholder="11 digits">
-
-<p> <input type="submit">
+	<h1>Sign up to WattMail emailing client!</h1>
+    <form action="" id="form1">
+		<label for="first-name">First name* </label>
+		<input type="text" id="first-name" pattern="[A-Za-z\-\s]{3,}" placeholder="name" required>
+		<label for="surname">Surname* </label>
+		<input type="text" id="surname" pattern="[A-Za-z\-\s]{3,}" placeholder="name" required>
+		<label for="email">Email* </label>
+		<input type="text" id="email" pattern="[A-Za-z0-9!#$%&'*+-/=?^_`{|}~]{3,50}" placeholder="username" required/><h4>@</h4>
+		<select name="domain" id="email_domain" required>
+			<option label="hw.ac.uk" value="hw.ac.uk"></option>
+			<option label="gmail.com" value="gmail.com"></option>
+		</select>
+		<label for="name">Home phone </label>
+		<input type="tel" name="home phone" pattern="[0-9]{11}" placeholder="11 digits">
+		<label for="name">Mobile phone </label>
+		<input type="tel" name="home phone" pattern="[0-9]{11}" placeholder="11 digits">
+		<button type="submit" form="form1" value="Submit">Submit</button>
     </form>
-	<div class="fixed">
-    <a onclick="window.location.href = 'http://validator.w3.org/check?uri=' + window.location.href">
+    <a id="validator">
         <img src="images/HTML5_logo.png" alt="HTML5_logo" />
     </a>
-	</div>
 </body>
+
+<script>
+	document.getElementById("validator").addEventListener("click", addLoc);
+	function addLoc() {
+		window.location.href = "http://validator.w3.org/check?uri=" + window.location.href;
+	}
+</script>
 </html>

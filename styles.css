@@ -2,12 +2,41 @@ body {
     background-color: lightgrey;
 }
 
-p {
-    margin-left: 80px;
-}
-
-div.fixed {
+a{
     position: fixed;
     bottom: 0;
     right: 0;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	width: 30%;
+	margin: 20px auto;
+}
+
+button{
+	width: 10%;
+	margin: 10px auto;
+}
+
+h1{
+
+	width: 27%;
+	margin: 0 auto;
+}
+
+select{
+	width: 40%;
+	margin: 0 auto;
+}
+
+#email{
+	width: 50%;
+	margin: 0;
+}
+
+h4{
+	width: 10%;
+	margin: 0 auto;
 }
