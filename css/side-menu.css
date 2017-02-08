@@ -231,6 +231,6 @@ Hides the menu at `767px`, but modify this based on your app's needs.
     text-align: center;
 }
 
-.validator img {
+.validatorImg {
     max-height: 100%;
 }

@@ -4,15 +4,19 @@
 <head>
     <meta charset="utf-8" />
     <title>WattMail Log in</title>
-    <link rel="stylesheet" href="styles.css">
+	<style type="text/css" title="currentStyle">			
+			@import "css/table.css";
+			@import "css/main-pure.css";
+			@import "css/table-pure.css";
+			@import "http://yui.yahooapis.com/pure/0.3.0/pure-min.css";
+			@import "css/side-menu.css";			
+	</style>
     <link rel="icon" href="images/WattMail_Logo.png">
 </head>
 <body>
-    <header>
 		<h2 id="ourName">WattMail</h2>
         <h1>LOG IN</h1>
-    </header>
-    <maim>
+    <main>
         <form action="" id="form2">
             <label for="email">Email*</label>
             <input type="text" class="email-form" id="email" pattern="[A-Za-z0-9!#$%&'*+-/=?^_`{|}~]{3,50}" placeholder="username" required /><h4 class="email-form">@</h4>
@@ -24,20 +28,56 @@
             <input type="password" name="password" type="text" required />
             <button type="submit" form="form1" value="Submit">Submit</button>
         </form>
-    </maim>
-    <footer>
-        <a onclick="window.location.href = 'http://jigsaw.w3.org/css-validator/validator?uri=' + window.location.href">
+    </main>
+        <a id="validatorCSS">
             <img class="validatorImg" src="images/css3_logo.svg" alt="HTML5_logo" />
         </a>
-        <a id="validator">
+        <a id="validatorHTML">
             <img class="validatorImg" src="images/HTML5_logo.png" alt="HTML5_logo" />
         </a>
-    </footer>
-    <script>
-	document.getElementById("validator").addEventListener("click", addLoc);
-	function addLoc() {
+		
+		<div id="main">
+				<div class="content">
+					<h2 class="content-subhead">Use this page to read e-mails</h2>
+					<table id="t-table" class="">
+						<thead>
+							<tr>
+								<th > </th>
+								<th >Sender</th>
+								<th >Subject</th>            		
+								<th >Preview</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- auto-generated code goes here-->
+						</tbody>
+						<tfoot>
+							<tr>
+								<th > </th>
+								<th >Sender</th>
+								<th >Subject</th>            		
+								<th >Preview</th>
+							</tr>
+						</tfoot>
+					</table>
+					<br/>
+					<div id="resetDiv" class="center">
+					<input id="reset" disabled class="pure-button pure-button-primary" type="submit" value="Delete all database data" onClick="reset()">
+					</div>
+				</div>
+			</div>
+		
+   <script>
+	document.getElementById("validatorHTML").addEventListener("click", addLocHTML);
+	document.getElementById("validatorCSS").addEventListener("click", addLocCSS);
+	function addLocHTML() {
 		window.location.href = "http://validator.w3.org/check?uri=" + window.location.href;
 	}
+	function addLocCSS(){
+		window.location.href = "http://jigsaw.w3.org/css-validator/validator?uri=" + window.location.href;
+		}
     </script>
+	
+	
 </body>
 </html>
