@@ -1,71 +1,68 @@
 ﻿<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>WattMail Log in</title>
-	<style type="text/css" title="currentStyle">			
-			@import "css/table.css";
-			@import "css/main-pure.css";
-			@import "css/table-pure.css";
-			@import "http://yui.yahooapis.com/pure/0.3.0/pure-min.css";
-			@import "css/side-menu.css";			
-	</style>
-    <link rel="icon" href="images/WattMail_Logo.png">
-</head>
-<body>
-		<h2 id="ourName">WattMail</h2>
-        <h1>LOG IN</h1>
-    <main>
-        <form action="" id="form2">
-            <label for="email">Email*</label>
-            <input type="text" class="email-form" id="email" pattern="[A-Za-z0-9!#$%&'*+-/=?^_`{|}~]{3,50}" placeholder="username" required /><h4 class="email-form">@</h4>
-            <select name="domain" class="email-form" id="email_domain" required>
-                <option label="hw.ac.uk" value="hw.ac.uk"></option>
-                <option label="gmail.com" value="gmail.com"></option>
-            </select>
-            <label for="Password">Password </label>
-            <input type="password" name="password" type="text" required />
-            <button type="submit" form="form1" value="Submit">Submit</button>
-        </form>
-    </main>
-        <a id="validatorCSS">
-            <img class="validatorImg" src="images/css3_logo.svg" alt="HTML5_logo" />
-        </a>
-        <a id="validatorHTML">
-            <img class="validatorImg" src="images/HTML5_logo.png" alt="HTML5_logo" />
-        </a>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta name="description" content="Read and compose e-mail messages">
+		<link rel="icon" href="images/WattMail_Logo.png">
+		<title>WattMail Log in</title>
 		
-		<div id="main">
-				<div class="content">
-					<h2 class="content-subhead">Use this page to read e-mails</h2>
-					<table id="t-table" class="">
-						<thead>
-							<tr>
-								<th > </th>
-								<th >Sender</th>
-								<th >Subject</th>            		
-								<th >Preview</th>
-							</tr>
-						</thead>
-						<tbody>
-							<!-- auto-generated code goes here-->
-						</tbody>
-						<tfoot>
-							<tr>
-								<th > </th>
-								<th >Sender</th>
-								<th >Subject</th>            		
-								<th >Preview</th>
-							</tr>
-						</tfoot>
-					</table>
-					<br/>
-					<div id="resetDiv" class="center">
-					<input id="reset" disabled class="pure-button pure-button-primary" type="submit" value="Delete all database data" onClick="reset()">
-					</div>
+		<style type="text/css" title="currentStyle">			
+				@import "css/table.css";
+				@import "css/main-pure.css";
+				@import "css/table-pure.css";
+				@import "http://yui.yahooapis.com/pure/0.3.0/pure-min.css";
+				@import "css/side-menu.css";			
+		</style>
+		
+		<script type="text/javascript" src="js/jquery.js"></script>	
+		<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" src="js/grid.js"></script>	
+		
+	</head>
+	
+	<body>
+	
+	<div id="layout">
+			<!-- Menu toggle -->
+			<a href="#menu" id="menuLink" class="pure-menu-link">
+				<!-- Menu icon -->
+				<span></span>
+			</a>
+
+			<div id="menu">
+				<div class="pure-menu pure-menu-open">
+					<a class="pure-menu-heading" href="table-pure.html">WattMail</a>
+					<ul>
+						<li class="pure-menu-selected"><a href="create_user.html">Sign Up</a></li>
+						<li><a href="log_in.html">Log In</a></li>
+					</ul>
 				</div>
+                <div class="validator">
+					<a id="validatorCSS">
+					<img class="validatorImg" src="images/css3_logo.svg" alt="HTML5_logo" />
+					</a>
+					<a id="validatorHTML">
+					<img class="validatorImg" src="images/HTML5_logo.png" alt="HTML5_logo" />
+				</a>
+                </div>
 			</div>
+	
+        <h1>LOG IN</h1>
+		<main>
+			<form action="" id="form2">
+				<label for="email">Email*</label>
+				<input type="text" class="email-form" id="email" pattern="[A-Za-z0-9!#$%&'*+-/=?^_`{|}~]{3,50}" placeholder="username" required /><h4 class="email-form">@</h4>
+				<select name="domain" class="email-form" id="email_domain" required>
+					<option label="hw.ac.uk" value="hw.ac.uk"></option>
+					<option label="gmail.com" value="gmail.com"></option>
+				</select>
+				<label for="Password">Password </label>
+				<input type="password" name="password" type="text" required />
+				<button type="submit" form="form1" value="Submit">Submit</button>
+			</form>
+		</main>
 		
    <script>
 	document.getElementById("validatorHTML").addEventListener("click", addLocHTML);
