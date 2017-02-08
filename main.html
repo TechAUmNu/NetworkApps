@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Read and compose e-mail messages">
+
+		<title>WattMail &ndash; Read e-mails</title>
+		
+		<style type="text/css" title="currentStyle">			
+				@import "css/table.css";
+				@import "css/main-pure.css";
+				@import "css/table-pure.css";
+				@import "http://yui.yahooapis.com/pure/0.3.0/pure-min.css";
+				@import "css/side-menu.css";			
+		</style>
+		
+		<script type="text/javascript" src="js/jquery.js"></script>	
+		<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" src="js/grid.js"></script>	
+	</head>
+
+	<body>
+
+		<div id="layout">
+			<!-- Menu toggle -->
+			<a href="#menu" id="menuLink" class="pure-menu-link">
+				<!-- Menu icon -->
+				<span></span>
+			</a>
+
+			<div id="menu">
+				<div class="pure-menu pure-menu-open">
+					<a class="pure-menu-heading" href="table-pure.html">WattMail</a>
+					<ul>
+						<li class="pure-menu-selected"><a href="table-pure.html">Read</a></li>
+						<li><a href="form-pure.php">Compose</a></li>
+						<li id="validator" ><a href="http://validator.w3.org/check/referer">Validator</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div id="main">
+				<div class="header">
+					<img id="logo" src="images/MailLogo.png" height="100" alt="WattMail logo"/>           
+				</div>
+				<div class="content">
+					<h2 class="content-subhead">Use this page to read e-mails</h2>
+					<table id="t-table" class="">
+						<thead>
+							<tr>
+								<th > </th>
+								<th >Sender</th>
+								<th >Subject</th>            		
+								<th >Preview</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- auto-generated code goes here-->
+						</tbody>
+						<tfoot>
+							<tr>
+								<th > </th>
+								<th >Sender</th>
+								<th >Subject</th>            		
+								<th >Preview</th>
+							</tr>
+						</tfoot>
+					</table>
+					<br/>
+					<div id="resetDiv" class="center">
+					<input id="reset" disabled class="pure-button pure-button-primary" type="submit" value="Delete all database data" onClick="reset()">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/ui.js"></script>
+
+	</body>
+</html>
