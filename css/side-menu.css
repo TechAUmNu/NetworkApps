@@ -220,3 +220,17 @@ Hides the menu at `767px`, but modify this based on your app's needs.
         left: 150px;
     }
 }
+
+.validator{    
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 5%;
+    padding: 1rem;
+    text-align: center;
+}
+
+.validator img {
+    max-height: 100%;
+}
