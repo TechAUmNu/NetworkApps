@@ -1,0 +1,41 @@
+@font-face {
+    font-family: beb;
+    src: url("../fonts/beb.eot") /* EOT file for IE */
+}
+@font-face {
+    font-family: beb;
+    src: url("../fonts/beb.ttf") /* TTF file for CSS3 browsers */
+}
+
+@font-face {
+    font-family: picob;
+    src: url("../fonts/pico black.TTF") /* TTF file for CSS3 browsers */
+}
+
+@font-face {
+    font-family: arista;
+    src: url("../fonts/arista light.ttf") /* TTF file for CSS3 browsers */
+}
+
+.center {
+	text-align: center;
+}
+body {
+	
+	font-size: 60%; 
+	
+
+}
+#logo{
+	max-width: 100%;
+}
+
+
+html{
+background: -webkit-radial-gradient(circle,#94d2f8,#3a92c8);
+height: 100%;
+width:100%;
+}
+
+
+
