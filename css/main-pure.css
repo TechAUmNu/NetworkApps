@@ -97,14 +97,10 @@ form{
 table{
 	margin-left: 10%;
 	
-	)
-	
-	
-td{
-    text-align:center; 
-    vertical-align:middle;
 }
 	
+	
 button{
-	text-align: center;
+	padding-left: 2em;
+	padding-right: 2em;
 }
