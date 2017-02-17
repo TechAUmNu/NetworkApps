@@ -48,11 +48,11 @@ form{
 	%--text-align: center;
 }
 
-.regularFormItems{
+/*.regularFormItems{
 	display: flex;
 	flex-direction: column;
 	width: 30%;
-}
+}*/
 
 	#tfnewsearch{
 		float:right;
@@ -103,4 +103,9 @@ table{
 button{
 	padding-left: 2em;
 	padding-right: 2em;
+}
+
+
+#asdalskdf{
+	width: 100%;
 }
