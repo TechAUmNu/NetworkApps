@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="Read and compose e-mail messages">
 		<link rel="icon" href="images/favicon.ico">
-		<title>WattMail &ndash; Read e-mails</title>
+		<title>Inbox</title>
 		
 		<style type="text/css" title="currentStyle">			
 				@import "css/table.css";
@@ -22,6 +22,21 @@
 
 	<body>
 
+</style>
+</head>
+<body>
+	<!--search bar-->
+		<form id="tfnewsearch" method="get" action="https://www.google.co.uk/" >
+		        <input type="text" id="tfq" class="tftextinput4" name="q" size="21" maxlength="120" value="Search our website"><input id="search" type="image" src="images/search.png" type="submit" value=" " class="tfbutton4">
+		</form>
+		<div class="tfclear"></div>
+</body>
+</html>
+
+
+	
+	
+
 		<div id="layout">
 			<!-- Menu toggle -->
 			<a href="#menu" id="menuLink" class="pure-menu-link">
@@ -35,8 +50,8 @@
 					<img id="logo" src="images/MailLogo.png" alt="HTML5_logo" />
 					</a>
 					<ul>
-						<li class="pure-menu-selected"><a href="table-pure.html">Read</a></li>
-						<li><a href="form-pure.php">Compose</a></li>
+						<li class="pure-menu-selected"><a href="main.html">Compose</a></li>
+						<li><a id="inbox" href="main.html">Inbox</a></li>
 					</ul>
 				</div>
                 <div class="validator">
@@ -86,11 +101,22 @@
 		<script>
 			document.getElementById("validatorHTML").addEventListener("click", addLocHTML);
 			document.getElementById("validatorCSS").addEventListener("click", addLocCSS);
+			document.getElementById("inbox").addEventListener("click", selectedInbox);
+			document.getElementById("compose").addEventListener("click", selectedInbox);
 			function addLocHTML() {
 				window.location.href = "http://validator.w3.org/check?uri=" + window.location.href;
 			}
 			function addLocCSS(){
 				window.location.href = "http://jigsaw.w3.org/css-validator/validator?uri=" + window.location.href;
+			}/*These don't work
+			function selectedInbox(){
+				document.getElementsByClassName("content-subhead").innerHTML = "Read your emails";
+			}
+			function composeMail(){
+				document.getElementsByClassName("content-subhead").innerHTML = "Write an email";
+			}*/
+			function search(){
+				
 			}
     </script>
 	</body>

@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>WattMail Create User</title>
+    <title>Sign Up</title>
 	<style type="text/css" title="currentStyle">			
 			@import "css/table.css";
 			@import "css/main-pure.css";
@@ -42,24 +42,24 @@
                 </div>
 			</div>
 
-	    <h1>SIGN UP</h1>
+	    <h1 id="page_heading">SIGN UP</h1>
     <main>
         <form action="" id="form1">
 		    <label for="first-name" class="normal">First name* </label>
 		    <input type="text" class="normal" id="first-name" pattern="[A-Za-z\-\s]{3,}" placeholder="name" required>
-		    <label for="surname" class="normal">Surname* </label>
+		    <label class="regularFormItems" for="surname" class="normal">Surname* </label>
 		    <input type="text" class="normal" id="surname" pattern="[A-Za-z\-\s]{3,}" placeholder="name" required>
-		    <label for="email" >Email*</label>
-		    <input type="text" class="email-form" id="email" pattern="[A-Za-z0-9!#$%&'*+-/=?^_`{|}~]{3,50}" placeholder="username" required/><h4 class="email-form">@</h4>
+		    <label class="regularFormItems" for="email" >Email*</label>
+		    <input type="text" class="email-form" id="email" pattern="[A-Za-z0-9!#$%&'*+-/=?^_`{|}~]{3,50}" placeholder="username" required/>@
 		    <select name="domain"  class="email-form" id="email_domain" required>
 			    <option label="hw.ac.uk" value="hw.ac.uk"></option>
 			    <option label="gmail.com" value="gmail.com"></option>
 		    </select>
-		    <label for="name">Home phone </label>
+		    <label class="regularFormItems" for="name">Home phone </label>
 		    <input type="tel" name="home phone" pattern="[0-9]{11}" placeholder="11 digits">
-		    <label for="name">Mobile phone </label>
-		    <input type="tel" name="home phone" pattern="[0-9]{11}" placeholder="11 digits">
-		    <button type="submit" form="form1" value="Submit">Submit</button>
+		    <label class="regularFormItems" for="name">Mobile phone </label>
+		    <input type="tel" name="mobile" pattern="[0-9]{11}" placeholder="11 digits">
+		    <button class="regularFormItems" type="submit" form="form1" value="Submit">Submit</button>
         </form>
     </main>
 	
