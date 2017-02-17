@@ -93,12 +93,15 @@ the menu have 100% height and be fixed on the page as the rest of it scrolls.
         background: transparent;
     }
 
+<<<<<<< HEAD
 	logo.resize{
    max-width:50%;
    max-height:50%;
-}
+    }
 	
 	
+=======
+>>>>>>> parent of c0fa322... Put logo in all pages and made more consistent
     /*
     Add that light border to separate items into groups.
     */
