@@ -45,21 +45,37 @@
 	    <h1 id="page_heading">SIGN UP</h1>
     <main>
         <form action="" id="form1">
-		    <label for="first-name" class="normal">First name* </label>
-		    <input type="text" class="normal" id="first-name" pattern="[A-Za-z\-\s]{3,}" placeholder="name" required>
-		    <label class="regularFormItems" for="surname" class="normal">Surname* </label>
-		    <input type="text" class="normal" id="surname" pattern="[A-Za-z\-\s]{3,}" placeholder="name" required>
-		    <label class="regularFormItems" for="email" >Email*</label>
-		    <input type="text" class="email-form" id="email" pattern="[A-Za-z0-9!#$%&'*+-/=?^_`{|}~]{3,50}" placeholder="username" required/>@
-		    <select name="domain"  class="email-form" id="email_domain" required>
-			    <option label="hw.ac.uk" value="hw.ac.uk"></option>
-			    <option label="gmail.com" value="gmail.com"></option>
-		    </select>
-		    <label class="regularFormItems" for="name">Home phone </label>
-		    <input type="tel" name="home phone" pattern="[0-9]{11}" placeholder="11 digits">
-		    <label class="regularFormItems" for="name">Mobile phone </label>
-		    <input type="tel" name="mobile" pattern="[0-9]{11}" placeholder="11 digits">
-		    <button class="regularFormItems" type="submit" form="form1" value="Submit">Submit</button>
+			<table>
+				<tr>
+					<td><label for="first-name" class="normal">First name* </label></td>
+					<td><input type="text" class="normal" id="first-name" pattern="[A-Za-z\-\s]{3,}" placeholder="Alan" required></td>
+				</tr>
+				<tr>
+					<td><label class="regularFormItems" for="surname" class="normal">Surname* </label></td>
+					<td><input type="text" class="normal" id="surname" pattern="[A-Za-z\-\s]{3,}" placeholder="Titchmarsh" required></td>
+				</tr>
+				<tr>
+					<td><label class="regularFormItems" for="email" >Email*</label>
+					<input type="text" class="email-form" id="email" pattern="[A-Za-z0-9!#$%&'*+-/=?^_`{|}~]{3,50}" placeholder="ILoveCharlie" required/>
+					@
+					<select name="domain"  class="email-form" id="email_domain" required>
+						<option label="hw.ac.uk" value="hw.ac.uk"></option>
+						<option label="gmail.com" value="gmail.com"></option>
+					</select>
+					</td>
+				</tr>
+				<tr>
+					<td><label class="regularFormItems" for="name">Home phone </label></td>
+					<td><input type="tel" name="home phone" pattern="[0-9]{11}" placeholder="11 digits"></td>
+				</tr>
+				<tr>
+					<td><label class="regularFormItems" for="name">Mobile phone </label></td>
+					<td><input type="tel" name="mobile" pattern="[0-9]{11}" placeholder="11 digits"></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center" valign="middle"><button class="regularFormItems" type="submit" form="form1" value="Submit">Submit</button></td>
+				</tr>
+			</table>
         </form>
     </main>
 	

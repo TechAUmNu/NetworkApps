@@ -45,7 +45,7 @@ width:100%;
 form{
 	font-family: Verdana;
 	font-size: 20px;
-	text-align: center;
+	%--text-align: center;
 }
 
 .regularFormItems{
@@ -93,3 +93,18 @@ form{
 	.tfclear{
 		clear:both;
 	}*/
+	
+table{
+	margin-left: 10%;
+	
+	)
+	
+	
+td{
+    text-align:center; 
+    vertical-align:middle;
+}
+	
+button{
+	text-align: center;
+}
