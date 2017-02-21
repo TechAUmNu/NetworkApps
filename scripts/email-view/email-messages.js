@@ -4,18 +4,18 @@ function draftMessage() {
     var emailViewControls = document.getElementById("email-view-controls").innerHTML;
     oldEmail = document.getElementById("email-view-content").innerHTML;
 
-    document.getElementById("email-view-controls").innerHTML = "<button>Send</button> <button>Save to Drafts</button> <button onclick=\"deleteDraft()\">Delete</button> \
-        <form id=\"draft-message-header\"> \
-        <p>To: <input type=\"email\" name=\"email\" placeholder=\"a@b.c\" required> \
-        <p>Cc: <input type=\"email\" name=\"email\" placeholder=\"a@b.c\" required> \
-        <p>Bc: <input type=\"email\" name=\"email\" placeholder=\"a@b.c\" required> \
-        </form><p>";
+    document.getElementById("email-view-controls").innerHTML = "<button>Send</button> <button>Save to Drafts</button> <button onclick=\"deleteDraft()\">Delete</button>";
 
-    document.getElementById("email-view-content").innerHTML = "<form> \
-        <p>Reply<p><input type=\"text\" name=\"name\" \
-        pattern=\"[A-Za-z\-\s]{3,}\" \
-        placeholder=\"3+ letters, hyphens, spaces\" required> \
-        </form><p>" + oldEmail + "</p>";
+    document.getElementById("email-view-content").innerHTML = " \
+        <form id=\"draft-message-header\"> \
+        <p>To: <input type=\"email\" name=\"to\" placeholder=\"a@b.c\" required> \
+        <p>Cc: <input type=\"email\" name=\"cc\" placeholder=\"a@b.c\" required> \
+        <p>Bc: <input type=\"email\" name=\"bc\" placeholder=\"a@b.c\" required> \
+        </form> \
+        <form id=\"draft-message-content\"> \
+        <input type=\"text\" name=\"name\"pattern=\"[A-Za-z\-\s]{3,}\"placeholder=\"3+ letters, hyphens, spaces\" required> \
+        </form> \
+        <div class=\"oldEmail\">" + oldEmail + "</div>";
 }
 
 function deleteDraft() {
