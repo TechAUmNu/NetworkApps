@@ -5,6 +5,8 @@
 <head>
 
 <link rel="stylesheet" href="CSS/index.css"/>
+<script type="text/javascript" src="scripts/email-view/email-messages.js"></script>
+
 
 </head>
 
@@ -65,8 +67,8 @@
         </p>
       </div>
       <div id="email-view-controls" class="column">
-        <button>Reply</button>
-        <button>Forward</button>
+        <button onclick="draftMessage()">Reply</button>
+        <button onclick="draftMessage()">Forward</button>
         <button>Move to</button>
       </div>
     </div>
@@ -87,16 +89,13 @@
 
 
 </body>
-
-
+</html>
 <script>
 function noEmails(num){
 	return num+1;
 }
-document.getElementById("numberEmails").innerHTML = noEmails(2); 
+document.getElementById("numberEmails").innerHTML = noEmails(2);
 
 
 
 </script>
-
-</html>
