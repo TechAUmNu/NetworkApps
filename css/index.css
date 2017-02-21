@@ -44,6 +44,8 @@ body, #layout, #nav, #nav-inner {
     color: #fff;
     background: #1b98f8;
     margin: 1em 0;
+	box-shadow: none;
+    border-radius: 20px;
 }
 
 .email-item{
