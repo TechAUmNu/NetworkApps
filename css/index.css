@@ -30,6 +30,9 @@ body, #layout, #nav, #nav-inner {
   overflow: auto;
 }
 
+
+
+
 #email-view{
     position: static;
     top: 33%;
@@ -43,9 +46,12 @@ body, #layout, #nav, #nav-inner {
 #compose-button{
     color: #fff;
     background: #1b98f8;
-    margin: 1em 0;
+	font-size: 100%;
+    margin: 3em 2em 1em;
 	box-shadow: none;
     border-radius: 20px;
+	padding: .5em 1em;
+	border: transparent;
 }
 
 .email-item{
