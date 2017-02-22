@@ -13,7 +13,7 @@ function draftMessage() {
         <p>Bc: <input class=\"field\" type=\"email\" name=\"bc\" placeholder=\"\" required> \
         </form> \
         <form id=\"draft-message-content\"> \
-        <textarea rows=\"4\" onfocus=\"clearContents(this);\"cols=\"50\" placeholder=\"Enter Email\" id=\"A4Page\" required ondragover=\"isOver(event)\" ondrop=\"drop(event)\"></textarea> \
+        <textarea id=\"file\" rows=\"4\" onfocus=\"clearContents(this);\"cols=\"50\" placeholder=\"Enter Email\" id=\"A4Page\" required ondragover=\"isOver(event)\" ondrop=\"drop(event)\"></textarea> \
         </form> \
         <div class=\"oldEmail\">" + oldEmail + "</div>";
 }
@@ -35,9 +35,10 @@ function drag(e) {
  }
 
  function drop(e) {
-   e.preventDefault();
-   var data = e.dataTransfer.getData("text");
-   e.target.appendChild(document.getElementById(data));
+   //e.preventDefault();
+   //var data = e.dataTransfer.getData("text");
+   //e.target.appendChild(document.getElementById(data));
+   getDraggedIcon("text");
  }
  
  function clearContents(element){
@@ -49,7 +50,7 @@ function drag(e) {
 	 
 	 //yellow, green, blue, orange, pink
 	 str1 = "color: "
-	 colours = ["#ccff00", "#48fb47", "#15f4ee", "#fd5f00", "#f433ff"];
+	 colours = ["#ffff00", "#48fb47", "#15f4ee", "#fd7f00", "#ff33ff"];
 	 titles = document.getElementsByTagName("h5");
 	 
 	 for(i = 0;i < titles.length; i++)
@@ -57,7 +58,15 @@ function drag(e) {
 	colour = parseInt( (5*Math.random()));
     titles[i].setAttribute("style", str1.concat(colours[colour]));;
 }
-	 
-	
 	 return colours[colour];
+	 
+ }
+ 
+ function getDraggedIcon(str){
+	 filetype = str.split(".");
+	str1 = "images/48px";
+	str2 = str1.concat(filetype);
+	document.getElementById("file").innerHTML = "\
+	 <img id=str src=str2 />";
+	document.getElementById("file").src = str2; 
  }
