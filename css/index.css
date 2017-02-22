@@ -1,5 +1,10 @@
+@font-face {
+    font-family: ludicrous;
+    src: url("../fonts/ludicrous.otf")
+}
+
 *{
-	font-family: 'LatoRegular', 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, sans-serif !important;
+	font-family: 'LatoRegular', 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, sans-serif;
 }
 
 body {
@@ -71,6 +76,11 @@ body, #layout, #nav, #nav-inner {
   background-image: url("../images/sticky3.png");
   background-size: 100% 100%;
  }
+
+ .email-summary {
+  padding-left: 1em;
+  padding-right: 1em;
+ }
  
  .menu-list {
    list-style: none;
@@ -102,7 +112,9 @@ body, #layout, #nav, #nav-inner {
     background-size: 100% 100%;
  }
  
-.email-name, email-subject {
+.email-name {
+  font-family: 'ludicrous';
+  font-size:1.6em;
   margin: 0;
 }
 
