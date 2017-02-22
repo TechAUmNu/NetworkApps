@@ -63,9 +63,11 @@ function drag(e) {
  }
  
  function getDraggedIcon(str){
-	 filetype = str.split(".");
+	//filetype = str.split(".");
+	filetype = "png"
 	str1 = "images/48px";
 	str2 = str1.concat(filetype);
+	str3 = str2.concat(".png");
 	document.getElementById("file").innerHTML = "\
 	 <img id=str src=str2 />";
 	document.getElementById("file").src = str2; 
