@@ -64,11 +64,11 @@ h4{
 }
 
 #username{
-  background: #fff url(../lib_images/user.png) no-repeat 95% center;
+  background: #fff url(../images/user.png) no-repeat 95% center;
 }
 
 #password{
- background: #fff url(../lib_images/locked.png) no-repeat 95% center;
+ background: #fff url(../images/locked.png) no-repeat 95% center;
 }
 
 input{
