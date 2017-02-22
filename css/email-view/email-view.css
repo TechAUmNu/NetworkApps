@@ -1,14 +1,21 @@
 ﻿#email-view{
     border-left: 1px solid #ddd;
+    background-image: url("../../images/email_background.png");
+    background-repeat: repeat-y;
+    background-size: 100%;
 }
 
+ /* e-mail title and buttons for reply, forward etc.
+    17% padding keeps it within the background. */
 #email-view-header {
-    padding: 1em 2em;
-    border-bottom: 1px solid #ddd;
+    padding: 1em 1em 1em 17%;
+    /*border-bottom: 1px solid #ddd;*/
 }
 
+ /* e-mail content.
+    17% padding keeps it within the background. */
 #email-view-content{
-    padding: 1em 2em;
+    padding: 1em 1em 1em 17%;
 }
 
 #draft-message-header input{
@@ -24,7 +31,6 @@
 }
 
 .oldEmail{
-    width: 100%;     
-    border-top: 1px dashed #ddd;    
-    padding: 0em 1em;
+    border-top: 2px dashed #ddd;    
+    padding: -16em 1em;
 }

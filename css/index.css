@@ -1,19 +1,24 @@
+body {
+	background-image: url("../images/background2.jpg");
+}
+
 body, #layout, #nav, #nav-inner {
   margin: 0;
   padding: 0;
 }
 
-#layout{
+#layout {
   padding-left: 500px;
   position: relative;
 }
    
 #nav {  
-  background-color: lightgrey;
+  background-image: url("../images/sidebar_background.png");
+  background-position: right top;
+  background-repeat: no-repeat;
   margin-left: -500px;
   width:200px;
   height: 100%;
-  border-right: 1px solid #ddd;
   position: fixed;
   overflow: auto;
 }
@@ -31,9 +36,7 @@ body, #layout, #nav, #nav-inner {
 }
 
 
-
-
-#email-view{
+#email-view {
     position: static;
     top: 33%;
     right: 0;
@@ -43,7 +46,17 @@ body, #layout, #nav, #nav-inner {
     width: auto;
 }
 
-#compose-button{
+#old-email {
+    position: static;
+    top: 33%;
+    right: 0;
+    bottom: 0;
+    left: 300px;
+    overflow: auto;
+    width: auto;
+}
+
+#compose-button {
     color: #fff;
     background: #1b98f8;
 	font-size: 100%;
@@ -54,28 +67,29 @@ body, #layout, #nav, #nav-inner {
 	border: transparent;
 }
 
-.email-item{
+.email-item {
   padding: 0.9em 1em;
   border-bottom: 1px solid #ddd;
   border-left: 6px solid transparent;
  }
  
- .menu-list{
+ .menu-list {
    list-style: none;
    
    margin: 0;
    padding: 0;
  }
  
- .menu-item .menu-list{
+ .menu-item .menu-list {
    position: relative;
  }
- .menu-item{
+
+ .menu-item {
    padding: 0;
    margin: 0;
  }
  
- .menu-link{
+ .menu-link {
    margin-left: 0.5em;
    padding: .5em 1em;
    display: block;
@@ -84,11 +98,11 @@ body, #layout, #nav, #nav-inner {
    color: #fff;
  }
  
-.email-item-unread{
+.email-item-unread {
      border-left: 6px solid #1b98f8;
  }
  
-.email-name, email-subject{
+.email-name, email-subject {
   margin: 0;
 }
 
