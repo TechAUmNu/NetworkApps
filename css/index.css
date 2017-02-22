@@ -8,8 +8,9 @@
 }
 
 body {
-	background-image: url("../images/background2.jpg");
+	background-image: url("../images/desk.jpg");
 	background-attachment: fixed;
+	background-size: 100%;
 }
 
 body, #layout, #nav, #nav-inner {

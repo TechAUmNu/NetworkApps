@@ -13,7 +13,8 @@ function draftMessage() {
         <p>Bc: <input type=\"email\" name=\"bc\" placeholder=\"a@b.c\" required> \
         </form> \
         <form id=\"draft-message-content\"> \
-        <input id=\"A4Page\" type=\"text\" name=\"name\"pattern=\"[A-Za-z\-\s]{3,}\"placeholder=\"3+ letters, hyphens, spaces\" required ondragover=\"isOver(event)\" ondrop=\"drop(event)\"> \
+		<div id=\"div1\" ondrop=\"drop(event)\" ondragover=\"isOver(event)\"></div>\
+        <textarea rows=\"4\" cols=\"50\" id=\"A4Page\" required ondragover=\"isOver(event)\" ondrop=\"drop(event)\">Enter Email</textarea> \
         </form> \
         <div class=\"oldEmail\">" + oldEmail + "</div>";
 }
