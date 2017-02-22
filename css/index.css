@@ -1,5 +1,6 @@
 body {
 	background-image: url("../images/background2.jpg");
+	background-attachment: fixed;
 }
 
 body, #layout, #nav, #nav-inner {
@@ -21,6 +22,10 @@ body, #layout, #nav, #nav-inner {
   height: 100%;
   position: fixed;
   overflow: auto;
+}
+
+#logo {
+	height: 170px;
 }
 
 #email-list {
@@ -46,16 +51,6 @@ body, #layout, #nav, #nav-inner {
     width: auto;
 }
 
-#old-email {
-    position: static;
-    top: 33%;
-    right: 0;
-    bottom: 0;
-    left: 300px;
-    overflow: auto;
-    width: auto;
-}
-
 #compose-button {
     color: #fff;
     background: #1b98f8;
@@ -69,8 +64,8 @@ body, #layout, #nav, #nav-inner {
 
 .email-item {
   padding: 0.9em 1em;
-  border-bottom: 1px solid #ddd;
-  border-left: 6px solid transparent;
+  background-image: url("../images/sticky3.png");
+  background-size: 100% 100%;
  }
  
  .menu-list {
@@ -99,7 +94,8 @@ body, #layout, #nav, #nav-inner {
  }
  
 .email-item-unread {
-     border-left: 6px solid #1b98f8;
+    background-image: url("../images/sticky2.png");
+    background-size: 100% 100%;
  }
  
 .email-name, email-subject {
