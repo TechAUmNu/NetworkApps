@@ -121,5 +121,11 @@ body, #layout, #nav, #nav-inner {
 
  .email-name {
 text-transform: uppercase;
-    color: #999;
+  %--  color: #999;
  }
+ 
+ .field{
+	 border: 2px solid #ccc!important;
+	 
+ }
+ 

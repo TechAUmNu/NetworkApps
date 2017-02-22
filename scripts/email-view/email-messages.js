@@ -8,13 +8,12 @@ function draftMessage() {
 
     document.getElementById("email-view-content").innerHTML = " \
         <form id=\"draft-message-header\"> \
-        <p>To: <input type=\"email\" name=\"to\" placeholder=\"a@b.c\" required> \
-        <p>Cc: <input type=\"email\" name=\"cc\" placeholder=\"a@b.c\" required> \
-        <p>Bc: <input type=\"email\" name=\"bc\" placeholder=\"a@b.c\" required> \
+        <p>To: <input class=\"field\" type=\"email\" name=\"to\" placeholder=\"\" required> \
+        <p>Cc: <input class=\"field\" type=\"email\" name=\"cc\" placeholder=\"\" required> \
+        <p>Bc: <input class=\"field\" type=\"email\" name=\"bc\" placeholder=\"\" required> \
         </form> \
         <form id=\"draft-message-content\"> \
-		<div id=\"div1\" ondrop=\"drop(event)\" ondragover=\"isOver(event)\"></div>\
-        <textarea rows=\"4\" cols=\"50\" id=\"A4Page\" required ondragover=\"isOver(event)\" ondrop=\"drop(event)\">Enter Email</textarea> \
+        <textarea rows=\"4\" onfocus=\"clearContents(this);\"cols=\"50\" placeholder=\"Enter Email\" id=\"A4Page\" required ondragover=\"isOver(event)\" ondrop=\"drop(event)\"></textarea> \
         </form> \
         <div class=\"oldEmail\">" + oldEmail + "</div>";
 }
@@ -39,4 +38,26 @@ function drag(e) {
    e.preventDefault();
    var data = e.dataTransfer.getData("text");
    e.target.appendChild(document.getElementById(data));
+ }
+ 
+ function clearContents(element){
+	 element.placeholder = '';
+ }
+ 
+ function chooseColour(){
+	 colour = parseInt( (5*Math.random()));
+	 
+	 //yellow, green, blue, orange, pink
+	 str1 = "color: "
+	 colours = ["#ccff00", "#48fb47", "#15f4ee", "#fd5f00", "#f433ff"];
+	 titles = document.getElementsByTagName("h5");
+	 
+	 for(i = 0;i < titles.length; i++)
+{
+	colour = parseInt( (5*Math.random()));
+    titles[i].setAttribute("style", str1.concat(colours[colour]));;
+}
+	 
+	
+	 return colours[colour];
  }
