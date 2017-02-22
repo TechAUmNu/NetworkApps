@@ -1,92 +1,39 @@
-﻿<!DOCTYPE html>
+﻿<!DOCTYPE=HTML>
+<html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<meta name="description" content="Read and compose e-mail messages">
-		<link rel="icon" href="images/favicon.ico">
-		<title>Log in</title>
-		
-		<style type="text/css" title="currentStyle">			
-				@import "css/table.css";
-				@import "css/main-pure.css";
-				@import "css/table-pure.css";
-				@import "http://yui.yahooapis.com/pure/0.3.0/pure-min.css";
-				@import "css/side-menu.css";			
-		</style>
-		
-		<script type="text/javascript" src="js/jquery.js"></script>	
-		<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
-		<script type="text/javascript" src="js/grid.js"></script>	
-		
-	</head>
-	
-	<body>
-	
-	<div id="layout">
-			<!-- Menu toggle -->
-			<a href="#menu" id="menuLink" class="pure-menu-link">
-				<!-- Menu icon -->
-				<span></span>
-			</a>
 
-			<div id="menu">
-				<div class="pure-menu pure-menu-open">
-					<a>
-					<img id="logo" src="images/MailLogo.png" alt="HTML5_logo" />
-					</a>
-					<ul>
-						<li><a href="sign_up.html">Sign Up</a></li>
-						<li class="pure-menu-selected"><a href="log_in.html">Log In</a></li>
-					</ul>
-				</div>
-                <div class="validator">
-					<a id="validatorCSS">
-					<img class="validatorImg" src="images/css3_logo.svg" alt="HTML5_logo" />
-					</a>
-					<a id="validatorHTML">
-					<img class="validatorImg" src="images/HTML5_logo.png" alt="HTML5_logo" />
-				</a>
-                </div>
-			</div>
-	
-        <h1 id="page_heading">LOG IN</h1>
-		<main>
-			<form action="" id="form2">
-				<table>
-					<tr>
-						<td><label for="email">Email*</label></td>
-						<td><input type="text" class="email-form" id="email" pattern="[A-Za-z0-9!#$%&'*+-/=?^_`{|}~]{3,50}" placeholder="username" required />@
-			
-							<select name="domain" class="email-form" id="email_domain" required>
-								<option label="hw.ac.uk" value="hw.ac.uk"></option>
-								<option label="gmail.com" value="gmail.com"></option>
-							</select>
-						</td>
-					<tr>
-						<td><label class="regularFormItems" for="Password">Password*</label></td>
-						<td >
-							<input id="asdalskdf" type="password" name="password" type="text" required /></td>
-					</tr>
-					<tr>
-						<td colspan = "2" align="center"><button class="regularFormItems" type="submit" form="form2" value="Submit">Submit</button></td>
-					</tr>
-				</table>
-			</form>
-		</main>
-		
-   <script>
-	document.getElementById("validatorHTML").addEventListener("click", addLocHTML);
-	document.getElementById("validatorCSS").addEventListener("click", addLocCSS);
-	function addLocHTML() {
-		window.location.href = "http://validator.w3.org/check?uri=" + window.location.href;
-	}
-	function addLocCSS(){
-		window.location.href = "http://jigsaw.w3.org/css-validator/validator?uri=" + window.location.href;
-		}
-    </script>
-	
-	
+<head>
+
+<link rel="stylesheet" href="CSS/signin.css"/>
+
+</head>
+
+<body>
+
+
+
+    <div id="login-panel">
+        
+        <div id="login-box">  
+                <form id="login-form" method="post" action="index.html">
+                    <h4 class="nomargin">Sign In</h4>
+                    <p id="login-message">Login to access your account.</p>
+                
+                    <input id="username" type="text"  placeholder="Username">
+                    <input id="password" type="password"  placeholder="Password">
+                    <a href=""><small>Forgot Your Password?</small></a>
+                    <button>Sign In</button>
+                    
+                </form>         
+            
+        </div>       
+        
+    </div>
+
+
 </body>
 </html>
+<script>
+
+
+</script>
