@@ -1,0 +1,123 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Read and compose e-mail messages">
+		<link rel="icon" href="images/favicon.ico">
+		<title>Inbox</title>
+		
+		<style type="text/css" title="currentStyle">			
+				@import "css/table.css";
+				@import "css/main-pure.css";
+				@import "css/table-pure.css";
+				@import "http://yui.yahooapis.com/pure/0.3.0/pure-min.css";
+				@import "css/side-menu.css";			
+		</style>
+		
+		<script type="text/javascript" src="js/jquery.js"></script>	
+		<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" src="js/grid.js"></script>	
+	</head>
+
+	<body>
+
+</style>
+</head>
+<body>
+	<!--search bar-->
+		<form id="tfnewsearch" method="get" action="https://www.google.co.uk/" >
+		        <input type="text" id="tfq" class="tftextinput4" name="q" size="21" maxlength="120" value="Search our website"><input id="search" type="image" src="images/search.png" type="submit" value=" " class="tfbutton4">
+		</form>
+		<div class="tfclear"></div>
+</body>
+</html>
+
+
+	
+	
+
+		<div id="layout">
+			<!-- Menu toggle -->
+			<a href="#menu" id="menuLink" class="pure-menu-link">
+				<!-- Menu icon -->
+				<span></span>
+			</a>
+
+			<div id="menu">
+				<div class="pure-menu pure-menu-open">
+					<a>
+					<img id="logo" src="images/MailLogo.png" alt="HTML5_logo" />
+					</a>
+					<ul>
+						<li class="pure-menu-selected"><a href="main.html">Compose</a></li>
+						<li><a id="inbox" href="main.html">Inbox</a></li>
+					</ul>
+				</div>
+                <div class="validator">
+					<a id="validatorCSS">
+						<img class="validatorImg" src="images/css3_logo.svg" alt="HTML5_logo" />
+					</a>
+					<a id="validatorHTML">
+						<img class="validatorImg" src="images/HTML5_logo.png" alt="HTML5_logo" />
+					</a>
+                </div>
+			</div>
+
+			<div id="main">
+				<div class="content">
+					<h2 class="content-subhead">Use this page to read e-mails</h2>
+					<table id="t-table" class="">
+						<thead>
+							<tr>
+								<th > </th>
+								<th >Sender</th>
+								<th >Subject</th>            		
+								<th >Preview</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- auto-generated code goes here-->
+						</tbody>
+						<tfoot>
+							<tr>
+								<th > </th>
+								<th >Sender</th>
+								<th >Subject</th>            		
+								<th >Preview</th>
+							</tr>
+						</tfoot>
+					</table>
+					<br/>
+					<div id="resetDiv" class="center">
+					<input id="reset" disabled class="pure-button pure-button-primary" type="submit" value="Delete all database data" onClick="reset()">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/ui.js"></script>
+
+		<script>
+			document.getElementById("validatorHTML").addEventListener("click", addLocHTML);
+			document.getElementById("validatorCSS").addEventListener("click", addLocCSS);
+			document.getElementById("inbox").addEventListener("click", selectedInbox);
+			document.getElementById("compose").addEventListener("click", selectedInbox);
+			function addLocHTML() {
+				window.location.href = "http://validator.w3.org/check?uri=" + window.location.href;
+			}
+			function addLocCSS(){
+				window.location.href = "http://jigsaw.w3.org/css-validator/validator?uri=" + window.location.href;
+			}/*These don't work
+			function selectedInbox(){
+				document.getElementsByClassName("content-subhead").innerHTML = "Read your emails";
+			}
+			function composeMail(){
+				document.getElementsByClassName("content-subhead").innerHTML = "Write an email";
+			}*/
+			function search(){
+				
+			}
+    </script>
+	</body>
+</html>
