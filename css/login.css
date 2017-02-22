@@ -3,7 +3,8 @@
 }
 
 body {
-	background: #e4e7ea;
+  background-image: url("../images/background3.jpg");
+  background-attachment: fixed;
 }
 
 #login-panel {
@@ -15,21 +16,22 @@ body {
 }
 
 #login-box {
-   margin-left: -10px;
-   margin-right: -10px;
-   padding-left: 10px;
-   padding-right: 10px;
-   width: 45%;
-   float: left;
-   position: relative;
-   min-height: 1px;
+  background-image: url("../images/login_background.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 90%;
+  padding-top: 44px;
+  padding-left:58px;
+  padding-bottom:80px;
 }
 
 #login-form {
-  background: rgba(255,255,255,0.2);
+  background: rgb(245,245,245);
+  width:80%;
   border: 1px solid #ccc;
   border-radius: 3px;
   padding: 30px;
+  padding-bottom:116px;
 }
 
 .nomargin {

@@ -62,12 +62,12 @@ body, #layout, #nav, #nav-inner {
 }
 
 #compose-button {
-    color: #fff;
-    background: #1b98f8;
+  color: #fff;
+  background: #1b98f8;
 	font-size: 100%;
-    margin: 3em 2em 1em;
+  margin: 1em 2.5em 1em 1.5em;
 	box-shadow: none;
-    border-radius: 20px;
+  border-radius: 20px;
 	padding: .5em 1em;
 	border: transparent;
 }

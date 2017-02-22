@@ -1,35 +1,33 @@
 * {
   box-sizing: border-box;
   font-family: 'LatoRegular', 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, sans-serif;
-  
 }
 
 body {
-	background: #e4e7ea;
+	background-image: url("../images/background3.jpg");
+  background-attachment: fixed;
+  background-size: 100%;
 	font-size: 14px;
 }
 
 #register-panel {
   width: 780px;
-  margin: 10% auto 0 auto;
-  
-  line-height: 21px;
-  color: #636e7b; 
+  margin: 3% auto 0 auto;
 }
 
 #register-box {
-   margin-left: -10px;
-   margin-right: -10px;
-   padding-left: 10px;
-   padding-right: 10px;
-   width: 60%;
-   float: left;
-   position: relative;
-   min-height: 1px;
+  background-image: url("../images/register_background.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 70%;
+  padding-top: 150px;
+  padding-left:50px;
+  padding-bottom:80px;
 }
 
 #register-form {
-  background: rgba(255,255,255,0.2);
+  background: rgb(245,245,245);
+  width: 90%;
   border: 1px solid #ccc;
   border-radius: 3px;
   padding: 30px;
