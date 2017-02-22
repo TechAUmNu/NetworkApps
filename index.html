@@ -5,7 +5,6 @@
 
 <link rel="stylesheet" href="CSS/index.css"/>
 <link rel="stylesheet" href="CSS/email-view/email-view.css" />
-<script type="text/javascript" src="scripts/nav/nav.js"></script>
 <script type="text/javascript" src="scripts/email-view/email-messages.js"></script>
 
 </head>
@@ -22,21 +21,11 @@
 
       <div id="menu">
         <ul class="menu-list">
-          <li id="menu-item-0" class="menu-item" draggable="true" ondragenter="dragenter(event)" ondragstart="dragstart(event)">
-            <a id="inbox"class="menu-link" href="#">Inbox (<span id = "numberEmails"> </span>)</a>
-          </li>
-          <li id="menu-item-1" class="menu-item" draggable="true" ondragenter="dragenter(event)" ondragstart="dragstart(event)">
-            <a id="Important" class="menu-link" href="#">Important</a>
-          </li>
-          <li id="menu-item-2" class="menu-item" draggable="true" ondragenter="dragenter(event)" ondragstart="dragstart(event)">
-            <a id="sent" class="menu-link" href="#">Sent</a>
-          </li>
-          <li id="menu-item-3" class="menu-item" draggable="true" ondragenter="dragenter(event)" ondragstart="dragstart(event)">
-            <a id="drafts" class="menu-link" href="#">Drafts</a>
-          </li>
-          <li id="menu-item-4" class="menu-item" draggable="true" ondragenter="dragenter(event)" ondragstart="dragstart(event)">
-            <a id="trash" class="menu-link" href="#">Trash</a>
-          </li>
+          <li class="menu-item"><a class="menu-link" href="#">Inbox (<span id = "numberEmails"> </span>)</a></li>
+          <li class="menu-item"><a class="menu-link" href="#">Important</a></li>
+          <li class="menu-item"><a class="menu-link" href="#">Sent</a></li>
+          <li class="menu-item"><a class="menu-link" href="#">Drafts</a></li>
+          <li class="menu-item"><a class="menu-link" href="#">Trash</a></li>
         </ul>
       </div>
     </div>
@@ -67,7 +56,9 @@
         <p class="email-description">You spent all that money and it does't even move! WHA...</p>
       </div>
     </div>
+
   </div>
+
 
 
   <div id="email-view">
@@ -94,8 +85,6 @@
       <p>
         Duncan
       </p>
-	  
-	  <img id="drag1" src="images/img_logo.gif" draggable="true" ondragstart="drag(event)" width="336" height="69">
 	  
     </div>
   </div>
