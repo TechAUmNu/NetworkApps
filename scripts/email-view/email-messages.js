@@ -13,7 +13,7 @@ function draftMessage() {
         <p>Bc: <input type=\"email\" name=\"bc\" placeholder=\"a@b.c\" required> \
         </form> \
         <form id=\"draft-message-content\"> \
-        <input type=\"text\" name=\"name\"pattern=\"[A-Za-z\-\s]{3,}\"placeholder=\"3+ letters, hyphens, spaces\" required> \
+        <input id=\"A4Page\" type=\"text\" name=\"name\"pattern=\"[A-Za-z\-\s]{3,}\"placeholder=\"3+ letters, hyphens, spaces\" required ondragover=\"isOver(event)\" ondrop=\"drop(event)\"> \
         </form> \
         <div class=\"oldEmail\">" + oldEmail + "</div>";
 }
@@ -25,3 +25,17 @@ function deleteDraft() {
 
     document.getElementById("email-view-content").innerHTML = oldEmail;
 }
+
+ function isOver(e) {
+     e.preventDefault();
+ }
+ 
+function drag(e) { 
+   e.dataTransfer.setData("text", e.target.id);
+ }
+
+ function drop(e) {
+   e.preventDefault();
+   var data = e.dataTransfer.getData("text");
+   e.target.appendChild(document.getElementById(data));
+ }
