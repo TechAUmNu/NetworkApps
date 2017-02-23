@@ -1,8 +1,6 @@
 var emailTo, emailCc, emailBcc, emailMessage;
-
 var emailViewCompose;
 var emailViewReply;
-
 var composingMessage = false;
 var replyActive = false;
 
@@ -10,34 +8,34 @@ function reply(reply) {
 	if(!replyActive){
 		replyActive = true;
 		emailViewReply = document.getElementById("email-view").innerHTML;
-		
 		var varEmail = document.getElementById("email-addr").value;
-		
 		var oldEmail = document.getElementById("email-view-content").innerHTML;
-
-		
 		
 		document.getElementById("email-view-controls").innerHTML = "<input type=\"image\" class=\"draft\" src=\"images/send.png\" title=\"Send\"/>\
 			<input type=\"image\" class=\"draft\" src=\"images/save.png\" title=\"Save Draft\"/>\
 			<input type=\"image\" class=\"draft\" id=\"delete\" src=\"images/delete.png\" title=\"Delete\" onclick=\"deleteReply()\"/>";
-
-		document.getElementById("email-view-content").innerHTML = "<form id=\"draft-message-header\"> \
-			<p>To: <input id=\"email_reply_to\" class=\"field\" type=\"email\" name=\"to\" placeholder=\"\" required> \
-			<p>Cc: <input id=\"email_reply_cc\" class=\"field\" type=\"email\" name=\"cc\" placeholder=\"\" required> \
-			<p>Bcc: <input id=\"email_reply_bcc\" class=\"field\" type=\"email\" name=\"bc\" placeholder=\"\" required> \
-			</form> \
-			<form id=\"draft-message-content\"> \
-			<textarea id=\"file\" rows=\"6\" onfocus=\"clearContents(this);\"cols=\"47\" placeholder=\"Enter Email\" id=\"A4Page\" required ondragover=\"isOver(event)\" ondrop=\"drop(event)\"></textarea> \
+		document.getElementById("email-view-controls").innerHTML = '<input type="image" class="draft" src="images/send.png" title="Send"/>\
+			<input type="image" class="draft" src="images/save.png" title="Save Draft"/>\
+			<input type="image" class="draft" id="delete" src="images/delete.png" title="Delete" onclick="deleteReply()"/>';
+		document.getElementById("email-view-content").innerHTML = '<form id="draft-message-header" method="post" enctype="multipart/form-data"> \
+			<p>To: <input id="email_reply_to" class="field" type="email" name="to" placeholder="" required> \
+			<p>Cc: <input id="email_reply_cc" class="field" type="email" name="cc" placeholder="" required> \
+			<p>Bcc: <input id="email_reply_bcc" class="field" type="email" name="bc" placeholder="" required> \
+			<p><textarea id="file" rows="6" onfocus="clearContents(this);"cols="47" placeholder="Enter Email" id="A4Page" required ondragover="isOver(event)" ondrop="drop(event)"></textarea> \
+			<p><input type="file" id="files" name="files" multiple> \
+			<div id="selectedFiles"></div>\
 			</form> \
 			<div class=\"oldEmail\">" + oldEmail + "</div>";
 			
 			if(reply){
 				document.getElementById("file").autofocus="autofocus";
 				document.getElementById("email_reply_to").value=varEmail;
-				
 			}else{
 				document.getElementById("email_reply_to").autofocus="autofocus";	
 			}
+			<div class="oldEmail">' + oldEmail + '</div>';
+		document.querySelector('#files').addEventListener('change', handleFileSelect, false);
+        selDiv = document.querySelector("#selectedFiles");
 	}
 }
 
@@ -53,27 +51,21 @@ function composeMessage(){
 		}
 		
 		document.getElementById("email-view-info").innerHTML = '<h1 id="email-view-subject">Compose Mail:</h1> <p id="email-view-from"/>';
+		document.getElementById("email-view-controls").innerHTML = '<input type="image" class="draft" src="images/send.png" title="Send"/>\
+			<input type="image" class="draft" src="images/save.png" title="Save Draft"/>\
+			<input type="image" class="draft" id="delete" src="images/delete.png" title="Delete" onclick="deleteCompose()"/>';
 			
-		document.getElementById("email-view-controls").innerHTML = "<input type=\"image\" class=\"draft\" src=\"images/send.png\" title=\"Send\"/>\
-			<input type=\"image\" class=\"draft\" src=\"images/save.png\" title=\"Save Draft\"/>\
-			<input type=\"image\" class=\"draft\" id=\"delete\" src=\"images/delete.png\" title=\"Delete\" onclick=\"deleteCompose()\"/>";
-			
-		document.getElementById("email-view-content").innerHTML = "<form id=\"draft-message-header\"> \
-			<p>To: <input id=\"replyTo\" class=\"field\" type=\"email\" name=\"to\" placeholder=\"\" required> \
-			</form> \
-			<form>\
-			<p>Cc: <input id=\"cc\" class=\"field\" type=\"email\" name=\"cc\" placeholder=\"\" required> \
-			</form> \
-			<form>\
-			<p>Bcc: <input id=\"bcc\" class=\"field\" type=\"email\" name=\"bc\" placeholder=\"\" required> \
-			</form> \
-			<form>\
-			<p>Subject: <input id=\"subject\" class=\"field\" type=\"email\" name=\"subject\" placeholder=\"\" required/> \
-			</form> \
-			<form id=\"draft-message-content\"> \
-			<textarea id=\"file\" rows=\"15\" onfocus=\"clearContents(this);\"cols=\"47\" placeholder=\"Enter Email\" id=\"A4Page\" required ondragover=\"isOver(event)\" ondrop=\"drop(event)\"></textarea> \
-			</form>";
-		document.getElementById("replyTo").autofocus="autofocus";
+		document.getElementById("email-view-content").innerHTML = '<form id="draft-message-header" method="post" enctype="multipart/form-data"> \
+			<p>To: <input class="field" type="email" name="to" placeholder="" required> \
+			<p>Cc: <input id="cc" class="field" type="email" name="cc" placeholder="" required> \
+			<p>Bcc: <input id="bcc" class="field" type="email" name="bc" placeholder="" required> \
+			<p>Subject: <input id="subject" class="field" type="email" name="subject" placeholder="" required/> \
+			<p><textarea id="file" rows="15" onfocus="clearContents(this);"cols="47" placeholder="Enter Email" id="A4Page" required ondragover="isOver(event)" ondrop="drop(event)"></textarea> \
+			<p><input type="file" id="files" name="files" multiple> \
+			<div id="selectedFiles"></div>\
+			</form>';
+		document.querySelector('#files').addEventListener('change', handleFileSelect, false);
+        selDiv = document.querySelector("#selectedFiles");
 	}
 }
 
@@ -139,4 +131,22 @@ function drag(e) {
 	document.getElementById("file").innerHTML = "\
 	 <img id=str src=str2 />";
 	document.getElementById("file").src = str2; 
+ }
+ 
+ function handleFileSelect(e) {
+        
+        if(!e.target.files) return;
+        
+        selDiv.innerHTML = "";
+        
+        var files = e.target.files;
+		if(files.length > 1){
+			for(var i=0; i<files.length; i++) {
+				var f = files[i];
+				
+				selDiv.innerHTML += '<span class="fileName">' + f.name + "</span><br>";
+
+			}
+		}
+        
  }
