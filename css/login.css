@@ -51,7 +51,8 @@ h4 {
   -webkit-margin-end: 0px;  
 }
 
-#login-message {
+
+.login-message {
   margin-top: 5px;
   margin-bottom: 20px;
   margin-right: 0px;
