@@ -1,75 +1,68 @@
 * {
-  box-sizing: border-box;
+  	box-sizing: border-box;
 }
 
 body {
-  background-image: url("../images/background3.jpg");
-  background-attachment: fixed;
+  	background-image: url("../images/background3.jpg");
+  	background-attachment: fixed;
 }
 
 #login-panel {
-  width: 780px;
-  height:0;
-  margin: 5% auto 0 auto;
-  font-family: 'LatoRegular', 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, sans-serif !important;
-  line-height: 21px;
-  color: #636e7b; 
-}
-
-#login-box {
-  background-image: url("../images/login_background.png");
-  background-size: 100%;
-  background-repeat: no-repeat;
-  width: 90%;
-  padding-top: 44px;
-  padding-left:58px;
-  padding-bottom:20%;
+  	width: 60%;
+  	height:0;
+  	margin: 5% auto 0 auto;
+  	font-family: 'LatoRegular', 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, sans-serif !important;
+  	line-height: 21px;
+  	color: #636e7b; 
 }
 
 #login-form {
-  background: rgb(245,245,245);
-  width:80%;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  padding: 30px;
-  padding-bottom:74px;
+	background-image: url("../images/background_login.png");
+  	background-size: 100% 100%;
+  	background-repeat: no-repeat;
+  	width:80%;
+  	padding: 9% 11% 11% 11%;
+}
+
+#decoration {
+  	width: 7%;
+  	margin-left:13%;
 }
 
 .nomargin {
-  margin: 0;
+  	margin: 0;
 }
 
 h4 {
-  line-height: 24px;
-  font-size: 18px;
-  font-weight: 500;
-  color: inherit;
-  box-sizing: border-box;
-  display: block;
+  	line-height: 24px;
+  	font-size: 18px;
+  	font-weight: 500;
+  	color: inherit;
+  	box-sizing: border-box;
+  	display: block;
   -webkit-margin-before: 1.33em;
   -webkit-margin-after: 1.33em;
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;  
 }
 
-
 .login-message {
-  margin-top: 5px;
-  margin-bottom: 20px;
-  margin-right: 0px;
-  margin-left: 0px;
+  	margin-top: 5px;
+  	margin-bottom: 20px;
+  	margin-right: 0px;
+  	margin-left: 0px;
 }
 
 #username {
-  background: #fff url(../images/user.png) no-repeat 95% center;
+  	background: #fff url(../images/icon_user.png) no-repeat 95% center;
 }
 
 #password {
- background: #fff url(../images/locked.png) no-repeat 95% center;
+ 	background: #fff url(../images/icon_locked.png) no-repeat 95% center;
 }
 
 input {
-  display: block;
+  	display: block;
     margin-top: 15px;
     border-radius: 3px;
     padding: 10px;
@@ -82,39 +75,28 @@ input {
 }
 
 small {
-  font-size: 11px;
-  
+  	font-size: 11px;
 }
 
 a {
-  color: #666;
-  text-decoration: none;
+  	color: #666;
+  	text-decoration: none;
 }
 
 button {
-  margin-top: 15px;
-  background-color: #1CAF9A;
-  border-color: #17a08c;
-  border-radius: 3px;
-  line-height: 21px;
-  transition: all 0.2s ease-out 0s;
-  padding: 6px 15px;
-  display: block;
-  width: 100%;
-  color: #fff;
-  margin-bottom: 0;
-  font-weight: 400;
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  background-image: none;
-  border: 1px solid transparent;
-  white-space: nowrap;
-  font-size: 14px;
-  user-select: none;
-  font-family: inherit;
+  	margin-top: 15px;
+  	background-color: #1CAF9A;
+  	border-color: #17a08c;
+  	border-radius: 3px;
+  	line-height: 21px;
+  	padding: 6px 15px;
+  	display: block;
+  	width: 100%;
+  	color: #fff;
+  	cursor: pointer;
+  	border: 1px solid transparent;
+  	font-size: 14px;
+  	user-select: none;
+  	font-family: inherit;
   -webkit-appearance: button;
-  text-transform: none;
-  overflow: visible;
-  font: inherit;
 }

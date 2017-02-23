@@ -16,7 +16,7 @@ body {
 }
 
 #register-box {
-  background-image: url("../images/register_background.png");
+  background-image: url("../images/background_register.png");
   background-size: 100%;
   background-repeat: no-repeat;
   width: 70%;
@@ -76,11 +76,11 @@ h3 {
 }
 
 #username {
-  background: #fff url(../images/user.png) no-repeat 95% center;
+  background: #fff url(../images/icon_user.png) no-repeat 95% center;
 }
 
 #password, #password-confirm {
- background: #fff url(../images/locked.png) no-repeat 95% center;
+ background: #fff url(../images/icon_locked.png) no-repeat 95% center;
 }
 
 
