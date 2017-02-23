@@ -8,9 +8,8 @@ body {
 }
 
 #login-panel {
-  	width: 60%;
-  	height:0;
-  	margin: 5% auto 0 auto;
+  	width: 60%;  	
+  	margin: 5% auto 0px auto;
   	font-family: 'LatoRegular', 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, sans-serif !important;
   	line-height: 21px;
   	color: #636e7b; 
@@ -25,8 +24,9 @@ body {
 }
 
 #decoration {
-  	width: 7%;
+  	width: 5%;
   	margin-left:13%;
+	margin-top: -23%;
 }
 
 .nomargin {
@@ -98,5 +98,5 @@ button {
   	font-size: 14px;
   	user-select: none;
   	font-family: inherit;
-  -webkit-appearance: button;
+	-webkit-appearance: button;
 }
