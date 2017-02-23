@@ -7,13 +7,13 @@
  /* e-mail title and buttons for reply, forward etc.
     17% padding keeps it within the background. */
 #email-view-header {
-    padding: 1em 1em 1em 17%;
+    padding: 1em 1em 0em 17%;
 }
 
  /* e-mail content.
     17% padding keeps it within the background. */
 #email-view-content{
-    padding: 1em 1em 1em 17%;
+    padding: 0em 1em 1em 17%;
 }
 
 #draft-message-header input{

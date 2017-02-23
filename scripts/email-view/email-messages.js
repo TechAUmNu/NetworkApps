@@ -8,8 +8,7 @@ function draftMessage() {
 		<input type=\"image\" class=\"draft\" src=\"images/save.png\" title=\"Save Draft\"/>\
 		<input type=\"image\" class=\"draft\" id=\"delete\" src=\"images/delete.png\" title=\"Delete\" onclick=\"deleteDraft()\"/>";
 
-    document.getElementById("email-view-content").innerHTML = " \
-        <form id=\"draft-message-header\"> \
+    document.getElementById("email-view-content").innerHTML = "<form id=\"draft-message-header\"> \
         <p>To: <input class=\"field\" type=\"email\" name=\"to\" placeholder=\"\" required> \
         <p>Cc: <input class=\"field\" type=\"email\" name=\"cc\" placeholder=\"\" required> \
         <p>Bc: <input class=\"field\" type=\"email\" name=\"bc\" placeholder=\"\" required> \
