@@ -1,17 +1,26 @@
-var oldEmail;
+var emailTo, emailCc, emailBcc, emailMessage;
+
+var emailViewCompose;
+var emailViewReply;
+
+var composingMessage = false;
+
 
 function draftMessage() {
-    var emailViewControls = document.getElementById("email-view-controls").innerHTML;
-    oldEmail = document.getElementById("email-view-content").innerHTML;
+	emailViewReply = document.getElementById("email-view").innerHTML;
+	
+    
+	
+    var oldEmail = document.getElementById("email-view-content").innerHTML;
 
     document.getElementById("email-view-controls").innerHTML = "<input type=\"image\" class=\"draft\" src=\"images/send.png\" title=\"Send\"/>\
 		<input type=\"image\" class=\"draft\" src=\"images/save.png\" title=\"Save Draft\"/>\
-		<input type=\"image\" class=\"draft\" id=\"delete\" src=\"images/delete.png\" title=\"Delete\" onclick=\"deleteDraft()\"/>";
+		<input type=\"image\" class=\"draft\" id=\"delete\" src=\"images/delete.png\" title=\"Delete\" onclick=\"deleteReply()\"/>";
 
     document.getElementById("email-view-content").innerHTML = "<form id=\"draft-message-header\"> \
-        <p>To: <input class=\"field\" type=\"email\" name=\"to\" placeholder=\"\" required> \
-        <p>Cc: <input class=\"field\" type=\"email\" name=\"cc\" placeholder=\"\" required> \
-        <p>Bcc: <input class=\"field\" type=\"email\" name=\"bc\" placeholder=\"\" required> \
+        <p>To: <input id=\"email_reply_to\" class=\"field\" type=\"email\" name=\"to\" placeholder=\"\" required> \
+        <p>Cc: <input id=\"email_reply_cc\" class=\"field\" type=\"email\" name=\"cc\" placeholder=\"\" required> \
+        <p>Bcc: <input id=\"email_reply_bcc\" class=\"field\" type=\"email\" name=\"bc\" placeholder=\"\" required> \
         </form> \
         <form id=\"draft-message-content\"> \
         <textarea id=\"file\" rows=\"6\" onfocus=\"clearContents(this);\"cols=\"47\" placeholder=\"Enter Email\" id=\"A4Page\" required ondragover=\"isOver(event)\" ondrop=\"drop(event)\"></textarea> \
@@ -20,39 +29,50 @@ function draftMessage() {
 }
 
 function composeMessage(){
-	
-	
-	 document.getElementById("email-view-info").innerHTML = "<h1 id=\"email-view-subject\">Compose Mail:</h1>";
+	if(!composingMessage){
+		emailViewCompose = document.getElementById("email-view").innerHTML;
+		emailTo = document.getElementById("email_reply_to").value;
+		emailCc = document.getElementById("email_reply_cc").value;
+		emailBcc = document.getElementById("email_reply_bcc").value;
+		emailMessage = document.getElementById("file").value;
 		
-	document.getElementById("email-view-controls").innerHTML = "<input type=\"image\" class=\"draft\" src=\"images/send.png\" title=\"Send\"/>\
-		<input type=\"image\" class=\"draft\" src=\"images/save.png\" title=\"Save Draft\"/>\
-		<input type=\"image\" class=\"draft\" id=\"delete\" src=\"images/delete.png\" title=\"Delete\" onclick=\"deleteDraft()\"/>";
-		
-	document.getElementById("email-view-content").innerHTML = "<form id=\"draft-message-header\"> \
-        <p>To: <input class=\"field\" type=\"email\" name=\"to\" placeholder=\"\" required> \
-		</form> \
-		<form>\
-        <p>Cc: <input id=\"cc\" class=\"field\" type=\"email\" name=\"cc\" placeholder=\"\" required> \
-		</form> \
-		<form>\
-        <p>Bcc: <input id=\"bcc\" class=\"field\" type=\"email\" name=\"bc\" placeholder=\"\" required> \
-		</form> \
-		<form>\
-		<p>Subject: <input id=\"subject\" class=\"field\" type=\"email\" name=\"subject\" placeholder=\"\" required/> \
-		</form> \
-		<form id=\"draft-message-content\"> \
-        <textarea id=\"file\" rows=\"15\" onfocus=\"clearContents(this);\"cols=\"47\" placeholder=\"Enter Email\" id=\"A4Page\" required ondragover=\"isOver(event)\" ondrop=\"drop(event)\"></textarea> \
-        </form>";
+		document.getElementById("email-view-info").innerHTML = '<h1 id="email-view-subject">Compose Mail:</h1> <p id="email-view-from"/>';
+			
+		document.getElementById("email-view-controls").innerHTML = "<input type=\"image\" class=\"draft\" src=\"images/send.png\" title=\"Send\"/>\
+			<input type=\"image\" class=\"draft\" src=\"images/save.png\" title=\"Save Draft\"/>\
+			<input type=\"image\" class=\"draft\" id=\"delete\" src=\"images/delete.png\" title=\"Delete\" onclick=\"deleteCompose()\"/>";
+			
+		document.getElementById("email-view-content").innerHTML = "<form id=\"draft-message-header\"> \
+			<p>To: <input class=\"field\" type=\"email\" name=\"to\" placeholder=\"\" required> \
+			</form> \
+			<form>\
+			<p>Cc: <input id=\"cc\" class=\"field\" type=\"email\" name=\"cc\" placeholder=\"\" required> \
+			</form> \
+			<form>\
+			<p>Bcc: <input id=\"bcc\" class=\"field\" type=\"email\" name=\"bc\" placeholder=\"\" required> \
+			</form> \
+			<form>\
+			<p>Subject: <input id=\"subject\" class=\"field\" type=\"email\" name=\"subject\" placeholder=\"\" required/> \
+			</form> \
+			<form id=\"draft-message-content\"> \
+			<textarea id=\"file\" rows=\"15\" onfocus=\"clearContents(this);\"cols=\"47\" placeholder=\"Enter Email\" id=\"A4Page\" required ondragover=\"isOver(event)\" ondrop=\"drop(event)\"></textarea> \
+			</form>";
+	}
 }
 
-function deleteDraft() {
-    var emailViewControls = document.getElementById("email-view-controls").innerHTML;
+function deleteReply() {
 
-    document.getElementById("email-view-controls").innerHTML = "<input onclick=\"draftMessage()\" type=\"image\" class=\"draft\" src=\"images/reply.png\" title=\"Reply\"/>\
-		<input onclick=\"draftMessage()\" type=\"image\" class=\"draft\" src=\"images/forward.jpg\" title=\"Forward\"/>\
-		<input type=\"image\" class=\"draft\" src=\"images/move.png\" title=\"Move\"/>";
+	document.getElementById("email-view").innerHTML = emailViewReply;
 
-    document.getElementById("email-view-content").innerHTML = oldEmail;
+}
+
+function deleteCompose() {
+	document.getElementById("email-view").innerHTML = emailViewCompose;
+	document.getElementById("email_reply_to").value = emailTo;
+	document.getElementById("email_reply_cc").value = emailCc;
+	document.getElementById("email_reply_bcc").value = emailBcc;
+	document.getElementById("file").value = emailMessage;
+	composingMessage = false;
 }
 
  function isOver(e) {
