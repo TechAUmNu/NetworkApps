@@ -1,0 +1,16 @@
+.stamp {
+  position: absolute;
+  cursor: pointer;
+}
+
+#stamp_css {
+  bottom: 5px;
+  left: 5px;
+  width: 90px;
+}
+
+#stamp_html {
+  bottom: 70px;
+  left: 45px;
+  width: 80px;
+}

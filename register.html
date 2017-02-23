@@ -1,9 +1,12 @@
-﻿<!DOCTYPE HTML>
-<?xml version="1.0"?>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
 <head>
-	<link rel="stylesheet" href="css/register.css"/>
+	<meta charset="utf-8"/>	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>WattMail - Register</title>	
+	<link rel="stylesheet" href="css/global.css"/>
+	<link rel="stylesheet" href="css/accounts.css"/>
 </head>
 
 <body>
@@ -15,48 +18,38 @@
 					<label>Name</label>
 					<div class="row margin-bottom10">						
 						<div class="column-50">
-							<input id="firstname" type="text" placeholder="Firstname" required/>
+							<input name="firstname" type="text" placeholder="Firstname" required/>
 						</div>
 						<div class="column-50">
-							<input id="lastname" type="text" placeholder="Lastname" required/>
+							<input name="lastname" type="text" placeholder="Lastname" required/>
 						</div>						
 					</div>
 				
 					<div class="margin-bottom10 register-box">
 						<label>Username</label>
-						<input id="username" type="text">
+						<input name="username" class="username" type="text">
                     </div>
 					
 					<div class="margin-bottom10 register-box">
 						<label>Password</label>
-						<input id="password" type="password"  required>
+						<input name="password" class="password" type="password"  required>
                     </div>
 					
 					<div class="margin-bottom10 register-box">
 						<label>Retype Password</label>
-						<input id="password-confirm" type="password" required>
+						<input name="password-confirm" class="password" type="password" required>
                     </div>
-					
-					
 					
 					<div class="margin-bottom10 register-box">
 						<label>Date of Birth</label>
-						<input id="dob" type="date"/>											
+						<input name="dob" type="date"/>											
 					</div>
 					
-					
-                    <button>Register</button>
-                    
+                    <button>Register</button>   
                 </form>         
-            
         </div>       
-        
     </div>
-
-
+	<a href="http://validator.w3.org/check/referer"><img class="stamp" id="stamp_html" src="images/stamp_html.png" alt="Verification"/></a>
+    <a href="https://jigsaw.w3.org/css-validator/check/referer"><img class="stamp" id="stamp_css" src="images/stamp_css.png" alt="Verification"/></a>
 </body>
 </html>
-<script>
-
-
-</script>

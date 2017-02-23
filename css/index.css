@@ -42,23 +42,6 @@ body, #layout, #nav, #nav-inner {
 	height: 170px;
 }
 
-.stamp {
-  position: absolute;
-  cursor: pointer;
-}
-
-#stamp_css {
-  bottom: 5px;
-  left: 5px;
-  width: 115px;
-}
-
-#stamp_html {
-  bottom: 70px;
-  left: 45px;
-  width: 100px;
-}
-
 #email-list {
   margin-left: -300px;
   width: 300px;
@@ -169,3 +152,75 @@ text-transform: uppercase;
 #cc{
 	width: 80.5%;
 }
+
+#email-view{
+    background-image: url("../images/email_background.png");
+    background-repeat: repeat-y;
+    background-size: 100%;
+}
+
+ /* e-mail title and buttons for reply, forward etc.
+    17% padding keeps it within the background. */
+#email-view-header {
+    padding: 1em 1em 0em 17%;
+}
+
+ /* e-mail content.
+    17% padding keeps it within the background. */
+#email-view-content{
+    padding: 0em 1em 1em 17%;
+}
+
+#draft-message-header input{
+    width: 80%;    
+    border: 0px;
+    border-bottom: 1px solid #ddd;
+}
+
+#draft-message-content input{
+    width: 100%; 
+    height: 100px; 
+    border: 1px solid #ddd;
+}
+
+.oldEmail{
+    border-top: 2px dashed #ddd;
+}
+
+.fileName{
+	font-size: 10pt;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.folderSettings{
+    max-height: 15px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
