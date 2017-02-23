@@ -11,7 +11,7 @@ function draftMessage() {
 		replyActive = true;
 		emailViewReply = document.getElementById("email-view").innerHTML;
 		
-		
+		var varEmail = document.getElementById("email-addr").value;
 		
 		var oldEmail = document.getElementById("email-view-content").innerHTML;
 
@@ -20,12 +20,12 @@ function draftMessage() {
 			<input type=\"image\" class=\"draft\" id=\"delete\" src=\"images/delete.png\" title=\"Delete\" onclick=\"deleteReply()\"/>";
 
 		document.getElementById("email-view-content").innerHTML = "<form id=\"draft-message-header\"> \
-			<p>To: <input id=\"email_reply_to\" class=\"field\" type=\"email\" name=\"to\" placeholder=\"\" required> \
+			<p>To: <input id=\"email_reply_to\" class=\"field\" type=\"email\" name=\"to\" placeholder=\"\" required value= " +varEmail +"> \
 			<p>Cc: <input id=\"email_reply_cc\" class=\"field\" type=\"email\" name=\"cc\" placeholder=\"\" required> \
 			<p>Bcc: <input id=\"email_reply_bcc\" class=\"field\" type=\"email\" name=\"bc\" placeholder=\"\" required> \
 			</form> \
 			<form id=\"draft-message-content\"> \
-			<textarea id=\"file\" rows=\"6\" onfocus=\"clearContents(this);\"cols=\"47\" placeholder=\"Enter Email\" id=\"A4Page\" required ondragover=\"isOver(event)\" ondrop=\"drop(event)\"></textarea> \
+			<textarea autofocus=\"autofocus\"  id=\"file\" rows=\"6\" onfocus=\"clearContents(this);\"cols=\"47\" placeholder=\"Enter Email\" id=\"A4Page\" required ondragover=\"isOver(event)\" ondrop=\"drop(event)\"></textarea> \
 			</form> \
 			<div class=\"oldEmail\">" + oldEmail + "</div>";
 	}
@@ -48,7 +48,7 @@ function composeMessage(){
 			<input type=\"image\" class=\"draft\" id=\"delete\" src=\"images/delete.png\" title=\"Delete\" onclick=\"deleteCompose()\"/>";
 			
 		document.getElementById("email-view-content").innerHTML = "<form id=\"draft-message-header\"> \
-			<p>To: <input class=\"field\" type=\"email\" name=\"to\" placeholder=\"\" required> \
+			<p>To: <input autofocus=\"autofocus\" class=\"field\" type=\"email\" name=\"to\" placeholder=\"\" required> \
 			</form> \
 			<form>\
 			<p>Cc: <input id=\"cc\" class=\"field\" type=\"email\" name=\"cc\" placeholder=\"\" required> \
