@@ -4,7 +4,9 @@ function draftMessage() {
     var emailViewControls = document.getElementById("email-view-controls").innerHTML;
     oldEmail = document.getElementById("email-view-content").innerHTML;
 
-    document.getElementById("email-view-controls").innerHTML = "<button>Send</button> <button>Save to Drafts</button> <button onclick=\"deleteDraft()\">Delete</button>";
+    document.getElementById("email-view-controls").innerHTML = "<input type=\"image\" class=\"draft\" src=\"images/send_mail.png\" title=\"Send\"/>\
+		<input type=\"image\" class=\"draft\" src=\"images/save.png\" title=\"Save Draft\"/>\
+		<input type=\"image\" class=\"draft\" id=\"delete\" src=\"images/delete.png\" title=\"Delete\" onclick=\"deleteDraft()\"/>";
 
     document.getElementById("email-view-content").innerHTML = " \
         <form id=\"draft-message-header\"> \

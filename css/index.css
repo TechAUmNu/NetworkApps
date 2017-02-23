@@ -129,3 +129,11 @@ text-transform: uppercase;
 	 
  }
  
+ .draft{
+		height: 30px;
+		padding: 0px 10px 0px 10px;
+	 }
+	
+#delete{
+	height: 35px;
+}
