@@ -6,7 +6,6 @@
 body {
 	background-image: url("../images/background3.jpg");
   background-attachment: fixed;
-  background-size: 100%;
 	font-size: 14px;
 }
 
@@ -18,7 +17,6 @@ body {
 #register-box {
   background-image: url("../images/background_register.png");
   background-size: 100%;
-  background-repeat: no-repeat;
   width: 70%;
   padding-top: 150px;
   padding-left:50px;
@@ -42,8 +40,8 @@ body {
 }
 
 strong {
-    font-family: 'LatoBold';
-    font-weight: normal;
+  font-family: 'LatoBold';
+  font-weight: normal;
 }
 
 h4{
@@ -51,9 +49,7 @@ h4{
 }
 
 h1, h2, h3, h4 {
-	
   line-height: 24px;
-  
   font-weight: 500;
   color: inherit;
   box-sizing: border-box;
@@ -80,10 +76,8 @@ h3 {
 }
 
 #password, #password-confirm {
- background: #fff url(../images/icon_locked.png) no-repeat 95% center;
+  background: #fff url(../images/icon_locked.png) no-repeat 95% center;
 }
-
-
 
 input {
 	display: block;    
@@ -104,8 +98,8 @@ small {
 }
 
 a {
-    color: #428bca;
-    text-decoration: none;
+  color: #428bca;
+  text-decoration: none;
 }
 
 button {
