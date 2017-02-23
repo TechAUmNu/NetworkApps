@@ -4,38 +4,43 @@ var emailViewCompose;
 var emailViewReply;
 
 var composingMessage = false;
-
+var replyActive = false;
 
 function draftMessage() {
-	emailViewReply = document.getElementById("email-view").innerHTML;
-	
-    
-	
-    var oldEmail = document.getElementById("email-view-content").innerHTML;
+	if(!replyActive){
+		replyActive = true;
+		emailViewReply = document.getElementById("email-view").innerHTML;
+		
+		
+		
+		var oldEmail = document.getElementById("email-view-content").innerHTML;
 
-    document.getElementById("email-view-controls").innerHTML = "<input type=\"image\" class=\"draft\" src=\"images/send.png\" title=\"Send\"/>\
-		<input type=\"image\" class=\"draft\" src=\"images/save.png\" title=\"Save Draft\"/>\
-		<input type=\"image\" class=\"draft\" id=\"delete\" src=\"images/delete.png\" title=\"Delete\" onclick=\"deleteReply()\"/>";
+		document.getElementById("email-view-controls").innerHTML = "<input type=\"image\" class=\"draft\" src=\"images/send.png\" title=\"Send\"/>\
+			<input type=\"image\" class=\"draft\" src=\"images/save.png\" title=\"Save Draft\"/>\
+			<input type=\"image\" class=\"draft\" id=\"delete\" src=\"images/delete.png\" title=\"Delete\" onclick=\"deleteReply()\"/>";
 
-    document.getElementById("email-view-content").innerHTML = "<form id=\"draft-message-header\"> \
-        <p>To: <input id=\"email_reply_to\" class=\"field\" type=\"email\" name=\"to\" placeholder=\"\" required> \
-        <p>Cc: <input id=\"email_reply_cc\" class=\"field\" type=\"email\" name=\"cc\" placeholder=\"\" required> \
-        <p>Bcc: <input id=\"email_reply_bcc\" class=\"field\" type=\"email\" name=\"bc\" placeholder=\"\" required> \
-        </form> \
-        <form id=\"draft-message-content\"> \
-        <textarea id=\"file\" rows=\"6\" onfocus=\"clearContents(this);\"cols=\"47\" placeholder=\"Enter Email\" id=\"A4Page\" required ondragover=\"isOver(event)\" ondrop=\"drop(event)\"></textarea> \
-        </form> \
-        <div class=\"oldEmail\">" + oldEmail + "</div>";
+		document.getElementById("email-view-content").innerHTML = "<form id=\"draft-message-header\"> \
+			<p>To: <input id=\"email_reply_to\" class=\"field\" type=\"email\" name=\"to\" placeholder=\"\" required> \
+			<p>Cc: <input id=\"email_reply_cc\" class=\"field\" type=\"email\" name=\"cc\" placeholder=\"\" required> \
+			<p>Bcc: <input id=\"email_reply_bcc\" class=\"field\" type=\"email\" name=\"bc\" placeholder=\"\" required> \
+			</form> \
+			<form id=\"draft-message-content\"> \
+			<textarea id=\"file\" rows=\"6\" onfocus=\"clearContents(this);\"cols=\"47\" placeholder=\"Enter Email\" id=\"A4Page\" required ondragover=\"isOver(event)\" ondrop=\"drop(event)\"></textarea> \
+			</form> \
+			<div class=\"oldEmail\">" + oldEmail + "</div>";
+	}
 }
 
 function composeMessage(){
 	if(!composingMessage){
+		composingMessage = true;
 		emailViewCompose = document.getElementById("email-view").innerHTML;
-		emailTo = document.getElementById("email_reply_to").value;
-		emailCc = document.getElementById("email_reply_cc").value;
-		emailBcc = document.getElementById("email_reply_bcc").value;
-		emailMessage = document.getElementById("file").value;
-		
+		if(replyActive){
+			emailTo = document.getElementById("email_reply_to").value;
+			emailCc = document.getElementById("email_reply_cc").value;
+			emailBcc = document.getElementById("email_reply_bcc").value;
+			emailMessage = document.getElementById("file").value;
+		}
 		document.getElementById("email-view-info").innerHTML = '<h1 id="email-view-subject">Compose Mail:</h1> <p id="email-view-from"/>';
 			
 		document.getElementById("email-view-controls").innerHTML = "<input type=\"image\" class=\"draft\" src=\"images/send.png\" title=\"Send\"/>\
@@ -57,21 +62,24 @@ function composeMessage(){
 			<form id=\"draft-message-content\"> \
 			<textarea id=\"file\" rows=\"15\" onfocus=\"clearContents(this);\"cols=\"47\" placeholder=\"Enter Email\" id=\"A4Page\" required ondragover=\"isOver(event)\" ondrop=\"drop(event)\"></textarea> \
 			</form>";
+		
 	}
 }
 
 function deleteReply() {
 
 	document.getElementById("email-view").innerHTML = emailViewReply;
-
+	replyActive = false;
 }
 
 function deleteCompose() {
 	document.getElementById("email-view").innerHTML = emailViewCompose;
-	document.getElementById("email_reply_to").value = emailTo;
-	document.getElementById("email_reply_cc").value = emailCc;
-	document.getElementById("email_reply_bcc").value = emailBcc;
-	document.getElementById("file").value = emailMessage;
+	if(replyActive){
+		document.getElementById("email_reply_to").value = emailTo;
+		document.getElementById("email_reply_cc").value = emailCc;
+		document.getElementById("email_reply_bcc").value = emailBcc;
+		document.getElementById("file").value = emailMessage;
+	}
 	composingMessage = false;
 }
 
