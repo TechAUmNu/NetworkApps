@@ -11,12 +11,38 @@ function draftMessage() {
     document.getElementById("email-view-content").innerHTML = "<form id=\"draft-message-header\"> \
         <p>To: <input class=\"field\" type=\"email\" name=\"to\" placeholder=\"\" required> \
         <p>Cc: <input class=\"field\" type=\"email\" name=\"cc\" placeholder=\"\" required> \
-        <p>Bc: <input class=\"field\" type=\"email\" name=\"bc\" placeholder=\"\" required> \
+        <p>Bcc: <input class=\"field\" type=\"email\" name=\"bc\" placeholder=\"\" required> \
         </form> \
         <form id=\"draft-message-content\"> \
-        <textarea id=\"file\" rows=\"4\" onfocus=\"clearContents(this);\"cols=\"50\" placeholder=\"Enter Email\" id=\"A4Page\" required ondragover=\"isOver(event)\" ondrop=\"drop(event)\"></textarea> \
+        <textarea id=\"file\" rows=\"6\" onfocus=\"clearContents(this);\"cols=\"47\" placeholder=\"Enter Email\" id=\"A4Page\" required ondragover=\"isOver(event)\" ondrop=\"drop(event)\"></textarea> \
         </form> \
         <div class=\"oldEmail\">" + oldEmail + "</div>";
+}
+
+function composeMessage(){
+	
+	
+	 document.getElementById("email-view-info").innerHTML = "<h1 id=\"email-view-subject\">Compose Mail:</h1>";
+		
+	document.getElementById("email-view-controls").innerHTML = "<input type=\"image\" class=\"draft\" src=\"images/send_mail.png\" title=\"Send\"/>\
+		<input type=\"image\" class=\"draft\" src=\"images/save.png\" title=\"Save Draft\"/>\
+		<input type=\"image\" class=\"draft\" id=\"delete\" src=\"images/delete.png\" title=\"Delete\" onclick=\"deleteDraft()\"/>";
+		
+	document.getElementById("email-view-content").innerHTML = "<form id=\"draft-message-header\"> \
+        <p>To: <input class=\"field\" type=\"email\" name=\"to\" placeholder=\"\" required> \
+		</form> \
+		<form>\
+        <p>Cc: <input id=\"cc\" class=\"field\" type=\"email\" name=\"cc\" placeholder=\"\" required> \
+		</form> \
+		<form>\
+        <p>Bcc: <input id=\"bcc\" class=\"field\" type=\"email\" name=\"bc\" placeholder=\"\" required> \
+		</form> \
+		<form>\
+		<p>Subject: <input id=\"subject\" class=\"field\" type=\"email\" name=\"subject\" placeholder=\"\" required/> \
+		</form> \
+		<form id=\"draft-message-content\"> \
+        <textarea id=\"file\" rows=\"15\" onfocus=\"clearContents(this);\"cols=\"47\" placeholder=\"Enter Email\" id=\"A4Page\" required ondragover=\"isOver(event)\" ondrop=\"drop(event)\"></textarea> \
+        </form>";
 }
 
 function deleteDraft() {

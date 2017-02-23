@@ -85,7 +85,6 @@ body, #layout, #nav, #nav-inner {
  
  .menu-list {
    list-style: none;
-   
    margin: 0;
    padding: 0;
  }
@@ -106,6 +105,7 @@ body, #layout, #nav, #nav-inner {
    text-decoration: none;
    white-space: nowrap;
    color: #fff;
+   outline: none;
  }
  
 .email-item-unread {
@@ -136,4 +136,16 @@ text-transform: uppercase;
 	
 #delete{
 	height: 35px;
+}
+
+#subject{
+	width: 72%;
+}
+
+#bcc{
+	width: 79%;
+}
+
+#cc{
+	width: 80.5%;
 }
