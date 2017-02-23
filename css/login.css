@@ -9,7 +9,8 @@ body {
 
 #login-panel {
   width: 780px;
-  margin: 10% auto 0 auto;
+  height:0;
+  margin: 5% auto 0 auto;
   font-family: 'LatoRegular', 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, sans-serif !important;
   line-height: 21px;
   color: #636e7b; 
