@@ -16,7 +16,11 @@ function dragenter(e) {
         e.target.parentNode.insertBefore(source, e.target);
     }
     else {
-        e.target.parentNode.insertBefore(source, e.target.nextSibling);
+        try{
+            e.target.parentNode.insertBefore(source, e.target.nextSibling);
+        } catch (DOMException) {
+
+        }
     }
 }
 

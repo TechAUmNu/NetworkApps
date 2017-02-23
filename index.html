@@ -26,13 +26,12 @@
         <ul class="menu-list">
             <li id="menu-item-0" class="menu-item" draggable="true" ondragenter="dragenter(event)" ondragstart="dragstart(event)">
                 <div id="inbox" class="menu-link"> 
-                    <a href="#">Inbox (<span id="numberEmails"></span>)</a>
-                    <img src="images\locked.png" onclick="dropdown()" class="dropbtn" />
-                    <div id="myDropdown" class="dropdown-content">
-                        <a href="#newFolder">New Folder</a>
-                        <a href="#EmptyFolder">Empty Folder</a>
-                        <a href="#deleteFolder">Delete Folder</a>
-                    </div>
+                        <a href="#" draggable="false">Inbox (<span id="numberEmails"></span>)</a>
+                        <div id="myDropdown" class="dropdown-content" draggable="false">
+                            <a href="#newFolder">New Folder</a>
+                            <a href="#EmptyFolder">Empty Folder</a>
+                            <a href="#deleteFolder">Delete Folder</a>
+                        </div>
                 </div>
             </li>
             <li id="menu-item-1" class="menu-item" draggable="true" ondragenter="dragenter(event)" ondragstart="dragstart(event)">
