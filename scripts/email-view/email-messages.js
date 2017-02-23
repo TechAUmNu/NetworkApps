@@ -4,7 +4,7 @@ function draftMessage() {
     var emailViewControls = document.getElementById("email-view-controls").innerHTML;
     oldEmail = document.getElementById("email-view-content").innerHTML;
 
-    document.getElementById("email-view-controls").innerHTML = "<input type=\"image\" class=\"draft\" src=\"images/send_mail.png\" title=\"Send\"/>\
+    document.getElementById("email-view-controls").innerHTML = "<input type=\"image\" class=\"draft\" src=\"images/send.png\" title=\"Send\"/>\
 		<input type=\"image\" class=\"draft\" src=\"images/save.png\" title=\"Save Draft\"/>\
 		<input type=\"image\" class=\"draft\" id=\"delete\" src=\"images/delete.png\" title=\"Delete\" onclick=\"deleteDraft()\"/>";
 
@@ -24,7 +24,7 @@ function composeMessage(){
 	
 	 document.getElementById("email-view-info").innerHTML = "<h1 id=\"email-view-subject\">Compose Mail:</h1>";
 		
-	document.getElementById("email-view-controls").innerHTML = "<input type=\"image\" class=\"draft\" src=\"images/send_mail.png\" title=\"Send\"/>\
+	document.getElementById("email-view-controls").innerHTML = "<input type=\"image\" class=\"draft\" src=\"images/send.png\" title=\"Send\"/>\
 		<input type=\"image\" class=\"draft\" src=\"images/save.png\" title=\"Save Draft\"/>\
 		<input type=\"image\" class=\"draft\" id=\"delete\" src=\"images/delete.png\" title=\"Delete\" onclick=\"deleteDraft()\"/>";
 		
@@ -48,7 +48,9 @@ function composeMessage(){
 function deleteDraft() {
     var emailViewControls = document.getElementById("email-view-controls").innerHTML;
 
-    document.getElementById("email-view-controls").innerHTML = "<button onclick=\"draftMessage()\">Reply</button><button onclick=\"draftMessage()\">Forward</button><button>Move to</button>";
+    document.getElementById("email-view-controls").innerHTML = "<input onclick=\"draftMessage()\" type=\"image\" class=\"draft\" src=\"images/reply.png\" title=\"Reply\"/>\
+		<input onclick=\"draftMessage()\" type=\"image\" class=\"draft\" src=\"images/forward.jpg\" title=\"Forward\"/>\
+		<input type=\"image\" class=\"draft\" src=\"images/move.png\" title=\"Move\"/>";
 
     document.getElementById("email-view-content").innerHTML = oldEmail;
 }
