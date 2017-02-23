@@ -2,10 +2,10 @@
 <html>
 
 <head>
+<link rel="stylesheet" href="css/index.css"/>
+<link rel="stylesheet" href="css/nav/nav.css" />
+<link rel="stylesheet" href="css/email-view/email-view.css" />
 
-<link rel="stylesheet" href="CSS/index.css"/>
-<link rel="stylesheet" href="CSS/nav/nav.css" />
-<link rel="stylesheet" href="CSS/email-view/email-view.css" />
 <script type="text/javascript" src="scripts/nav/nav.js"></script>
 <script type="text/javascript" src="scripts/email-view/email-messages.js"></script>
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
@@ -19,7 +19,7 @@
     </div>
 
     <div id="nav-inner">
-      <button class="menu-link menu-item" id="compose-button" style="cursor: pointer;" draggable="true" onclick="composeMessage()">Compose</button>
+      <button class="menu-link menu-item" id="compose-button" draggable="true" onclick="composeMessage()">Compose</button>
 
       <div id="menu">
         <ul class="menu-list">
@@ -48,6 +48,11 @@
             </li>
         </ul>
       </div>
+    </div>
+
+    <div id="nav-bottom">
+      <a href="http://validator.w3.org/check?uri= + window.location.href"><img class="stamp" id="stamp_html" src="images/stamp_html.png" alt="Verification"/></a>
+      <a href="https://jigsaw.w3.org/css-validator/validator?uri= + window.location.href"><img class="stamp" id="stamp_css" src="images/stamp_css.png" alt="Verification"/></a>
     </div>
   </div>
 
