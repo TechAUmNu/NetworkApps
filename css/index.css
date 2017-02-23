@@ -14,8 +14,8 @@ body {
 }
 
 body, #layout, #nav, #nav-inner {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
 }
 
 #layout {
@@ -48,14 +48,14 @@ body, #layout, #nav, #nav-inner {
 }
 
 #stamp_css {
-  bottom: 5;
-  left: 5;
+  bottom: 5px;
+  left: 5px;
   width: 115px;
 }
 
 #stamp_html {
-  bottom: 70;
-  left: 45;
+  bottom: 70px;
+  left: 45px;
   width: 100px;
 }
 
@@ -65,9 +65,9 @@ body, #layout, #nav, #nav-inner {
   height: 100%;
   position: fixed;
   
-  padding: 0;
-  top: 0;
-  bottom 0;
+  padding: 0px;
+  top: 0px;
+  bottom: 0px;
   overflow: auto;
 }
 
@@ -75,8 +75,8 @@ body, #layout, #nav, #nav-inner {
 #email-view {
     position: static;
     top: 33%;
-    right: 0;
-    bottom: 0;
+    right: 0px;
+    bottom: 0px;
     left: 300px;
     overflow: auto;
     width: auto;
@@ -107,7 +107,7 @@ body, #layout, #nav, #nav-inner {
  
  .menu-list {
    list-style: none;
-   margin: 0;
+   margin: 0px;
    padding: 0;
  }
  
@@ -116,8 +116,8 @@ body, #layout, #nav, #nav-inner {
  }
 
  .menu-item {
-   padding: 0;
-   margin: 0;
+   padding: 0px;
+   margin: 0px;
  }
  
  .menu-link {
@@ -138,12 +138,12 @@ body, #layout, #nav, #nav-inner {
 .email-name {
   font-family: 'ludicrous';
   font-size:1.6em;
-  margin: 0;
+  margin: 0px;
 }
 
  .email-name {
 text-transform: uppercase;
-  %--  color: #999;
+  color: #999;
  }
  
  .field{
