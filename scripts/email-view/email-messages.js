@@ -6,7 +6,7 @@ var emailViewReply;
 var composingMessage = false;
 var replyActive = false;
 
-function draftMessage() {
+function reply(reply) {
 	if(!replyActive){
 		replyActive = true;
 		emailViewReply = document.getElementById("email-view").innerHTML;
@@ -15,19 +15,29 @@ function draftMessage() {
 		
 		var oldEmail = document.getElementById("email-view-content").innerHTML;
 
+		
+		
 		document.getElementById("email-view-controls").innerHTML = "<input type=\"image\" class=\"draft\" src=\"images/send.png\" title=\"Send\"/>\
 			<input type=\"image\" class=\"draft\" src=\"images/save.png\" title=\"Save Draft\"/>\
 			<input type=\"image\" class=\"draft\" id=\"delete\" src=\"images/delete.png\" title=\"Delete\" onclick=\"deleteReply()\"/>";
 
 		document.getElementById("email-view-content").innerHTML = "<form id=\"draft-message-header\"> \
-			<p>To: <input id=\"email_reply_to\" class=\"field\" type=\"email\" name=\"to\" placeholder=\"\" required value= " +varEmail +"> \
+			<p>To: <input id=\"email_reply_to\" class=\"field\" type=\"email\" name=\"to\" placeholder=\"\" required> \
 			<p>Cc: <input id=\"email_reply_cc\" class=\"field\" type=\"email\" name=\"cc\" placeholder=\"\" required> \
 			<p>Bcc: <input id=\"email_reply_bcc\" class=\"field\" type=\"email\" name=\"bc\" placeholder=\"\" required> \
 			</form> \
 			<form id=\"draft-message-content\"> \
-			<textarea autofocus=\"autofocus\"  id=\"file\" rows=\"6\" onfocus=\"clearContents(this);\"cols=\"47\" placeholder=\"Enter Email\" id=\"A4Page\" required ondragover=\"isOver(event)\" ondrop=\"drop(event)\"></textarea> \
+			<textarea id=\"file\" rows=\"6\" onfocus=\"clearContents(this);\"cols=\"47\" placeholder=\"Enter Email\" id=\"A4Page\" required ondragover=\"isOver(event)\" ondrop=\"drop(event)\"></textarea> \
 			</form> \
 			<div class=\"oldEmail\">" + oldEmail + "</div>";
+			
+			if(reply){
+				document.getElementById("file").autofocus="autofocus";
+				document.getElementById("email_reply_to").value=varEmail;
+				
+			}else{
+				document.getElementById("email_reply_to").autofocus="autofocus";	
+			}
 	}
 }
 
@@ -41,6 +51,7 @@ function composeMessage(){
 			emailBcc = document.getElementById("email_reply_bcc").value;
 			emailMessage = document.getElementById("file").value;
 		}
+		
 		document.getElementById("email-view-info").innerHTML = '<h1 id="email-view-subject">Compose Mail:</h1> <p id="email-view-from"/>';
 			
 		document.getElementById("email-view-controls").innerHTML = "<input type=\"image\" class=\"draft\" src=\"images/send.png\" title=\"Send\"/>\
@@ -48,7 +59,7 @@ function composeMessage(){
 			<input type=\"image\" class=\"draft\" id=\"delete\" src=\"images/delete.png\" title=\"Delete\" onclick=\"deleteCompose()\"/>";
 			
 		document.getElementById("email-view-content").innerHTML = "<form id=\"draft-message-header\"> \
-			<p>To: <input autofocus=\"autofocus\" class=\"field\" type=\"email\" name=\"to\" placeholder=\"\" required> \
+			<p>To: <input id=\"replyTo\" class=\"field\" type=\"email\" name=\"to\" placeholder=\"\" required> \
 			</form> \
 			<form>\
 			<p>Cc: <input id=\"cc\" class=\"field\" type=\"email\" name=\"cc\" placeholder=\"\" required> \
@@ -62,7 +73,7 @@ function composeMessage(){
 			<form id=\"draft-message-content\"> \
 			<textarea id=\"file\" rows=\"15\" onfocus=\"clearContents(this);\"cols=\"47\" placeholder=\"Enter Email\" id=\"A4Page\" required ondragover=\"isOver(event)\" ondrop=\"drop(event)\"></textarea> \
 			</form>";
-		
+		document.getElementById("replyTo").autofocus="autofocus";
 	}
 }
 
