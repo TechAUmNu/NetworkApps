@@ -62,28 +62,26 @@ window.onclick = function (event) {
 /* Email Messages functions *************************************************************************************************************/
 
 var emailTo, emailCc, emailBcc, emailMessage;
-
 var emailViewCompose;
 var emailViewReply;
-
 var composingMessage = false;
 var replyActive = false;
 
-var selDiv = "";
-
-function draftMessage() {
+function reply(reply) {
 	if(!replyActive){
 		replyActive = true;
 		emailViewReply = document.getElementById("email-view").innerHTML;
-		
-		
-		
+		var varEmail = document.getElementById("email-addr").value;
 		var oldEmail = document.getElementById("email-view-content").innerHTML;
-
+		
 		document.getElementById("email-view-controls").innerHTML = '<input type="image" class="draft" src="images/send.png" title="Send"/>\
 			<input type="image" class="draft" src="images/save.png" title="Save Draft"/>\
 			<input type="image" class="draft" id="delete" src="images/delete.png" title="Delete" onclick="deleteReply()"/>';
-
+			
+		document.getElementById("email-view-controls").innerHTML = '<input type="image" class="draft" src="images/send.png" title="Send"/>\
+			<input type="image" class="draft" src="images/save.png" title="Save Draft"/>\
+			<input type="image" class="draft" id="delete" src="images/delete.png" title="Delete" onclick="deleteReply()"/>';
+			
 		document.getElementById("email-view-content").innerHTML = '<form id="draft-message-header" method="post" enctype="multipart/form-data"> \
 			<p>To: <input id="email_reply_to" class="field" type="email" name="to" placeholder="" required> \
 			<p>Cc: <input id="email_reply_cc" class="field" type="email" name="cc" placeholder="" required> \
@@ -92,7 +90,15 @@ function draftMessage() {
 			<p><input type="file" id="files" name="files" multiple> \
 			<div id="selectedFiles"></div>\
 			</form> \
-			<div class="oldEmail">' + oldEmail + '</div>';
+			<div class=\"oldEmail\">' + oldEmail + "</div>";
+			
+			if(reply){
+				document.getElementById("file").autofocus="autofocus";
+				document.getElementById("email_reply_to").value=varEmail;
+			}else{
+				document.getElementById("email_reply_to").autofocus="autofocus";	
+			}
+			'<div class="oldEmail">' + oldEmail + '</div>';
 		document.querySelector('#files').addEventListener('change', handleFileSelect, false);
         selDiv = document.querySelector("#selectedFiles");
 	}
@@ -108,8 +114,8 @@ function composeMessage(){
 			emailBcc = document.getElementById("email_reply_bcc").value;
 			emailMessage = document.getElementById("file").value;
 		}
+		
 		document.getElementById("email-view-info").innerHTML = '<h1 id="email-view-subject">Compose Mail:</h1> <p id="email-view-from"/>';
-			
 		document.getElementById("email-view-controls").innerHTML = '<input type="image" class="draft" src="images/send.png" title="Send"/>\
 			<input type="image" class="draft" src="images/save.png" title="Save Draft"/>\
 			<input type="image" class="draft" id="delete" src="images/delete.png" title="Delete" onclick="deleteCompose()"/>';
