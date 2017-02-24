@@ -1,18 +1,19 @@
 * {
-  	box-sizing: border-box;
+  box-sizing: border-box;
 	font-family: 'LatoRegular', 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, sans-serif;
 	font-size: 14px;
 }
 
-body {
-  	background-image: url("../images/background3.jpg");
-  	background-attachment: fixed;
+#nav.navlog {
+  margin-top: -5%;
 }
 
-
+#nav.navreg {
+  margin-top: -3%;
+}
 
 .nomargin {
-  	margin: 0;
+  margin: 0;
 }
 
 .margin-top15{
@@ -23,35 +24,29 @@ body {
 	margin-bottom: 10px;
 }
 
-.column-50{
+.column-50, .column-40, .column-30, .column-20 {
+  float:left;
+  padding-left: 5px;  
+  padding-right: 5px;
+}
+
+.column-50 {
 	width: 50%;
-	float: left;
-	padding-left: 5px;	
-	padding-right: 5px;
 }
 
-.column-40{
+.column-40 {
 	width: 40%;
-	float: left;
-	padding-left: 5px;	
-	padding-right: 5px;
 }
 
-.column-30{
+.column-30 {
 	width: 30%;
-	float: left;
-	padding-left: 5px;	
-	padding-right: 5px;
 }
 
-.column-20{
+.column-20 {
 	width: 20%;
-	float: left;
-	padding-left: 5px;	
-	padding-right: 5px;
 }
 
-.row{
+.row {
 	margin-left: -5px;
 	margin-right: -5px;
 	float: left;
@@ -65,7 +60,7 @@ body {
  	background: #fff url(../images/icon_locked.png) no-repeat 95% center;
 }
 
-label{
+label {
 	float: left;
 	margin-bottom: 5px;
 	width: 100%;
@@ -97,7 +92,7 @@ h3 {
 	font-size: 24px;
 }
 
-h4{
+h4 {
 	font-size: 18px;
 }
 
@@ -135,6 +130,7 @@ input {
 #register-panel {
   width: 780px;
   margin: 3% auto 0 auto;
+  margin-left: calc(15% + 200px);
   color: #636e7b; 
 }
 
@@ -142,9 +138,7 @@ input {
   background-image: url("../images/background_register.png");
   background-size: 100%;
   width: 70%;
-  padding-top: 150px;
-  padding-left:50px;
-  padding-bottom:80px;
+  padding: 150px 0px 90px 50px;
 }
 
 #register-form {
@@ -168,7 +162,6 @@ input {
 }
 
 /* Login Page */
-
 .login-message {
   	margin-top: 5px;
   	margin-bottom: 20px;
@@ -177,8 +170,9 @@ input {
 }
 
 #login-panel {
-  	width: 60%;  	
-  	margin: 5% auto 0px auto;  	
+  	width: 60%;
+  	margin: 5% auto 0px auto;
+    margin-left: calc(5% + 200px);
   	line-height: 21px;
   	color: #636e7b; 
 }
@@ -192,7 +186,8 @@ input {
 }
 
 #decoration {
-  	width: 5%;
-  	margin-left:13%;
-	margin-top: -23%;
+  float:right;
+  width: 10%;
+  margin-left:13%;
+	margin-top: -50%;
 }

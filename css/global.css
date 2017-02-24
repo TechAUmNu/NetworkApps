@@ -1,3 +1,33 @@
+body {
+  	background-image: url("../images/background3.jpg");
+  	background-attachment: fixed;
+}
+
+body, #nav, #layout, #navinner {
+  margin: 0px;
+  padding: 0px;
+}
+
+#layout {
+  padding-left: 500px;
+  position: relative;
+}
+
+#nav {  
+  background-image: url("../images/background_sidebar.png");
+  background-position: right top;
+  background-repeat: no-repeat;
+  margin-left: -500px;
+  width:200px;
+  height: 100%;
+  position: fixed;
+  overflow: none;
+}
+
+#logo {
+	height: 170px;
+}
+
 .stamp {
   position: absolute;
   cursor: pointer;
