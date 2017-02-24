@@ -28,7 +28,7 @@ body, #layout, #nav, #nav-inner {
 	   }
    
 #nav {  
-  background-image: url("../images/sidebar_background.png");
+  background-image: url("../images/background_sidebar.png");
   background-position: right top;
   background-repeat: no-repeat;
   margin-left: -500px;
@@ -79,7 +79,7 @@ body, #layout, #nav, #nav-inner {
 
 .email-item {
   padding: 0.9em 1em;
-  background-image: url("../images/sticky3.png");
+  background-image: url("../images/background_sticky3.png");
   background-size: 100% 100%;
  }
 
@@ -114,7 +114,7 @@ body, #layout, #nav, #nav-inner {
  }
  
 .email-item-unread {
-    background-image: url("../images/sticky2.png");
+    background-image: url("../images/background_sticky2.png");
     background-size: 100% 100%;
  }
  
@@ -154,7 +154,7 @@ text-transform: uppercase;
 }
 
 #email-view{
-    background-image: url("../images/email_background.png");
+    background-image: url("../images/background_email.png");
     background-repeat: repeat-y;
     background-size: 100%;
 }

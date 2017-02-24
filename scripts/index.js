@@ -74,13 +74,13 @@ function reply(reply) {
 		var varEmail = document.getElementById("email-addr").value;
 		var oldEmail = document.getElementById("email-view-content").innerHTML;
 		
-		document.getElementById("email-view-controls").innerHTML = '<input type="image" class="draft" src="images/send.png" title="Send"/>\
-			<input type="image" class="draft" src="images/save.png" title="Save Draft"/>\
-			<input type="image" class="draft" id="delete" src="images/delete.png" title="Delete" onclick="deleteReply()"/>';
+		document.getElementById("email-view-controls").innerHTML = '<input type="image" class="draft" src="images/icon_send.png" title="Send"/>\
+			<input type="image" class="draft" src="images/icon_save.png" title="Save Draft"/>\
+			<input type="image" class="draft" id="delete" src="images/icon_delete.png" title="Delete" onclick="deleteReply()"/>';
 			
-		document.getElementById("email-view-controls").innerHTML = '<input type="image" class="draft" src="images/send.png" title="Send"/>\
-			<input type="image" class="draft" src="images/save.png" title="Save Draft"/>\
-			<input type="image" class="draft" id="delete" src="images/delete.png" title="Delete" onclick="deleteReply()"/>';
+		document.getElementById("email-view-controls").innerHTML = '<input type="image" class="draft" src="images/icon_send.png" title="Send"/>\
+			<input type="image" class="draft" src="images/icon_save.png" title="Save Draft"/>\
+			<input type="image" class="draft" id="delete" src="images/icon_delete.png" title="Delete" onclick="deleteReply()"/>';
 			
 		document.getElementById("email-view-content").innerHTML = '<form id="draft-message-header" method="post" enctype="multipart/form-data"> \
 			<p>To: <input id="email_reply_to" class="field" type="email" name="to" placeholder="" required> \
@@ -116,9 +116,9 @@ function composeMessage(){
 		}
 		
 		document.getElementById("email-view-info").innerHTML = '<h1 id="email-view-subject">Compose Mail:</h1> <p id="email-view-from"/>';
-		document.getElementById("email-view-controls").innerHTML = '<input type="image" class="draft" src="images/send.png" title="Send"/>\
-			<input type="image" class="draft" src="images/save.png" title="Save Draft"/>\
-			<input type="image" class="draft" id="delete" src="images/delete.png" title="Delete" onclick="deleteCompose()"/>';
+		document.getElementById("email-view-controls").innerHTML = '<input type="image" class="draft" src="images/icon_send.png" title="Send"/>\
+			<input type="image" class="draft" src="images/icon_save.png" title="Save Draft"/>\
+			<input type="image" class="draft" id="delete" src="images/icon_delete.png" title="Delete" onclick="deleteCompose()"/>';
 			
 		document.getElementById("email-view-content").innerHTML = '<form id="draft-message-header" method="post" enctype="multipart/form-data"> \
 			<p>To: <input class="field" type="email" name="to" placeholder="" required> \
@@ -190,7 +190,7 @@ function drag(e) {
  function getDraggedIcon(str){
 	//filetype = str.split(".");
 	filetype = "png"
-	str1 = "images/48px";
+	str1 = "images/file_images";
 	str2 = str1.concat(filetype);
 	str3 = str2.concat(".png");
 	document.getElementById("file").innerHTML = "\
