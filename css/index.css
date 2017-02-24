@@ -6,41 +6,10 @@
 *{
 	font-family: 'LatoRegular', 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, sans-serif;
 }
-
-body {
-	background-image: url("../images/background3.jpg");
-	background-attachment: fixed;
-	background-size: 100%;
-}
-
-body, #layout, #nav, #nav-inner {
-  margin: 0px;
-  padding: 0px;
-}
-
-#layout {
-  padding-left: 500px;
-  position: relative;
-}
    
 #file{
 	width: 85%;
 	   }
-   
-#nav {  
-  background-image: url("../images/sidebar_background.png");
-  background-position: right top;
-  background-repeat: no-repeat;
-  margin-left: -500px;
-  width:200px;
-  height: 100%;
-  position: fixed;
-  overflow: auto;
-}
-
-#logo {
-	height: 170px;
-}
 
 #email-list {
   margin-left: -300px;
@@ -79,7 +48,7 @@ body, #layout, #nav, #nav-inner {
 
 .email-item {
   padding: 0.9em 1em;
-  background-image: url("../images/sticky3.png");
+  background-image: url("../images/background_sticky3.png");
   background-size: 100% 100%;
  }
 
@@ -114,7 +83,7 @@ body, #layout, #nav, #nav-inner {
  }
  
 .email-item-unread {
-    background-image: url("../images/sticky2.png");
+    background-image: url("../images/background_sticky2.png");
     background-size: 100% 100%;
  }
  
@@ -157,7 +126,7 @@ text-transform: uppercase;
 }
 
 #email-view{
-    background-image: url("../images/email_background.png");
+    background-image: url("../images/background_email.png");
     background-repeat: repeat-y;
     background-size: 100%;
 }
