@@ -3,6 +3,10 @@
   cursor: pointer;
 }
 
+.stamp{
+  height: 30px;
+}
+
 #stamp_css {
   bottom: 5px;
   left: 5px;
@@ -15,6 +19,3 @@
   width: 80px;
 }
 
-#stamp{
-  height: 30px;
-}
