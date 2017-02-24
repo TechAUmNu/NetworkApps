@@ -27,7 +27,7 @@
             <li id="menu-item-0" class="menu-item" draggable="true" ondragenter="dragenter(event)" ondragstart="dragstart(event)">
                 <div id="inbox" class="menu-link"> 
                         <a href="#" draggable="false">Inbox (<span id="numberEmails"></span>)</a>
-                        <img src="images\settings_icon.png" class="folderSettings dropbtn" onclick="dropdown()" draggable="false"/>
+                        <img src="images/settings_icon.png" class="folderSettings dropbtn" onclick="dropdown()" draggable="false" alt="Settings"/>
                         <div id="myDropdown" class="dropdown-content" draggable="false">
                             <a href="#newFolder">New Folder</a>
                             <a href="#EmptyFolder">Empty Folder</a>
@@ -96,10 +96,10 @@
         </p>
       </div>
       <div id="email-view-controls" class="column">
-		<input onclick="reply(true)" type="image" class="draft" src="images/reply.png" title="Reply"/>
-		<input id="email-addr" type="hidden" name="email-address" value="dr232@hw.ac.uk"/>
-		<input onclick="reply(false)" type="image" class="draft" src="images/forward.jpg" title="Forward"/>
-		<input type="image" class="draft" src="images/move.png" title="Move"/>
+		<input onclick="reply(true)" type="image" class="draft" src="images/reply.png" title="Reply" alt="Reply"/>
+		<input id="email-addr" type="hidden" name="email-address" value="dr232@hw.ac.uk" alt=""/>
+		<input onclick="reply(false)" type="image" class="draft" src="images/forward.jpg" title="Forward" alt="Forward"/>
+		<input type="image" class="draft" src="images/move.png" title="Move" alt="Move"/>
       </div>
     </div>
     <div id="email-view-content">
@@ -119,13 +119,15 @@
 
 
 </body>
-</html>
-<script>
-function noEmails(num){
-	return num+1;
-}
-document.getElementById("numberEmails").innerHTML = noEmails(2);
 
-chooseColour();
+<script>
+	function noEmails(num){
+		return num+1;
+	}
+	document.getElementById("numberEmails").innerHTML = noEmails(2);
+
+	chooseColour();
 
 </script>
+
+</html>
