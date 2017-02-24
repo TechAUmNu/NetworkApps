@@ -78,20 +78,22 @@ function reply(reply) {
 			<input type="image" class="draft" src="images/save.png" title="Save Draft"/>\
 			<input type="image" class="draft" id="delete" src="images/delete.png" title="Delete" onclick="deleteReply()"/>';
 			
-		document.getElementById("email-view-controls").innerHTML = '<input type="image" class="draft" src="images/send.png" title="Send"/>\
-			<input type="image" class="draft" src="images/save.png" title="Save Draft"/>\
-			<input type="image" class="draft" id="delete" src="images/delete.png" title="Delete" onclick="deleteReply()"/>';
-			
 		document.getElementById("email-view-content").innerHTML = '<form id="draft-message-header" method="post" enctype="multipart/form-data"> \
 			<p>To: <input id="email_reply_to" class="field" type="email" name="to" placeholder="" required> \
 			<p>Cc: <input id="email_reply_cc" class="field" type="email" name="cc" placeholder="" required> \
 			<p>Bcc: <input id="email_reply_bcc" class="field" type="email" name="bc" placeholder="" required> \
 			<p><textarea id="file" rows="6" onfocus="clearContents(this);"cols="47" placeholder="Enter Email" id="A4Page" required ondragover="isOver(event)" ondrop="drop(event)"></textarea> \
-			<p><input type="file" id="files" name="files" multiple> \
+			<div class="image-upload">\
+			<label for="files">\
+			<img src="images/icon_attachment.png" id="upfile" style="cursor:pointer"/>\
+			</label>\
+			<input type="file" id="files" name="files"  multiple>\
+			</div>\
 			<div id="selectedFiles"></div>\
+			<img id="test"/>\
 			</form> \
 			<div class=\"oldEmail\">' + oldEmail + "</div>";
-			
+			getDraggedIcon();
 			if(reply){
 				document.getElementById("file").autofocus="autofocus";
 				document.getElementById("email_reply_to").value=varEmail;
@@ -99,8 +101,8 @@ function reply(reply) {
 				document.getElementById("email_reply_to").autofocus="autofocus";	
 			}
 			'<div class="oldEmail">' + oldEmail + '</div>';
-		document.querySelector('#files').addEventListener('change', handleFileSelect, false);
-        selDiv = document.querySelector("#selectedFiles");
+			document.querySelector('#files').addEventListener('change', handleFileSelect, false);
+			selDiv = document.querySelector("#selectedFiles");
 	}
 }
 
@@ -160,9 +162,14 @@ function drag(e) {
  }
 
  function drop(e) {
-   //e.preventDefault();
-   //var data = e.dataTransfer.getData("text");
-   //e.target.appendChild(document.getElementById(data));
+   e.preventDefault();
+   var data = e.dataTransfer.getData("text");
+   e.target.appendChild(document.getElementById(data));
+   
+   //test *** need to invoke the upload file method 
+   //var files = e.target.files;
+   //handleFileSelect;
+   
    getDraggedIcon("text");
  }
  
@@ -193,9 +200,9 @@ function drag(e) {
 	str1 = "images/48px";
 	str2 = str1.concat(filetype);
 	str3 = str2.concat(".png");
-	document.getElementById("file").innerHTML = "\
-	 <img id=str src=str2 />";
-	document.getElementById("file").src = str2; 
+	//document.getElementById("test").innerHTML = "\
+	// <img id=str src=" + str3 + " />";
+	document.getElementById("test").src = str3; 
  }
  
  function handleFileSelect(e) {
@@ -203,14 +210,13 @@ function drag(e) {
         if(!e.target.files) return;
         
         selDiv.innerHTML = "";
-        
+		 
         var files = e.target.files;
 		if(files.length > 1){
 			for(var i=0; i<files.length; i++) {
 				var f = files[i];
 				
-				selDiv.innerHTML += '<span class="fileName">' + f.name + "</span><br>";
-
+				selDiv.innerHTML = '<span class="fileName">' + f.name + "</span><br>";
 			}
 		}
         

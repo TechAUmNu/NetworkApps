@@ -139,7 +139,10 @@ text-transform: uppercase;
 		padding: 0em 1em 0em 0em;
 	 }
 	
-
+	
+/*.image-upload > input{
+		display: none;
+	}*/
 
 #subject{
 	width: 72%;
