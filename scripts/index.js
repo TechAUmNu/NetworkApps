@@ -1,5 +1,5 @@
 
-
+//<![CDATA[
 /* Navbar functions *************************************************************************************************************/
 
 var source;
@@ -68,7 +68,7 @@ var composingMessage = false;
 var replyActive = false;
 
 function reply(reply) {
-	if(!replyActive){
+	/*if(!replyActive){
 		replyActive = true;
 		emailViewReply = document.getElementById("email-view").innerHTML;
 		var varEmail = document.getElementById("email-addr").value;
@@ -78,22 +78,21 @@ function reply(reply) {
 			<input type="image" class="draft" src="images/icon_save.png" title="Save Draft"/>\
 			<input type="image" class="draft" id="delete" src="images/icon_delete.png" title="Delete" onclick="deleteReply()"/>';
 			
-		document.getElementById("email-view-content").innerHTML = '<form id="draft-message-header" method="post" enctype="multipart/form-data"> \
-			<p>To: <input id="email_reply_to" class="field" type="email" name="to" placeholder="" required> \
-			<p>Cc: <input id="email_reply_cc" class="field" type="email" name="cc" placeholder="" required> \
-			<p>Bcc: <input id="email_reply_bcc" class="field" type="email" name="bc" placeholder="" required> \
-			<p><textarea id="file" rows="6" onfocus="clearContents(this);"cols="47" placeholder="Enter Email" id="A4Page" required ondragover="isOver(event)" ondrop="drop(event)"></textarea> \
+		document.getElementById("email-view-content").innerHTML = '<form id="draft-message-header" method="post" enctype="multipart/form-data">\
+			<p>To: <input id="email_reply_to" class="field" type="email" name="to" placeholder="" required="required"/></p>\
+			<p>Cc: <input id="email_reply_cc" class="field" type="email" name="cc" placeholder="" required="required"/></p>\
+			<p>Bcc: <input id="email_reply_bcc" class="field" type="email" name="bc" placeholder="" required="required"/></p>\
+			<p><textarea id="file" rows="6" onfocus="clearContents(this);" cols="47" placeholder="Enter Email" id="A4Page" required="required" ondragover="isOver(event)" ondrop="drop(event)"></textarea></p>\
 			<div class="image-upload">\
-			<label for="files">\
-			<img src="images/icon_attachment.png" id="upfile" style="cursor:pointer"/>\
-			</label>\
-			<input type="file" id="files" name="files"  multiple>\
+			<label for="files"><img src="images/icon_attachment.png" id="upfile" style="cursor:pointer"/></label>\
+			<input type="file" id="files" name="files" multiple="multiple"/>\
 			</div>\
 			<div id="selectedFiles"></div>\
 			<img id="test"/>\
-			</form> \
-			<div class=\"oldEmail\">' + oldEmail + "</div>";
-			getDraggedIcon();
+			</form>\
+			<div class="oldEmail">' + oldEmail + "</div>";
+			
+			getDraggedIcon(oldEmail);
 			if(reply){
 				document.getElementById("file").autofocus="autofocus";
 				document.getElementById("email_reply_to").value=varEmail;
@@ -103,7 +102,7 @@ function reply(reply) {
 			'<div class="oldEmail">' + oldEmail + '</div>';
 			document.querySelector('#files').addEventListener('change', handleFileSelect, false);
 			selDiv = document.querySelector("#selectedFiles");
-	}
+	}*/
 }
 
 function composeMessage(){
@@ -121,7 +120,7 @@ function composeMessage(){
 		document.getElementById("email-view-controls").innerHTML = '<input type="image" class="draft" src="images/icon_send.png" title="Send"/>\
 			<input type="image" class="draft" src="images/icon_save.png" title="Save Draft"/>\
 			<input type="image" class="draft" id="delete" src="images/icon_delete.png" title="Delete" onclick="deleteCompose()"/>';
-			
+			/*
 		document.getElementById("email-view-content").innerHTML = '<form id="draft-message-header" method="post" enctype="multipart/form-data"> \
 			<p>To: <input class="field" type="email" name="to" placeholder="" required> \
 			<p>Cc: <input id="cc" class="field" type="email" name="cc" placeholder="" required> \
@@ -132,7 +131,7 @@ function composeMessage(){
 			<div id="selectedFiles"></div>\
 			</form>';
 		document.querySelector('#files').addEventListener('change', handleFileSelect, false);
-        selDiv = document.querySelector("#selectedFiles");
+        selDiv = document.querySelector("#selectedFiles");*/
 	}
 }
 
@@ -221,3 +220,4 @@ function drag(e) {
 		}
         
  }
+ // ]]>
