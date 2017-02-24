@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-
+	
 <head>
 	<meta charset="utf-8"/>	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -22,54 +22,52 @@
         </div>
       </div>
     </div>
-
     <div id="register-panel">
         <div id="register-box">  
-                <form id="register-form" method="post" action="index.html">
-                    <h3 class="nomargin">Register</h3>
-                    <p id="register-message">Already a member? <a href="login.html"><strong>Sign In</strong></a></p>
-					<label>Name</label>
-					<div class="row margin-bottom10">						
-						<div class="column-50">
-							<input name="firstname" type="text" placeholder="Firstname" required/>
-						</div>
-						<div class="column-50">
-							<input name="lastname" type="text" placeholder="Lastname" required/>
-						</div>							
+			<form id="register-form" method="post" action="index.html">
+				<h3 class="nomargin">Register</h3>
+				<p id="register-message">Already a member? <a href="login.html"><strong>Sign In</strong></a></p>
+				<label>Name</label>
+				<div class="row margin-bottom10">						
+					<div class="column-50">
+						<input name="firstname" type="text" placeholder="Firstname" required="required"/>
 					</div>
+					<div class="column-50">
+						<input name="lastname" type="text" placeholder="Lastname" required="required"/>
+					</div>							
+				</div>
+			
+				<div class="margin-bottom10 register-box">
+					<label>Username</label>
+					<input name="username" class="username" type="text"/>
+				</div>
+				<div class="margin-bottom10 register-box">
+					<label>Password</label>
+					<input name="password" class="password" type="password"  required="required"/>
+				</div>
 				
-					<div class="margin-bottom10 register-box">
-						<label>Username</label>
-						<input name="username" class="username" type="text">
-                    </div>
-					
-					<div class="margin-bottom10 register-box">
-						<label>Password</label>
-						<input name="password" class="password" type="password"  required>
-                    </div>
-					
-					<div class="margin-bottom10 register-box">
-						<label>Retype Password</label>
-						<input name="password-confirm" class="password" type="password" required>
-                    </div>
-					
-					<label>Date of Birth</label>
-					
-					<div class="row margin-bottom10">
-						<div class="column-30">
-							<input id="day" type="number" placeholder="Day"/>
-						</div>					
-						<div class="column-30">
-							<input id="month" type="number" placeholder="Month"/>
-						</div>
-						<div class="column-40">
-							<input id="year" type="number" placeholder="Year"/>
-						</div>						
+				<div class="margin-bottom10 register-box">
+					<label>Retype Password</label>
+					<input name="password-confirm" class="password" type="password" required="required"/>
+				</div>
+				
+				<label>Date of Birth</label>
+				
+				<div class="row margin-bottom10">
+					<div class="column-30">
+						<input id="day" type="number" placeholder="Day"/>
+					</div>					
+					<div class="column-30">
+						<input id="month" type="number" placeholder="Month"/>
 					</div>
-					
-                    <button>Register</button>   
-                </form>         
+					<div class="column-40">
+						<input id="year" type="number" placeholder="Year"/>
+					</div>						
+				</div>
+				<button>Register</button>   
+			</form>         
         </div>       
     </div>
 </body>
+
 </html>
