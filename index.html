@@ -7,121 +7,109 @@
 	<title>WattMail - Mail</title>
 	<link rel="stylesheet" href="css/global.css"/>
 	<link rel="stylesheet" href="css/index.css"/>
-
 	<script type="text/javascript" src="scripts/index.js"></script>
-
 </head>
 
 <body>
-<div id="layout">
-  <div id="nav">
-    <div id="nav-logo">
-      <img id="logo" src="images/mail_logo_sticky.png" alt="WattMail logo"/>
-    </div>
-
-    <div id="nav-inner">
-      <button class="menu-link menu-item" id="compose-button" draggable="true" onclick="composeMessage()">Compose</button>
-
-      <div id="menu">
-        <ul class="menu-list">
-            <li id="menu-item-0" class="menu-item" draggable="true" ondragenter="dragenter(event)" ondragstart="dragstart(event)">
-                <div id="inbox" class="menu-link"> 
-                        <a href="#" draggable="false">Inbox (<span id="numberEmails"></span>)</a>
-                        <img src="images/icon_settings.png" class="folderSettings dropbtn" onclick="dropdown()" draggable="false" alt="Settings"/>
-                        <div id="myDropdown" class="dropdown-content" draggable="false">
-                            <a href="#newFolder">New Folder</a>
-                            <a href="#EmptyFolder">Empty Folder</a>
-                            <a href="#deleteFolder">Delete Folder</a>
-                        </div>
-                </div>
-            </li>
-            <li id="menu-item-1" class="menu-item" draggable="true" ondragenter="dragenter(event)" ondragstart="dragstart(event)">
-                <a id="Important" class="menu-link" href="#">Important</a>
-            </li>
-            <li id="menu-item-2" class="menu-item" draggable="true" ondragenter="dragenter(event)" ondragstart="dragstart(event)">
-                <a id="sent" class="menu-link" href="#">Sent</a>
-            </li>
-            <li id="menu-item-3" class="menu-item" draggable="true" ondragenter="dragenter(event)" ondragstart="dragstart(event)">
-                <a id="drafts" class="menu-link" href="#">Drafts</a>
-            </li>
-            <li id="menu-item-4" class="menu-item" draggable="true" ondragenter="dragenter(event)" ondragstart="dragstart(event)">
-                <a id="trash" class="menu-link" href="#">Trash</a>
-            </li>
-        </ul>
-      </div>
-    </div>
-
-    <div id="nav-bottom">
-      <a href="http://validator.w3.org/check/referer"><img class="stamp" id="stamp_html" src="images/stamp_html.png" alt="Verification"/></a>
-      <a href="https://jigsaw.w3.org/css-validator/check/referer"><img class="stamp" id="stamp_css" src="images/stamp_css.png" alt="Verification"/></a>
-    </div>
-  </div>
-
-
-  <div id="email-list">
-    <div class="email-item email-item-unread">
-      <div class="email-summary">
-        <h5 class="email-name">Duncan Robertson</h5>
-        <h4 class="email-subject">RE: Webpage Design</h4>
-        <p class="email-description">When are we going to start...</p>
-      </div>
-    </div>
-
-    <div class="email-item">
-      <div class="email-summary">
-        <h5 class="email-name">Cameron Craig</h5>
-        <h4 class="email-subject">Team Triforce</h4>
-        <p class="email-description">The robot doesn't move then...</p>
-      </div>
-    </div>
-
-    <div class="email-item">
-      <div class="email-summary">
-        <h5 class="email-name">Dave Lane</h5>
-        <h4 class="email-subject">WHERE IS MY MONEY</h4>
-        <p class="email-description">You spent all that money and it does't even move! WHA...</p>
-      </div>
-    </div>
-  </div>
-
-
-  <div id="email-view">
-    <div id="email-view-header">
-      <div id="email-view-info" class="column">
-        <h1 id="email-view-subject">RE: Webpage Design</h1>
-        <p id="email-view-from">
-          From <a>Duncan Robertson</a> at <span>22:10pm, Feburary 20, 2017</span>
-        </p>
-      </div>
-      <div id="email-view-controls" class="column">
-		<input onclick="reply(true)" type="image" class="draft" src="images/icon_reply.png" title="Reply" alt="Reply"/>
-		<input id="email-addr" type="hidden" name="email-address" value="dr232@hw.ac.uk"/>
-		<input onclick="reply(false)" type="image" class="draft" src="images/icon_forward.png" title="Forward" alt="Forward"/>
-		<input type="image" class="draft" src="images/icon_move.png" title="Move" alt="Move"/>
-      </div>
-    </div>
-    <div id="email-view-content">
-      <p>
-        When are we going to start making the webpages then?
-      </p>
-      <p>
-        Maybe you could help me figure out this stupid sidebar thing, so we don't have to have it coded in 4 different places
-      </p>
-      <p>
-        Duncan
-      </p>
-    </div>
-  </div>
-</div>
-
-<script>
-	function noEmails(num){
-		return num+1;
-	}
-	document.getElementById("numberEmails").innerHTML = noEmails(2);
-
-	chooseColour();
-
-</script>
+	<div id="layout">
+	  <div id="nav">
+		<div id="nav-logo">
+		  <img id="logo" src="images/mail_logo_sticky.png" alt="WattMail logo"/>
+		</div>
+		<div id="nav-inner">
+		  <button class="menu-link menu-item" id="compose-button" draggable="true" onclick="composeMessage()">Compose</button>
+		  <div id="menu">
+			<ul class="menu-list">
+				<li id="menu-item-0" class="menu-item" draggable="true" ondragenter="dragenter(event)" ondragstart="dragstart(event)">
+					<div id="inbox" class="menu-link"> 
+							<a href="#" draggable="false">Inbox (<span id="numberEmails"></span>)</a>
+							<img src="images/icon_settings.png" class="folderSettings dropbtn" onclick="dropdown()" draggable="false" alt="Settings"/>
+							<div id="myDropdown" class="dropdown-content" draggable="false">
+								<a href="#newFolder">New Folder</a>
+								<a href="#EmptyFolder">Empty Folder</a>
+								<a href="#deleteFolder">Delete Folder</a>
+							</div>
+					</div>
+				</li>
+				<li id="menu-item-1" class="menu-item" draggable="true" ondragenter="dragenter(event)" ondragstart="dragstart(event)">
+					<a id="Important" class="menu-link" href="#">Important</a>
+				</li>
+				<li id="menu-item-2" class="menu-item" draggable="true" ondragenter="dragenter(event)" ondragstart="dragstart(event)">
+					<a id="sent" class="menu-link" href="#">Sent</a>
+				</li>
+				<li id="menu-item-3" class="menu-item" draggable="true" ondragenter="dragenter(event)" ondragstart="dragstart(event)">
+					<a id="drafts" class="menu-link" href="#">Drafts</a>
+				</li>
+				<li id="menu-item-4" class="menu-item" draggable="true" ondragenter="dragenter(event)" ondragstart="dragstart(event)">
+					<a id="trash" class="menu-link" href="#">Trash</a>
+				</li>
+			</ul>
+		  </div>
+		</div>
+		<div id="nav-bottom">
+		  <a href="http://validator.w3.org/check/referer"><img class="stamp" id="stamp_html" src="images/stamp_html.png" alt="Verification"/></a>
+		  <a href="https://jigsaw.w3.org/css-validator/check/referer"><img class="stamp" id="stamp_css" src="images/stamp_css.png" alt="Verification"/></a>
+		</div>
+	  </div>
+	  <div id="email-list">
+		<div class="email-item email-item-unread">
+		  <div class="email-summary">
+			<h5 class="email-name">Duncan Robertson</h5>
+			<h4 class="email-subject">RE: Webpage Design</h4>
+			<p class="email-description">When are we going to start...</p>
+		  </div>
+		</div>
+		<div class="email-item">
+		  <div class="email-summary">
+			<h5 class="email-name">Cameron Craig</h5>
+			<h4 class="email-subject">Team Triforce</h4>
+			<p class="email-description">The robot doesn't move then...</p>
+		  </div>
+		</div>
+		<div class="email-item">
+		  <div class="email-summary">
+			<h5 class="email-name">Dave Lane</h5>
+			<h4 class="email-subject">WHERE IS MY MONEY</h4>
+			<p class="email-description">You spent all that money and it does't even move! WHA...</p>
+		  </div>
+		</div>
+	  </div>
+	  <div id="email-view">
+		<div id="email-view-header">
+		  <div id="email-view-info" class="column">
+			<h1 id="email-view-subject">RE: Webpage Design</h1>
+			<p id="email-view-from">
+			  From <a>Duncan Robertson</a> at <span>22:10pm, Feburary 20, 2017</span>
+			</p>
+		  </div>
+		  <div id="email-view-controls" class="column">
+			<input onclick="reply(true)" type="image" class="draft" src="images/icon_reply.png" title="Reply" alt="Reply"/>
+			<input id="email-addr" type="hidden" name="email-address" value="dr232@hw.ac.uk"/>
+			<input onclick="reply(false)" type="image" class="draft" src="images/icon_forward.png" title="Forward" alt="Forward"/>
+			<input type="image" class="draft" src="images/icon_move.png" title="Move" alt="Move"/>
+		  </div>
+		</div>
+		<div id="email-view-content">
+		  <p>
+			When are we going to start making the webpages then?
+		  </p>
+		  <p>
+			Maybe you could help me figure out this stupid sidebar thing, so we don't have to have it coded in 4 different places
+		  </p>
+		  <p>
+			Duncan
+		  </p>
+		</div>
+	  </div>
+	</div>
+	
+	<script>
+		function noEmails(num){
+			return num+1;
+		}
+		document.getElementById("numberEmails").innerHTML = noEmails(2);
+		chooseColour();
+	</script>
 </body>
+
 </html>
