@@ -1,5 +1,3 @@
-
-//<![CDATA[
 /* Navbar functions *************************************************************************************************************/
 
 var source;
@@ -77,7 +75,6 @@ function reply(reply) {
 			<input type="image" class="draft" src="images/icon_save.png" title="Save Draft"/>\
 			<input type="image" class="draft" id="delete" src="images/icon_delete.png" title="Delete" onclick="deleteReply()"/>';
 			
-			//<![CDATA[
 		document.getElementById("email-view-content").innerHTML = '\
 		<form id="draft-message-header" method="post" enctype="multipart/form-data">\
 			<p>To: <input id="email_reply_to" class="field" type="email" name="to" placeholder="" required="required"/></p>\
@@ -91,7 +88,7 @@ function reply(reply) {
 			<div id="selectedfiles"></div>\
 			<img id="test"/>\
 		</form>\
-		<div class="oldEmail">' + //<![CDATA[oldEmail//]]> + "</div>";
+		<div class="oldEmail">' + oldEmail + "</div>";
 			
 			//getDraggedIcon(oldEmail);
 			if(reply){
@@ -117,7 +114,6 @@ function composeMessage(){
 			emailMessage = document.getElementById("file").value;
 		}
 		
-		//<![CDATA[
 		document.getElementById("email-view-info").innerHTML = '<h1 id="email-view-subject">Compose Mail:</h1> <p id="email-view-from"/>';
 		document.getElementById("email-view-controls").innerHTML = '\
 			<input type="image" class="draft" src="images/icon_send.png" title="Send"/>\
@@ -136,7 +132,6 @@ function composeMessage(){
 			</form>';
 		document.querySelector('#files').addEventListener('change', handleFileSelect, false);
         selDiv = document.querySelector("#selectedfiles");
-		//]]>
 	}
 }
 
@@ -215,4 +210,3 @@ function handleFileSelect(e) {
 		}
 	}
 }
-//]]>
