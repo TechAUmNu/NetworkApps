@@ -1,0 +1,60 @@
+
+	<link rel="stylesheet" href="/stylesheets/accounts.css"/>
+   <div id="layout">
+      <div id="nav" class="navreg">
+        <div id="nav-logo">
+          <img id="logo" src="/images/mail_logo_sticky.png" alt="WattMail logo"/>
+        </div>
+
+        <div id="nav-bottom">
+          <a href="http://validator.w3.org/check/referer"><img class="stamp" id="stamp_html" src="/images/stamp_html.png" alt="Verification"/></a>
+          <a href="https://jigsaw.w3.org/css-validator/check/referer"><img class="stamp" id="stamp_css" src="/images/stamp_css.png" alt="Verification"/></a>
+        </div>
+      </div>
+    </div>
+    <div id="register-panel">
+        <div id="register-box">  
+			<form id="register-form" method="post" action="index.html">
+				<h3 class="nomargin">Register</h3>
+				<p id="register-message">Already a member? <a href="login.html"><strong>Sign In</strong></a></p>
+				<label>Name</label>
+				<div class="row margin-bottom10">						
+					<div class="column-50">
+						<input name="firstname" type="text" placeholder="Firstname" required="required"/>
+					</div>
+					<div class="column-50">
+						<input name="lastname" type="text" placeholder="Lastname" required="required"/>
+					</div>							
+				</div>
+			
+				<div class="margin-bottom10 register-box">
+					<label>Username</label>
+					<input name="username" class="username" type="text"/>
+				</div>
+				<div class="margin-bottom10 register-box">
+					<label>Password</label>
+					<input name="password" class="password" type="password"  required="required"/>
+				</div>
+				
+				<div class="margin-bottom10 register-box">
+					<label>Retype Password</label>
+					<input name="password-confirm" class="password" type="password" required="required"/>
+				</div>
+				
+				<label>Date of Birth</label>
+				
+				<div class="row margin-bottom10">
+					<div class="column-30">
+						<input id="day" type="number" placeholder="Day"/>
+					</div>					
+					<div class="column-30">
+						<input id="month" type="number" placeholder="Month"/>
+					</div>
+					<div class="column-40">
+						<input id="year" type="number" placeholder="Year"/>
+					</div>						
+				</div>
+				<button>Register</button>   
+			</form>         
+        </div>       
+    </div>
