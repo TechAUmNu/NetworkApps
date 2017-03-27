@@ -14,13 +14,13 @@
     </div>
     <div id="register-panel">
         <div id="register-box">  
-			<form id="register-form" method="post" action="index.html">
+			<form id="register-form" method="post" action="/users/register">
 				<h3 class="nomargin">Register</h3>
-				<p id="register-message">Already a member? <a href="login.html"><strong>Sign In</strong></a></p>
+				<p id="register-message">Already a member? <a href="/users/login"><strong>Sign In</strong></a></p>
 				<label>Name</label>
 				<div class="row margin-bottom10">						
 					<div class="column-50">
-						<input name="firstname" type="text" placeholder="Firstname" required="required"/>
+						<input name="name" type="text" placeholder="Firstname" required="required"/>
 					</div>
 					<div class="column-50">
 						<input name="lastname" type="text" placeholder="Lastname" required="required"/>
@@ -38,7 +38,7 @@
 				
 				<div class="margin-bottom10 register-box">
 					<label>Retype Password</label>
-					<input name="password-confirm" class="password" type="password" required="required"/>
+					<input name="password2" class="password" type="password" required="required"/>
 				</div>
 				
 				<label>Date of Birth</label>

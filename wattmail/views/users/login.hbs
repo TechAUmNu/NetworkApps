@@ -12,12 +12,12 @@
       </div>
     </div>
     <div id="login-panel"> 
-		<form id="login-form" method="post" action="index.html">
+		<form id="login-form" method="post" action="/users/login">
 			<h3 class="nomargin">Sign In</h3>
 			<p class="login-message">Login to access your account.</p>
-			<p class="login-message">Not a member? <a href="register.html"><strong>Register Here</strong></a></p>
-			<input id="username" class="username" type="text"  placeholder="Username" required="required"/>
-			<input id="password" class="password margin-top15" type="password"  placeholder="Password" required="required"/>
+			<p class="login-message">Not a member? <a href="/users/register"><strong>Register Here</strong></a></p>
+			<input id="username" name="username" class="username" type="text"  placeholder="Username" required="required"/>
+			<input id="password" name="password" class="password margin-top15" type="password"  placeholder="Password" required="required"/>
 			<a href=""><small>Forgot Your Password?</small></a>
 			<button>Sign In</button>
 		</form> 

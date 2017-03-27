@@ -13,7 +13,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/nodejs-game');
+mongoose.connect("mongodb://localhost/watt");
 var db = mongoose.connection;
 
 var app = express();
