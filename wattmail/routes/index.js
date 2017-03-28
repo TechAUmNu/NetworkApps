@@ -1,4 +1,5 @@
 var express = require('express');
+var passport = require('passport');
 var http = require('http');
 var net = require("net");
 var router = express.Router();
@@ -13,7 +14,7 @@ router.get('/email',  ensureAuthenticated, function(req, res){
 	res.render('index');
 });
 
-router.get('/smtp', function handler(req, res) {
+router.get('/smtp',  ensureAuthenticated, function handler(req, res) {
   var head = "<!DOCTYPE html>\n<html>\n<head>\n" +
              "<title>Post</title>\n</head>\n<body>\n<p>\n";
   var tail = "</p>\n</body>\n</html>\n";
@@ -26,16 +27,17 @@ router.get('/smtp', function handler(req, res) {
   var n = 0;
   var io = req.query;
   var eol = "\r\n";
-  var name = "*****";
-  var username = "*****";
+
+  var username = req.user.username;
+  var email = req.user.email;
   
-  var top = "From: \"" + name + "\" <" + username + "@hw.ac.uk>" + eol +
+  var top = "From: \"" + username + "\" <" + email + ">" + eol +
             "To: \"" + io["to"] + "\" <" + io["tmail"] + ">" + eol +
             "CC: <" + io["cc"] + ">" + eol +
             "Subject: " + io["subject"] + eol;
   var cmd = [ ["", "220"],
               ["HELO hw.ac.uk", "250"],
-              ["MAIL FROM:<" + username + "@hw.ac.uk>", "250"],
+              ["MAIL FROM:<" + email + ">", "250"],
               ["RCPT TO:<" + io["tmail"] + ">", "250"],
               ["RCPT TO:<" + io["cc"] + ">", "250"],
               ["RCPT TO:<" + io["bcc"] + ">", "250"],
