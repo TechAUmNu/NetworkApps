@@ -21,15 +21,14 @@ router.post('/register', function(req, res){
 	var username = req.body.username;
 	var password = req.body.password;
 	var password2 = req.body.password2;
+	var email = req.body.email;
 
 	// Validation
 	req.checkBody('name', 'Name is required').notEmpty();
 	req.checkBody('username', 'Username is required').notEmpty();
 	req.checkBody('password', 'Password is required').notEmpty();
 	req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
-	
-	var email = username+"@hw.ac.uk";
-	
+	req.checkBody('email', 'This is not a valid email').isEmail();
 
 	var errors = req.validationErrors();
 
