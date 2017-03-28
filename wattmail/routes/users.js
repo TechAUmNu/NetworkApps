@@ -27,6 +27,9 @@ router.post('/register', function(req, res){
 	req.checkBody('username', 'Username is required').notEmpty();
 	req.checkBody('password', 'Password is required').notEmpty();
 	req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
+	
+	var email = username+"@hw.ac.uk";
+	
 
 	var errors = req.validationErrors();
 
@@ -36,6 +39,7 @@ router.post('/register', function(req, res){
 	} else {
 		var newUser = new User({
 			name: name,
+			email: email,
 			username: username,
 			password: password
 		});

@@ -121,14 +121,17 @@ function composeMessage(){
 			<input type="image" class="draft" id="delete" src="images/icon_delete.png" title="Delete" onclick="deleteCompose()"/>';
 			
 		document.getElementById("email-view-content").innerHTML = '\
-			<form id="draft-message-header" method="post" enctype="multipart/form-data"> \
-				<p>To: <input class="field" type="email" name="to" placeholder="" required="required"/></p>\
-				<p>Cc: <input id="cc" class="field" type="email" name="cc" placeholder="" required="required"/></p>\
-				<p>Bcc: <input id="bcc" class="field" type="email" name="bc" placeholder="" required="required"/></p>\
-				<p>Subject: <input id="subject" class="field" type="email" name="subject" placeholder="" required="required"/></p>\
-				<p><textarea id="file" rows="15" onfocus="clearContents(this);" cols="47" placeholder="Enter Email" id="page" required="required" ondragover="isOver(event)" ondrop="drop(event)"></textarea></p>\
+			<form id="draft-message-header" action="/smtp">\
+				<p>To <input name="to" required>\
+				<input class="field" type="email" name="tmail" placeholder="" required="required"/></p>\
+				<p>From: <input class="field" disabled="disabled" value="Adam <aps31@hw.ac.uk>"/></p>\
+				<p>Cc: <input id="cc" class="field" type="email" name="cc" placeholder=""/></p>\
+				<p>Bcc: <input id="bcc" class="field" type="email" name="bcc" placeholder="" /></p>\
+				<p>Subject: <input id="subject" class="field" name="subject" placeholder="" /></p>\
+				<p><textarea id="file" rows="15" name="mail" onfocus="clearContents(this);" cols="47" placeholder="Enter Email" id="page" required="required" ondragover="isOver(event)" ondrop="drop(event)"></textarea></p>\
 				<p><input type="file" id="files" name="files" multiple="multiple"/></p>\
 				<div id="selectedfiles"></div>\
+				<input type="submit" value="send"> </p>\
 			</form>';
 		document.querySelector('#files').addEventListener('change', handleFileSelect, false);
         selDiv = document.querySelector("#selectedfiles");
