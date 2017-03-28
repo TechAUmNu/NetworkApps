@@ -97,8 +97,8 @@ function reply(reply) {
 			}else{
 				document.getElementById("email_reply_to").autofocus="autofocus";	
 			}
-		//	document.querySelector('#files').addEventListener('change', handleFileSelect, false);
-		//selDiv = document.querySelector("#selectedfiles");
+		document.querySelector('#files').addEventListener('change', handleFileSelect, false);
+		selDiv = document.querySelector("#selectedfiles");
 	//]]>
 	}
 }
@@ -171,7 +171,7 @@ function drop(e) {
 	//var files = e.target.files;
 	//handleFileSelect;
 
-	getDraggedIcon("text");
+	//getDraggedIcon("text");
 }
  
 function clearContents(element){
@@ -191,6 +191,7 @@ function chooseColour(){
 	return colours[colour];
 }
  
+ /*
 function getDraggedIcon(str){
 	//filetype = str.split(".");
 	filetype = "png"
@@ -200,7 +201,7 @@ function getDraggedIcon(str){
 	//document.getElementById("test").innerHTML = "\
 	// <img id=str src=" + str3 + " />";
 	document.getElementById("test").src = str3; 
-}
+}*/
  
 function handleFileSelect(e) {
 	if(!e.target.files) return;
