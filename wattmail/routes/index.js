@@ -1,13 +1,16 @@
+module.exports = function(io){
 var express = require('express');
 var passport = require('passport');
 var http = require('http');
 var net = require("net");
+var pop3 = require('../public/lib/pop.js');
 
 var router = express.Router();
 
 
 /* GET home page. */
 router.get('/', function(req, res){
+	pop3.connect(io);
 	res.render('overview');
 });
 
@@ -78,5 +81,6 @@ function ensureAuthenticated(req, res, next){
 	}
 }
 
-module.exports = router;
+return router;
+};
 
