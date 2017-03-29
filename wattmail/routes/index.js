@@ -11,7 +11,9 @@ router.get('/', function(req, res){
 
 /* GET Email page. */
 router.get('/email',  ensureAuthenticated, function(req, res){
-	res.render('index');
+	var username = req.user.username;
+	var email = req.user.email;
+	res.render('index', {username:username, email:email});
 });
 
 router.get('/smtp',  ensureAuthenticated, function handler(req, res) {
