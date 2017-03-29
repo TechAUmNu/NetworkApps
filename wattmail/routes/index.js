@@ -34,7 +34,7 @@ router.get('/smtp',  ensureAuthenticated, function handler(req, res) {
   var email = req.user.email;
   
   var top = "From: \"" + username + "\" <" + email + ">" + eol +
-            "To: \"" + io["to"] + "\" <" + io["tmail"] + ">" + eol +
+            "To: <" + io["tmail"] + ">" + eol +
             "CC: <" + io["cc"] + ">" + eol +
             "Subject: " + io["subject"] + eol;
   var cmd = [ ["", "220"],
@@ -53,7 +53,7 @@ router.get('/smtp',  ensureAuthenticated, function handler(req, res) {
     var code = 0;
     if ( msg.length > 3 ) code = msg.substring(0, 3);
     page += msg;
-    if ( n < 7 && code == cmd[n][1] ) {
+    if ( n < 8 && code == cmd[n][1] ) {
       n++;
       page += "<b>" + cmd[n][0].replace(/</g, "&lt;") + "</b>" + eol;
       client.write(cmd[n][0] + eol);

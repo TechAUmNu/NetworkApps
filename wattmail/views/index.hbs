@@ -6,7 +6,7 @@
 		  <img id="logo" src="images/mail_logo_sticky.png" alt="WattMail logo"/>
 		</div>
 		<div id="nav-inner">
-		  <button class="menu-link menu-item" id="compose-button" draggable="true" onclick="composeMessage()">Compose</button>
+		  <button class="menu-link menu-item" id="compose-button" draggable="true" onclick="composeMessage('{{username}}', '{{email}}')">Compose</button>
 		  <div id="menu">
 			<ul class="menu-list">
 				<li id="menu-item-0" class="menu-item" draggable="true" ondragenter="dragenter(event)" ondragstart="dragstart(event)">
@@ -43,7 +43,7 @@
 	  <div id="email-list">
 		<div class="email-item email-item-unread">
 		  <div class="email-summary">
-			<h5 class="email-name">Duncan Robertson</h5>
+			<h5 class="email-name">{{username}}</h5>
 			<h4 class="email-subject">RE: Webpage Design</h4>
 			<p class="email-description">When are we going to start...</p>
 		  </div>
@@ -92,11 +92,13 @@
 	  </div>
 	</div>
 	
-	<script type="text/javascript" src="/javascripts/index.js"></script>
+	<script type="text/javascript" src="/javascripts/index.js" ></script>
 	<script>
 		function noEmails(num){
 			return num+1;
 		}
+		//var test = {{username}};
+		//console.log(test);
 		document.getElementById("numberEmails").innerHTML = noEmails(2);
 		chooseColour();
 	</script>
