@@ -19,8 +19,11 @@ var db = mongoose.connection;
 
 var app = express();
 
+app.io = require('socket.io')();
+
 var index = require('./routes/index');
 var users = require('./routes/users');
+var pop = require('./routes/pop');
 
 // view engine setup
 app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir:__dirname + '/views/layouts/'}))
@@ -80,6 +83,7 @@ app.use(function (req, res, next) {
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/email', pop(app.io));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
