@@ -103,7 +103,7 @@ function reply(reply) {
 	}
 }
 
-function composeMessage(){
+function composeMessage(username, email){
 	if(!composingMessage){
 		composingMessage = true;
 		emailViewCompose = document.getElementById("email-view").innerHTML;
@@ -122,9 +122,8 @@ function composeMessage(){
 			
 		document.getElementById("email-view-content").innerHTML = '\
 			<form id="draft-message-header" action="/smtp">\
-				<p>To <input name="to" required>\
-				<input class="field" type="email" name="tmail" placeholder="" required="required"/></p>\
-				<p>From: <input class="field" disabled="disabled" value="Adam <aps31@hw.ac.uk>"/></p>\
+				<p>From: <input class="field" disabled="disabled" value= '+username+'&nbsp;&lt;'+ email+'&gt;'+'></p>\
+				<p>To <input class="field" type="email" name="tmail" placeholder="" required="required"/></p>\
 				<p>Cc: <input id="cc" class="field" type="email" name="cc" placeholder=""/></p>\
 				<p>Bcc: <input id="bcc" class="field" type="email" name="bcc" placeholder="" /></p>\
 				<p>Subject: <input id="subject" class="field" name="subject" placeholder="" /></p>\
