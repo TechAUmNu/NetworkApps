@@ -2,7 +2,9 @@ var express = require('express');
 var passport = require('passport');
 var http = require('http');
 var net = require("net");
+
 var router = express.Router();
+
 
 /* GET home page. */
 router.get('/', function(req, res){
@@ -10,10 +12,13 @@ router.get('/', function(req, res){
 });
 
 /* GET Email page. */
-router.get('/email',  ensureAuthenticated, function(req, res){
+router.get('/inbox',  ensureAuthenticated, function(req, res){
+    //socket.emit('send-message', $message_box.val());
+    //sock.connect();
 	res.render('index');
 });
 
+/* GET smtp */
 router.get('/smtp',  ensureAuthenticated, function handler(req, res) {
   var head = "<!DOCTYPE html>\n<html>\n<head>\n" +
              "<title>Post</title>\n</head>\n<body>\n<p>\n";
@@ -63,7 +68,7 @@ router.get('/smtp',  ensureAuthenticated, function handler(req, res) {
   });
 });
 
-
+/* Log in authentication */
 function ensureAuthenticated(req, res, next){
 	if(req.isAuthenticated()){
 		return next();
@@ -74,3 +79,4 @@ function ensureAuthenticated(req, res, next){
 }
 
 module.exports = router;
+
