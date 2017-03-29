@@ -144,10 +144,35 @@ text-transform: uppercase;
 }
 
 #draft-message-header input{
-    width: 80%;    
+   /* width: 80%;    */
     border: 0px;
     border-bottom: 1px solid #ddd;
 }
+
+
+
+
+
+
+
+
+#send {	
+	position: absolute;
+    height: 23px;
+    padding: 0em 1em 0em 0em;
+    top: 15.3%;
+    left: 38.8%;
+    width: 35px;
+    color: transparent;
+    background: transparent url(images/icon_send.png);
+}
+
+
+
+
+
+
+
 
 #draft-message-content input{
     width: 100%; 
@@ -173,6 +198,9 @@ text-transform: uppercase;
     display: inline-block;
 }
 
+
+
+
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
     display: none;
@@ -196,3 +224,4 @@ text-transform: uppercase;
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
