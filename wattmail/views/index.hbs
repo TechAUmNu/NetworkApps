@@ -7,6 +7,7 @@
 		</div>
 		<div id="nav-inner">
 		  <button class="menu-link menu-item" id="compose-button" draggable="true" onclick="composeMessage('{{username}}', '{{email}}')">Compose</button>
+		  <button class="menu-link menu-item" id="sync-button" draggable="true" onclick="composeMessage('{{username}}', '{{email}}')">Re-sync</button>
 		  <div id="menu">
 			<ul class="menu-list">
 				<li id="menu-item-0" class="menu-item" draggable="true" ondragenter="dragenter(event)" ondragstart="dragstart(event)">
@@ -40,6 +41,8 @@
 		  <a href="https://jigsaw.w3.org/css-validator/check/referer"><img class="stamp" id="stamp_css" src="images/stamp_css.png" alt="Verification"/></a>
 		</div>
 	  </div>
+	  
+	  <!-- List of emails -->
 	  <div id="email-list">
 		<div id="email_1" class="email-item email-item-unread" onclick="viewEmail(1)">
 		  <div class="email-summary">
@@ -64,6 +67,18 @@
 		</div>
 	  </div>
 	  <div id="email-view">
+
+	  <!-- Email password pop-up -->
+	  <div id="login-panel">
+		  <form id="login-form">
+			<div id="login-heading">Password</div>
+			<p class="login-message">Enter your Heriot-Watt password.</p>
+			<input id="password" name="password" class="password margin-top15" type="password"  placeholder="Password" required="required"/>
+			<button>Sign In</button>
+		  </form>
+	  </div>
+	  
+	  <!-- Email content -->
 		<div id="email-view-header">
 		  <div id="email-view-info" class="column">
 			<h1 id="email-view-subject">RE: Webpage Design</h1>
