@@ -35,7 +35,7 @@ router.post('/register', function(req, res){
 	if(errors){
 		console.log(errors);
 		res.render('users/register');
-	} else {
+	} else {	
 		var newUser = new User({
 			name: name,
 			email: email,
@@ -49,7 +49,7 @@ router.post('/register', function(req, res){
 		});
 
 		req.flash('success_msg', 'You are registered and can now login');
-
+		
 		res.redirect('/users/login');
 	}
 });
