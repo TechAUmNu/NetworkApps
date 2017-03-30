@@ -13,6 +13,7 @@ var User = require('../models/user');
 
 /* GET pop */
 router.post('/sync',  ensureAuthenticated, function handler(req, res) {
+
 	pop3.connect(req.user.email, req.body.password);	
     res.redirect('/email?sync=true');
 });
@@ -28,8 +29,7 @@ router.get('/list', ensureAuthenticated, function handler(req, res) {
 		res.render('list', {inbox: messages});
 	});*/
 	
-	
-	
+
 });
 
 /* GET smtp */
