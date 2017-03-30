@@ -3,7 +3,7 @@ var express = require('express');
 var passport = require('passport');
 var http = require('http');
 var net = require("net");
-var pop3 = require('../public/lib/pop.js');
+var pop3 = require('../lib/pop.js');
 
 var router = express.Router();
 
@@ -14,8 +14,9 @@ router.get('/sync',  ensureAuthenticated, function handler(req, res) {
 
 /* GET pop */
 router.post('/sync',  ensureAuthenticated, function handler(req, res) {
-	pop3.connect();
-	pop3.login(req.user.email, req.password);
+	pop3.connect(req.user.email, req.body.password);
+	//pop3.login(req.user.email, req.body.password);
+    res.redirect('/email');
 });
 
 /* GET smtp */

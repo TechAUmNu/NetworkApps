@@ -15,7 +15,8 @@ var UserSchema = mongoose.Schema({
 	},
 	name: {
 		type: String
-	}
+	},
+	inbox: [{ type: mongoose.Schema.Types.ObjectId, ref: "Message" }],
 });
 
 var User = module.exports = mongoose.model('User', UserSchema);
