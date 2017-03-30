@@ -14,7 +14,7 @@ router.get('/sync',  ensureAuthenticated, function handler(req, res) {
 
 /* GET pop */
 router.post('/sync',  ensureAuthenticated, function handler(req, res) {
-	pop3.connect(req.user.email, req.body.password);
+	pop3.connect(req.user, req.body.password);
 	//pop3.login(req.user.email, req.body.password);
     res.redirect('/email');
 });
