@@ -4,9 +4,9 @@ var User = require('../models/user');
 var MessageSchema = new mongoose.Schema({
 	//pop3_id : {type: Number, unique: true},
 	//mailbox: {type: String, required: true}, //inbox/sent etc
-	//to_emails : [{ type: String }],
-	//cc_emails: [{ type: String }],
-	//bcc_emails: [{ type: String }],
+	to_emails : [{ type: String }],
+	cc_emails: [{ type: String }],
+	bcc_emails: [{ type: String }],
 	from_emails: [{ type: String }],
 
 	//datetime: { type: Date, default: Date.now }, //retreival datetime

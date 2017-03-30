@@ -13,7 +13,6 @@ var User = require('../models/user');
 
 /* GET pop */
 router.post('/sync',  ensureAuthenticated, function handler(req, res) {
-
 	pop3.connect(req.user, req.body.password);	
     res.redirect('/email?sync=true');
 });

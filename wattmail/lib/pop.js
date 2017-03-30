@@ -22,35 +22,77 @@ Pop3.sock;
 
 
 var count = 0;
+var packet;
 var pop = {
     email: '',
     password: ''
 };
 var email = {
-    //pop3_id : {type: Number, unique: true},
-	//mailbox: {type: String, required: true}, //inbox/sent etc
-	//to_emails : [{ type: String }],
-	//cc_emails: [{ type: String }],
-	//bcc_emails: [{ type: String }],
-	//from_emails:
-
-	//datetime: { type: Date, default: Date.now }, //retreival datetime
-	//date: {type: Date}, //time of sent/arrival
-
-	subject : '',
-	//raw_content : { type: String, required: true },
-	//html: { type: String, required: true }, //Displayed on web page?
-	creator: ''
+    to_emails: [],
+    cc_emails: [],
+    bcc_emails: [],
+    from_emails: []
 };
 
 function decodeData(data){
-    data = data.toString("ascii");
     simpleParser(data, (err, mail)=>{
+        if(mail.to){
+            for(msg in mail.to.value){
+            email.to_emails.push(mail.to.value[msg].address);
+            }
+        }
+        if(mail.cc){
+            for(msg in mail.cc.value){
+            email.cc_emails.push(mail.cc.value[msg].address);
+            }
+        }
+        if(mail.bcc){
+            for(msg in mail.bcc.value){
+            email.bcc_emails.push(mail.bcc.value[msg].address);
+            }
+        }
+        if(mail.from){
+            for(msg in mail.from.value){
+            email.from_emails.push(mail.from.value[msg].address);
+            }
+        }
         if(mail.subject){
             email.subject = mail.subject;
-        } else if(mail.from){
-            email.from_emails = mail.from;
         }
+        var message = new Message({
+            to_emails: email.to_emails,
+            cc_emails: email.cc_emails,
+            bcc_emails: email.bcc_emails,
+            from_emails: email.from_emails,
+            subject: email.subject,
+            //content: mail.text,
+            creator: email.creator
+            //html: mail.html,
+            //raw_content: json_data.content, //raw data
+            //mailbox: 'inbox',
+            //date: mail.date,
+            //pop3_id: json_data.id
+        });
+
+        //Save the message to the database
+        message.save(function (err, message) {
+          if (err) {
+            console.log(err);
+          } else {
+            User.findByIdAndUpdate(
+                email.creator,
+                { $push: {"inbox": message.id}},
+                {safe: true, upsert: true, new: true},
+                function(err, model) {
+                    if (err){
+                        console.log("ERROR: " + err);
+                    } else {
+                        console.log("RETR SAVE SUCCESS!")
+                    }
+                }
+                );
+            }
+          });
     });
 };
 
@@ -62,19 +104,15 @@ function onData(data) {
             // console.log("cmd: "  + cmd);
             if(cmd == "+OK") {
                 if(count == 0) {
-                    console.log("USER **********");
                     Pop3.sock.write("USER " + pop.email+ "\r\n");
                     count++;
                 } else if(count == 1) {
-                    console.log("PASS **********");
                     Pop3.sock.write("PASS " + pop.password + "\r\n");
                     count++;
                 } else if(count == 2) {
-                    console.log("LIST");
                     Pop3.sock.write("LIST\r\n");
                     count++;
                 } else if(count == 3) {
-                    console.log("RETR");
                     Pop3.sock.write("RETR 2\r\n");
                     count++;
                 }
@@ -82,40 +120,13 @@ function onData(data) {
                 console.log("Received unknown command: " + cmd);
 			}
 		} else if(data.substring(data.length - 3, data.length) == ".\r\n"){
+		    console.log("SAVE");
             //Form the message to be saved
-            var message = new Message({
-                //from_emails: email.from_emails,
-                subject: email.subject,
-                //content: mail.text,
-                creator: email.creator
-                //html: mail.html,
-                //raw_content: json_data.content, //raw data
-                //mailbox: 'inbox',
-                //date: mail.date,
-                //pop3_id: json_data.id
-            });
-
-            //Save the message to the database
-            message.save(function (err, message) {
-              if (err) {
-                console.log(err);
-              } else {
-                User.findByIdAndUpdate(
-				    email.creator,
-				    { $push: {"inbox": message.id}},
-				    {safe: true, upsert: true, new: true},
-				    function(err, model) {
-					    if (err){
-					        console.log("ERROR: " + err);
-                        } else {
-                            console.log("RETR SAVE SUCCESS!")
-                        }
-					}
-					);
-				}
-              });
+            packet += data;
+            decodeData(packet);
         } else {
-		    decodeData(data);
+            console.log("Data Packet Recieved");
+		    packet += data;
 		}
 	} else {
 		console.log("No data!");
