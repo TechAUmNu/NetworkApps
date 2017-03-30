@@ -16,7 +16,6 @@ router.get('/', function(req, res){
 router.get('/email',  ensureAuthenticated, function(req, res){
 	var username = req.user.username;
 	var email = req.user.email;
-	
 	res.render('index', {username:username, email:email, hw_sync_complete: req.query.sync, user_id: req.user.id});
 });
 
