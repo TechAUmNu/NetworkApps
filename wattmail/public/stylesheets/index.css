@@ -96,11 +96,12 @@
   font-family: 'ludicrous';
   font-size:1.6em;
   margin: 0px;
+  
 }
 
  .email-name {
 text-transform: uppercase;
-  color: #999;
+  color: #0e2871;
  }
  
  .field{

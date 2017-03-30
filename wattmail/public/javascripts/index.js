@@ -185,7 +185,7 @@ function drop(e) {
 function clearContents(element){
 	element.placeholder = '';
 }
- 
+ /*
 function chooseColour(){
 	colour = parseInt( (5*Math.random()));
 	//yellow, green, blue, orange, pink
@@ -198,7 +198,7 @@ function chooseColour(){
 	}
 	return colours[colour];
 }
- 
+ */
  /*
 function getDraggedIcon(str){
 	//filetype = str.split(".");
