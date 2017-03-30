@@ -18,44 +18,36 @@
 				<h3 class="nomargin">Register</h3>
 				<p id="register-message">Already a member? <a href="/users/login"><strong>Sign In</strong></a></p>
 				<label>Name</label>
-				<div class="row margin-bottom10">						
-					<div class="column-50">
-						<input name="name" type="text" placeholder="First Name" required="required"/>
+				<div class="margin-bottom10 register-box">						
+					<div class="column-50-left">
+						<input name="name" type="text" placeholder="First Name" required="required" title="Enter your first name."/>
 					</div>
-					<div class="column-50">
-						<input name="lastname" type="text" placeholder="Last Name" required="required"/>
+					<div class="column-50-right">
+						<input name="lastname" type="text" placeholder="Last Name" required="required" title="Enter your last name."/>
 					</div>							
 				</div>
 				<div class="margin-bottom10 register-box">
 					<label>Username</label>
-					<input name="username" class="username" type="text"/>
+					<input name="username" class="username" required="required" type="text" title="Enter your desired WattMail username."/>
 				</div>
 				<div class="margin-bottom10 register-box">
 					<label>Email</label>
-					<input name="email" type="email" required="required"/>
+					<input name="email" type="email" required="required" title="Enter your Heriot-Watt email address."/>
 				</div>
 				<div class="margin-bottom10 register-box">
 					<label>Password</label>
-					<input name="password" class="password" type="password"  required="required"/>
+					<input name="password" class="password" type="password"  required="required" title="Enter your desired WattMail password."//>
 				</div>
 				
 				<div class="margin-bottom10 register-box">
 					<label>Retype Password</label>
-					<input name="password2" class="password" type="password" required="required"/>
+					<input name="password2" class="password" type="password" required="required" title="Re-type your WattMail password."//>
 				</div>
 				
 				<label>Date of Birth</label>
 				
-				<div class="row margin-bottom10">
-					<div class="column-30">
-						<input id="day" type="number" placeholder="Day"/>
-					</div>					
-					<div class="column-30">
-						<input id="month" type="number" placeholder="Month"/>
-					</div>
-					<div class="column-40">
-						<input id="year" type="number" placeholder="Year"/>
-					</div>						
+				<div class="margin-bottom10 register-box">
+					<input id="day" type="date" placeholder="Date of Birth" required="required" title="Enter your date of birth."/>										
 				</div>
 				<button>Register</button>   
 			</form>         
