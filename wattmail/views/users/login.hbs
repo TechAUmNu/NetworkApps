@@ -19,7 +19,12 @@
 			<input id="username" name="username" class="username" type="text"  placeholder="Username" required="required"/>
 			<input id="password" name="password" class="password margin-top15" type="password"  placeholder="Password" required="required"/>
 			<a href=""><small>Forgot Your Password?</small></a>
-			<button>Sign In</button>
+			<button onClick='clearS()'>Sign In</button>
 		</form> 
 		<img id="decoration" src="/images/decoration_login.png" alt=""/>             
     </div>
+<script>
+	function clearS() {
+		localStorage.clear();
+	}
+</script>
