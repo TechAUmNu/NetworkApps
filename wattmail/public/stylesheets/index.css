@@ -87,6 +87,11 @@
     background-size: 100% 100%;
  }
  
+ .email-item-selected {
+    background-image: url("../images/background_sticky1.png");
+    background-size: 100% 100%;
+ }
+ 
 .email-name {
   font-family: 'ludicrous';
   font-size:1.6em;
@@ -117,6 +122,9 @@ text-transform: uppercase;
 	width: 72%;
 }
 
+#to{
+	width: 82%;
+}
 #bcc{
 	width: 79%;
 }
@@ -144,7 +152,7 @@ text-transform: uppercase;
 }
 
 #draft-message-header input{
-   /* width: 80%;    */
+    width: 80%;    
     border: 0px;
     border-bottom: 1px solid #ddd;
 }

@@ -49,8 +49,7 @@ router.get('/smtp',  ensureAuthenticated, function handler(req, res) {
 			  
 	
 	
-	var to_emails = io["tmail"].split(',');
-	
+	var to_emails = io["tmail"].split(',');	
 	var cc_emails = io["cc"].split(',');
 	var bcc_emails = io["bcc"].split(',');
 
@@ -62,7 +61,7 @@ router.get('/smtp',  ensureAuthenticated, function handler(req, res) {
 	}  
     cmd.push.apply(cmd, to_list);        
 }
-/*if(cc_emails.length > 0){
+if(cc_emails.length > 0){
     var cc_list = []
 	for(i = 0; i < cc_emails.length; i++){
 		cc_list.push(["RCPT TO:<" + cc_emails[i] + ">", "250"]);
@@ -78,7 +77,7 @@ router.get('/smtp',  ensureAuthenticated, function handler(req, res) {
     cmd.push.apply(cmd, bcc_list);     
   }
   
-   */           
+            
     var cmd_end = [["DATA", "354"],
               [top + eol + io["mail"] + eol + ".", "250"],
               ["QUIT", "221"] ];

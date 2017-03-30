@@ -65,21 +65,23 @@ var emailViewReply;
 var composingMessage = false;
 var replyActive = false;
 
+var selectedEmail;
+
 function reply(username, email) {
 	if(!replyActive){
 		replyActive = true;
 		emailViewReply = document.getElementById("email-view").innerHTML;
 		var varEmail = document.getElementById("email-addr").value;
 		var oldEmail = document.getElementById("email-view-content").innerHTML;
-		document.getElementById("email-view-controls").innerHTML = '<input type="image" type="submit"  class="draft" src="images/icon_send.png" title="Send"/>\
-			<input type="image" class="draft" src="images/icon_save.png" title="Save Draft"/>\
+		document.getElementById("email-view-controls").innerHTML = '<input type="image" type="submit"  class="draft" src="images/icon_send.png" type="submit" form="draft-email" title="Send"/>\
+			<input type="image" class="draft" src="images/icon_save.png" onclick="saveDraft()" title="Save Draft"/>\
 			<input type="image" class="draft" id="delete" src="images/icon_delete.png" title="Delete" onclick="deleteReply()"/>';
 			
 		document.getElementById("email-view-content").innerHTML = '\
-		<form id="draft-message-header" action="/emails/smtp">\
-			<p>To: <input id="email_reply_to" class="field" type="email" name="to" required="required" multiple="multiple" value= '+username+'&nbsp;&lt;'+ email+'&gt;'+'></p>\
-			<p>Cc: <input id="email_reply_cc" class="field" type="email" name="cc" placeholder="" multiple="multiple"/></p>\
-			<p>Bcc: <input id="email_reply_bcc" class="field" type="email" name="bcc" placeholder="" multiple="multiple"/></p>\
+		<form id="draft-email" action="/emails/smtp">\
+			<p>To: <input id="to" class="field" type="email" name="tmail" required="required" multiple="multiple" value= '+username+'&nbsp;&lt;'+ email+'&gt;'+'></p>\
+			<p>Cc: <input id="cc" class="field" type="email" name="cc" placeholder="" multiple="multiple"/></p>\
+			<p>Bcc: <input id="bcc" class="field" type="email" name="bcc" placeholder="" multiple="multiple"/></p>\
 			<p><textarea id="file" rows="6" onfocus="clearContents(this);" cols="47" placeholder="Enter Email" id="page" required="required" ondragover="isOver(event)" ondrop="drop(event)"></textarea></p>\
 			<div class="image-upload">\
 				<label for="files"><img src="images/icon_attachment.png" id="upfile" style="cursor:pointer"/></label>\
@@ -87,7 +89,6 @@ function reply(username, email) {
 			</div>\
 			<div id="selectedfiles"></div>\
 			<img id="test"/>\
-			<input id="send" type="submit" value="send"> </p>\
 		</form>\
 		<div class="oldEmail">' + oldEmail + "</div>";
 			
@@ -110,26 +111,40 @@ function composeMessage(username, email){
 		
 		document.getElementById("email-view-info").innerHTML = '<h1 id="email-view-subject">Compose Mail:</h1> <p id="email-view-from"/>';
 		document.getElementById("email-view-controls").innerHTML = '\
-			<input type="image" class="draft" src="images/icon_send.png" title="Send"/>\
-			<input type="image" class="draft" src="images/icon_save.png" title="Save Draft"/>\
+			<input type="image" class="draft" src="images/icon_send.png" type="submit" form="draft-email" title="Send"/>\
+			<input type="image" class="draft" src="images/icon_save.png" onclick="savedraft()" title="Save Draft"/>\
 			<input type="image" class="draft" id="delete" src="images/icon_delete.png" title="Delete" onclick="deleteCompose()"/>';
 			
 		document.getElementById("email-view-content").innerHTML = '\
-			<form id="draft-message-header" action="/emails/smtp">\
+			<form id="draft-email" action="/emails/smtp">\
 				<p>From: <input class="field" disabled="disabled" value= '+username+'&nbsp;&lt;'+ email+'&gt;'+'></p>\
-				<p>To <input class="field" type="email" name="tmail" placeholder="" required="required" multiple="multiple"/></p>\
+				<p>To: <input id="to" class="field" type="email" name="tmail" placeholder="" required="required" multiple="multiple"/></p>\
 				<p>Cc: <input id="cc" class="field" type="email" name="cc" placeholder="" multiple="multiple"/></p>\
 				<p>Bcc: <input id="bcc" class="field" type="email" name="bcc" placeholder="" multiple="multiple"/></p>\
 				<p>Subject: <input id="subject" class="field" name="subject" placeholder=""/></p>\
 				<p><textarea id="file" rows="15" name="mail" onfocus="clearContents(this);" cols="47" placeholder="Enter Email" id="page" required="required" ondragover="isOver(event)" ondrop="drop(event)"></textarea></p>\
 				<p><input type="file" id="files" name="files" multiple="multiple"/></p>\
 				<div id="selectedfiles"></div>\
-				<input id="send" type="submit" value="send"> </p>\
 			</form>';
 		document.querySelector('#files').addEventListener('change', handleFileSelect, false);
         selDiv = document.querySelector("#selectedfiles");
 	}
 }
+
+function viewEmail(id){
+	if(selectedEmail != null){
+		selectedEmail.classList.remove("email-item-selected");
+	}
+	document.getElementById("email_" + id).classList.remove("email-item-unread");
+	document.getElementById("email_" + id).classList.add("email-item-selected");	
+	selectedEmail = document.getElementById("email_" + id);
+}	
+
+
+function send(){
+	document.getElementById("draft-email").submit();
+}
+
 
 function deleteReply() {
 	document.getElementById("email-view").innerHTML = emailViewReply;
