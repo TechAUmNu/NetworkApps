@@ -67,6 +67,39 @@ var replyActive = false;
 
 var selectedEmail;
 
+
+function showEmail(){
+	
+	
+	document.getElementById("email-content").innerHTML = '\
+		<div id="email-view-header">\
+		  <div id="email-view-info" class="column">\
+			<h1 id="email-view-subject">RE: Webpage Design</h1>\
+			<p id="email-view-from">\
+			  From <a>Duncan Robertson</a> at <span>22:10pm, Feburary 20, 2017</span>\
+			</p>\
+		  </div>\
+		  <div id="email-view-controls" class="column">\
+			<input onclick="reply(true)" type="image" class="draft" src="images/icon_reply.png" title="Reply" alt="Reply"/>\
+			<input id="email-addr" type="hidden" name="email-address" value="dr232@hw.ac.uk"/>\
+			<input onclick="reply(false)" type="image" class="draft" src="images/icon_forward.png" title="Forward" alt="Forward"/>\
+			<input type="image" class="draft" src="images/icon_move.png" title="Move" alt="Move"/>\
+		  </div>\
+		</div>\
+		<div id="email-view-content">\
+		  <p>\
+			When are we going to start making the webpages then?\
+		  </p>\
+		  <p>\
+			Maybe you could help me figure out this stupid sidebar thing, so we don\'t have to have it coded in 4 different places\
+		  </p>\
+		  <p>\
+			Duncan\
+		  </p>\
+		  </div>';
+}
+
+
 function reply(username, email) {
 	if(!replyActive){
 		replyActive = true;

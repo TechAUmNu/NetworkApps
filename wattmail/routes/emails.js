@@ -19,10 +19,22 @@ router.post('/sync',  ensureAuthenticated, function handler(req, res) {
 
 
 router.get('/list', ensureAuthenticated, function handler(req, res) {
-	User.getUserById(req.user.id, function(err, user) {
-		console.log(user.inbox.length);
-		res.render('list', {inbox: user.inbox});
+	Message
+	.find({ creator: req.user.id })
+	.exec(function (err, messages) {	
+		console.log(messages);		
+		res.render('list', {inbox: messages});
 	});
+	
+	
+	
+	/*User
+	 .getUserById(req.user.id)
+	 .populate('inbox')
+	 .exec( function(err, user) {
+		console.log(user.inbox);		
+		res.render('list', {inbox: user.inbox});
+	});*/
 	/*Message.find(function(err, messages){
 		console.log(messages.length);
 		res.render('list', {inbox: messages});
