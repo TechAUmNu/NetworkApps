@@ -87,6 +87,7 @@ function reply(username, email) {
 			</div>\
 			<div id="selectedfiles"></div>\
 			<img id="test"/>\
+			<input id="send" type="submit" value="send"> </p>\
 		</form>\
 		<div class="oldEmail">' + oldEmail + "</div>";
 			
@@ -123,7 +124,7 @@ function composeMessage(username, email){
 				<p><textarea id="file" rows="15" name="mail" onfocus="clearContents(this);" cols="47" placeholder="Enter Email" id="page" required="required" ondragover="isOver(event)" ondrop="drop(event)"></textarea></p>\
 				<p><input type="file" id="files" name="files" multiple="multiple"/></p>\
 				<div id="selectedfiles"></div>\
-				<input id="send" value="" type="submit" value="send"> </p>\
+				<input id="send" type="submit" value="send"> </p>\
 			</form>';
 		document.querySelector('#files').addEventListener('change', handleFileSelect, false);
         selDiv = document.querySelector("#selectedfiles");
