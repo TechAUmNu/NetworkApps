@@ -1,5 +1,5 @@
 {{#each inbox}}
-<div id="email_{{this.id}}" class="email-item email-item-unread" onclick="viewEmail({{this.id}})">
+<div id="email_{{this.id}}" class="email-item email-item-unread" onclick="viewEmail('{{this.id}}')">
   <div class="email-summary">
 	<h5 class="email-name">{{this.name}}</h5>
 	<h3 class="email-email">{{this.email}}</h5>
