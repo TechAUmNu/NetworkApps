@@ -35,15 +35,36 @@
 }
 
 #compose-button {
-  color: #fff;
-  background: #1b98f8;
+	color: #fff;
+	background: #1b98f8;
 	font-size: 100%;
-  margin: 1em 2.5em 1em 1.5em;
+	margin: 0.5em 2.5em 0em 1.5em;
 	box-shadow: none;
-  border-radius: 20px;
+	border-radius: 20px;
 	padding: .5em 1em;
 	border: transparent;
-  cursor: pointer;
+	cursor: pointer;
+	box-shadow: 2px 2px #1F6396;
+}
+
+#sync-button {
+	color: #fff;
+	background: #F16528;
+	font-size: 100%;
+	margin: 0.5em 2.5em 1em 1.5em;
+	box-shadow: none;
+	border-radius: 20px;
+	padding: .5em 1em;
+	border: transparent;
+	cursor: pointer;
+	box-shadow: 2px 2px #9D4119;
+}
+
+.email-login {
+  /*display: none;*/
+  padding: 0.9em 1em;
+  background-image: url("../images/background_sticky1.png");
+  background-size: 100% 100%;
 }
 
 .email-item {
@@ -96,11 +117,12 @@
   font-family: 'ludicrous';
   font-size:1.6em;
   margin: 0px;
+  
 }
 
  .email-name {
 text-transform: uppercase;
-  color: #999;
+  color: #0e2871;
  }
  
  .field{
@@ -157,12 +179,6 @@ text-transform: uppercase;
     border-bottom: 1px solid #ddd;
 }
 
-
-
-
-
-
-
 /*
 #send {	
 	position: absolute;
@@ -174,13 +190,7 @@ text-transform: uppercase;
     color: transparent;
     background: transparent url(images/icon_send.png);
 }
-
 */
-
-
-
-
-
 
 #draft-message-content input{
     width: 100%; 
@@ -206,7 +216,80 @@ text-transform: uppercase;
     display: inline-block;
 }
 
+/* Login pop-up */
+#login-heading {
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 500;
+  color: inherit;
+  box-sizing: border-box;
+  display: block;  
+}
 
+.login-message {
+  	margin-top: 5px;
+  	margin-bottom: 20px;
+  	margin-right: 0px;
+  	margin-left: 0px;
+}
+
+#login-panel {
+	/*display: none; HIDDEN BY DEFAULT*/
+  	width: 60%;
+  	margin: 5% auto 0px 0px;
+  	line-height: 21px;
+  	color: #636e7b; 
+}
+
+.login-message {
+  	margin-top: 5px;
+  	margin-bottom: 20px;
+  	margin-right: 0px;
+  	margin-left: 0px;
+}
+
+#login-form {
+	background-image: url("../images/background_login.png");
+  	background-size: 100% 100%;
+  	background-repeat: no-repeat;
+  	width: 350px;
+  	padding: 9% 15% 11% 15%;
+  	padding-left: 50px;
+  	padding-right: 50px;
+}
+
+.password {
+ 	background: #fff url(../images/icon_locked.png) no-repeat 95% center;
+}
+
+#login-form input {
+	display: block;    
+	border-radius: 3px;
+	padding: 10px;
+	width: 100%;
+	height: auto;
+	box-shadow: none;
+	font-size: 13px;
+	line-height: 1.4;
+	border: 1px solid #ccc;
+	box-sizing:border-box;
+}
+
+#login-form button {
+  	display: block;
+  	border-radius: 3px;
+  	padding: 6px 15px;
+  	width: 100%;
+  	margin-top: 15px;
+  	background-color: #1CAF9A;
+  	border-color: #17a08c;
+  	line-height: 21px;
+  	color: #fff;
+  	cursor: pointer;
+  	border: 1px solid transparent;
+  	font-size: 14px;  	
+  	font-family: inherit;	
+}
 
 
 /* Dropdown Content (Hidden by Default) */

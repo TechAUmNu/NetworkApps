@@ -14,7 +14,7 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
 //mongodb://localhost/watt
-mongoose.connect("mongodb://localhost/watt");
+mongoose.connect("mongodb://aps31:abcaps31354@mongo-server-1:27017/aps31");
 var db = mongoose.connection;
 
 var app = express();
@@ -23,6 +23,7 @@ app.io = require('socket.io')();
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var emails = require('./routes/emails');
 
 // view engine setup
 app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir:__dirname + '/views/layouts/'}))
@@ -82,6 +83,7 @@ app.use(function (req, res, next) {
 
 app.use('/', index(app.io));
 app.use('/users', users);
+app.use('/emails', emails(app.io));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

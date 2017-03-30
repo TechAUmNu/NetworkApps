@@ -3,19 +3,33 @@ var express = require('express');
 var passport = require('passport');
 var http = require('http');
 var net = require("net");
-var pop3 = require('../public/lib/pop.js');
+var pop3 = require('../lib/pop.js');
 
 var router = express.Router();
 
-/* GET pop */
-router.get('/sync',  ensureAuthenticated, function handler(req, res) {	
-	res.render('users/login', {redirect: '/emails/sync'});
-});
+var Message = require('../models/message');
+var User = require('../models/user');
+
 
 /* GET pop */
 router.post('/sync',  ensureAuthenticated, function handler(req, res) {
-	pop3.connect();
-	pop3.login(req.user.email, req.password);
+
+	pop3.connect(req.user, req.body.password);	
+    res.redirect('/email?sync=true');
+});
+
+
+router.get('/list', ensureAuthenticated, function handler(req, res) {
+	User.getUserById(req.user.id, function(err, user) {
+		console.log(user.inbox.length);
+		res.render('list', {inbox: user.inbox});
+	});
+	/*Message.find(function(err, messages){
+		console.log(messages.length);
+		res.render('list', {inbox: messages});
+	
+	*/
+
 });
 
 /* GET smtp */

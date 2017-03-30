@@ -185,7 +185,7 @@ function drop(e) {
 function clearContents(element){
 	element.placeholder = '';
 }
- 
+ /*
 function chooseColour(){
 	colour = parseInt( (5*Math.random()));
 	//yellow, green, blue, orange, pink
@@ -198,7 +198,7 @@ function chooseColour(){
 	}
 	return colours[colour];
 }
- 
+ */
  /*
 function getDraggedIcon(str){
 	//filetype = str.split(".");
@@ -222,3 +222,36 @@ function handleFileSelect(e) {
 		}
 	}
 }
+
+
+
+
+
+/* Email List functions *************************************************************************************************************/
+
+
+
+function updateEmailList(username){
+	
+	ajaxRequest("/emails/list?user_id=" + username, function() {
+	if (this.readyState == 4 && this.status == 200) {
+	 document.getElementById("email-list").innerHTML = this.responseText;
+	}
+  });
+}
+
+
+
+function ajaxRequest(url, func){
+	console.log("AJAX REQUEST");
+	console.log(url);	
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = func;
+	xhttp.open("GET", url, true);
+	xhttp.send();
+} 
+
+
+
+
+

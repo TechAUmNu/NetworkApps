@@ -1,4 +1,9 @@
-
+<script>
+	var refer = document.referrer;
+	if (refer != document.URL) {
+		localStorage.clear();
+	}
+</script>
 	<link rel="stylesheet" href="/stylesheets/accounts.css"/>
    <div id="layout">
       <div id="nav" class="navreg">
@@ -20,19 +25,19 @@
 				<label>Name</label>
 				<div class="margin-bottom10 register-box">						
 					<div class="column-50-left">
-						<input name="name" type="text" placeholder="First Name" required="required" title="Enter your first name."/>
+						<input name="name" id="name" type="text" placeholder="First Name" required="required" title="Enter your first name." onkeyup='saveValue(this);'/>
 					</div>
 					<div class="column-50-right">
-						<input name="lastname" type="text" placeholder="Last Name" required="required" title="Enter your last name."/>
+						<input name="lastname" id="lastname" type="text" placeholder="Last Name" required="required" title="Enter your last name." onkeyup='saveValue(this);'/>
 					</div>							
 				</div>
 				<div class="margin-bottom10 register-box">
 					<label>Username</label>
-					<input name="username" class="username" required="required" type="text" title="Enter your desired WattMail username."/>
+					<input name="username" id="username" class="username" required="required" type="text" title="Enter your desired WattMail username." onkeyup='saveValue(this);'/>
 				</div>
 				<div class="margin-bottom10 register-box">
 					<label>Email</label>
-					<input name="email" type="email" required="required" title="Enter your Heriot-Watt email address."/>
+					<input name="email" id="email" type="email" required="required" title="Enter your Heriot-Watt email address." onkeyup='saveValue(this);'/>
 				</div>
 				<div class="margin-bottom10 register-box">
 					<label>Password</label>
@@ -47,9 +52,32 @@
 				<label>Date of Birth</label>
 				
 				<div class="margin-bottom10 register-box">
-					<input id="day" type="date" placeholder="Date of Birth" required="required" title="Enter your date of birth."/>										
+					<input id="day" type="date" placeholder="Date of Birth" required="required" title="Enter your date of birth." onkeyup='saveValue(this);'/>										
 				</div>
 				<button>Register</button>   
 			</form>         
         </div>       
     </div>
+
+<script>
+        document.getElementById('name').value = getSavedValue('name');    		// set the value to this input
+        document.getElementById('lastname').value = getSavedValue('lastname');   // set the value to this input
+        document.getElementById('username').value = getSavedValue('username');   // set the value to this input
+        document.getElementById('email').value = getSavedValue('email');   		// set the value to this input
+        document.getElementById('day').value = getSavedValue('day');    			// set the value to this input
+
+        //Save the value function - save it to localStorage as (NAME, VALUE)
+        function saveValue(e) {
+            var id = e.id;  // get the sender's id to save it . 
+            var val = e.value; // get the value.
+            localStorage.setItem(id, val);// Every time user writing something, the localStorage's value will override . 
+        }
+
+        //get the saved value function - return the value of "v" from localStorage. 
+        function getSavedValue  (v) {
+            if (localStorage.getItem(v) === null) {
+                return "";// Default value. 
+            }
+            return localStorage.getItem(v);
+        }
+</script>
