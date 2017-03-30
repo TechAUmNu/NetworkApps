@@ -15,10 +15,6 @@ var router = express.Router();
 var host = "outlook.office365.com";
 var port = 995;
 
-Pop3.prototype.login = function(email, password){
-	io.socket.write('USER' + email + '\r\n');
-	io.socket.write('USER' + password + '\r\n');
-};
 
 Pop3.prototype.connect = function(io){
 	Pop3.io = io;
@@ -37,6 +33,19 @@ Pop3.prototype.connect = function(io){
 			}
 		}
 	);
+};
+
+Pop3.prototype.login = function(email, password){
+	io.socket.write('USER' + email + '\r\n');
+	io.socket.addListener('data', function(data) {
+		// received data		
+		console.log(data);	
+		io.socket.write('PASS' + password + '\r\n');	
+		io.socket.addListener('data', function(data) {
+		// received data		
+		console.log(data);
+		});
+	});	
 };
 
 /*Pop3.socket.addListener('data', function(data) {
