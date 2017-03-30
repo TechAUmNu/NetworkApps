@@ -7,16 +7,29 @@ var pop3 = require('../lib/pop.js');
 
 var router = express.Router();
 
-/* GET pop */
-router.get('/sync',  ensureAuthenticated, function handler(req, res) {	
-	res.render('users/login', {redirect: '/emails/sync'});
-});
+var Message = require('../models/message');
+var User = require('../models/user');
+
 
 /* GET pop */
 router.post('/sync',  ensureAuthenticated, function handler(req, res) {
-	pop3.connect(req.user.email, req.body.password);
-	//pop3.login(req.user.email, req.body.password);
-    res.redirect('/email');
+	pop3.connect(req.user.email, req.body.password);	
+    res.redirect('/email?sync=true');
+});
+
+
+router.get('/list', ensureAuthenticated, function handler(req, res) {
+	User.getUserById(req.user.id, function(err, user) {
+		console.log(user.inbox.length);
+		res.render('list', {inbox: user.inbox});
+	
+	/*Message.find(function(err, messages){
+		console.log(messages.length);
+		res.render('list', {inbox: messages});
+	});*/
+	
+	
+	
 });
 
 /* GET smtp */

@@ -234,7 +234,7 @@ text-transform: uppercase;
 }
 
 #login-panel {
-	display: none; /*HIDDEN BY DEFAULT*/
+	/*display: none; HIDDEN BY DEFAULT*/
   	width: 60%;
   	margin: 5% auto 0px 0px;
   	line-height: 21px;
