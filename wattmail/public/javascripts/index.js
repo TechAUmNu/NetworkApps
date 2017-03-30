@@ -76,7 +76,7 @@ function reply(username, email) {
 			<input type="image" class="draft" id="delete" src="images/icon_delete.png" title="Delete" onclick="deleteReply()"/>';
 			
 		document.getElementById("email-view-content").innerHTML = '\
-		<form id="draft-message-header" action="/smtp">\
+		<form id="draft-message-header" action="/emails/smtp">\
 			<p>To: <input id="email_reply_to" class="field" type="email" name="to" required="required" multiple="multiple" value= '+username+'&nbsp;&lt;'+ email+'&gt;'+'></p>\
 			<p>Cc: <input id="email_reply_cc" class="field" type="email" name="cc" placeholder="" multiple="multiple"/></p>\
 			<p>Bcc: <input id="email_reply_bcc" class="field" type="email" name="bcc" placeholder="" multiple="multiple"/></p>\
@@ -87,6 +87,7 @@ function reply(username, email) {
 			</div>\
 			<div id="selectedfiles"></div>\
 			<img id="test"/>\
+			<input id="send" type="submit" value="send"> </p>\
 		</form>\
 		<div class="oldEmail">' + oldEmail + "</div>";
 			
@@ -114,7 +115,7 @@ function composeMessage(username, email){
 			<input type="image" class="draft" id="delete" src="images/icon_delete.png" title="Delete" onclick="deleteCompose()"/>';
 			
 		document.getElementById("email-view-content").innerHTML = '\
-			<form id="draft-message-header" action="/smtp">\
+			<form id="draft-message-header" action="/emails/smtp">\
 				<p>From: <input class="field" disabled="disabled" value= '+username+'&nbsp;&lt;'+ email+'&gt;'+'></p>\
 				<p>To <input class="field" type="email" name="tmail" placeholder="" required="required" multiple="multiple"/></p>\
 				<p>Cc: <input id="cc" class="field" type="email" name="cc" placeholder="" multiple="multiple"/></p>\
@@ -123,7 +124,7 @@ function composeMessage(username, email){
 				<p><textarea id="file" rows="15" name="mail" onfocus="clearContents(this);" cols="47" placeholder="Enter Email" id="page" required="required" ondragover="isOver(event)" ondrop="drop(event)"></textarea></p>\
 				<p><input type="file" id="files" name="files" multiple="multiple"/></p>\
 				<div id="selectedfiles"></div>\
-				<input id="send" value="" type="submit" value="send"> </p>\
+				<input id="send" type="submit" value="send"> </p>\
 			</form>';
 		document.querySelector('#files').addEventListener('change', handleFileSelect, false);
         selDiv = document.querySelector("#selectedfiles");

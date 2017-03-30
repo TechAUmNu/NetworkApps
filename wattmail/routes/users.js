@@ -12,7 +12,7 @@ router.get('/register', function(req, res){
 
 // Login
 router.get('/login', function(req, res){
-	res.render('users/login');
+	res.render('users/login', {redirect: '/users/login'});
 });
 
 // Register User
