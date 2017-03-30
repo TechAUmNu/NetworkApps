@@ -6,7 +6,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user');
 
 // Register
-router.get('/register', function(req, res){
+router.get('/register', function(req, res){	
 	res.render('users/register');
 });
 
@@ -87,7 +87,7 @@ router.post('/login',
   passport.authenticate('local', {successRedirect:'/email', failureRedirect:'/users/login',failureFlash: true}),
   function(req, res) {
 	
-    res.redirect('/email');
+    res.redirect('/email' );
 
   });
 

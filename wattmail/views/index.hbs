@@ -7,7 +7,7 @@
 		</div>
 		<div id="nav-inner">
 		  <button class="menu-link menu-item" id="compose-button" draggable="true" onclick="composeMessage('{{username}}', '{{email}}')">Compose</button>
-		  <button class="menu-link menu-item" id="sync-button" draggable="true" onclick="composeMessage('{{username}}', '{{email}}')">Re-sync</button>
+		  <button class="menu-link menu-item" id="sync-button" draggable="true" onclick="updateEmailList('{{user_id}}')">Re-sync</button>
 		  <div id="menu">
 			<ul class="menu-list">
 				<li id="menu-item-0" class="menu-item" draggable="true" ondragenter="dragenter(event)" ondragstart="dragstart(event)">
@@ -69,15 +69,16 @@
 	  <div id="email-view">
 
 	  <!-- Email password pop-up -->
+	  {{#unless hw_sync_complete}}
 	  <div id="login-panel">
-		  <form id="login-form">
+		  <form method="post" action="emails/sync" id="login-form" >
 			<div id="login-heading">Password</div>
 			<p class="login-message">Enter your Heriot-Watt password.</p>
 			<input id="password" name="password" class="password margin-top15" type="password"  placeholder="Password" required="required"/>
-			<button>Sign In</button>
+			<button>Sync</button>
 		  </form>
 	  </div>
-	  
+	  {{/unless}}
 	  <!-- Email content -->
 		<div id="email-view-header">
 		  <div id="email-view-info" class="column">
