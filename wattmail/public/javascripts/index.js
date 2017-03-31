@@ -299,7 +299,6 @@ function handleFileSelect(e) {
 /* Email List functions *************************************************************************************************************/
 
 
-
 function updateEmailList(username){
 	
 	ajaxRequest("/emails/list?user_id=" + username, function() {
