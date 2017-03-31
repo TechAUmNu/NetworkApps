@@ -7,7 +7,7 @@
 		</div>
 		<div id="nav-inner">
 		  <button class="menu-link menu-item" id="compose-button" draggable="true" onclick="composeMessage('{{username}}', '{{email}}')">Compose</button>
-		  <button class="menu-link menu-item" id="sync-button" draggable="true" onclick="updateEmailList('{{user_id}}')">Re-sync</button>
+		  <button class="menu-link menu-item" id="sync-button" draggable="true" onclick="updateEmailList('{{user_id}}')">&nbsp;Re-sync&nbsp;</button>
 		  <div id="menu">
 			<ul class="menu-list">
 				<li id="menu-item-0" class="menu-item" draggable="true" ondragenter="dragenter(event)" ondragstart="dragstart(event)">
@@ -35,6 +35,7 @@
 				</li>
 			</ul>
 		  </div>
+		  <button class="menu-link menu-item" id="logout-button" draggable="true" onclick="location.href='users/login';">&nbsp;Logout&nbsp;&nbsp;</button>
 		</div>
 		<!--<div id="nav-bottom">
 		  <a href="http://validator.w3.org/check/referer"><img class="stamp" id="stamp_html" src="images/stamp_html.png" alt="Verification"/></a>
