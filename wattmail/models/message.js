@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var MessageSchema = new mongoose.Schema({
-	//pop3_id : {type: Number, unique: true},
+	pop3_id : { type: String },
 	//mailbox: {type: String, required: true}, //inbox/sent etcg
 	to_emails : [{ type: String }],
 	cc_emails: [{ type: String }],
@@ -11,7 +11,7 @@ var MessageSchema = new mongoose.Schema({
 	//datetime: { type: Date, default: Date.now }, //retreival datetime
 	//date: {type: Date}, //time of sent/arrival
 
-	subject : { type: String, required: true },
+	subject : { type: String},
 	//raw_content : { type: String, required: true },
 	//html: { type: String, required: true }, //Displayed on web page?
 

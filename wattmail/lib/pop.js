@@ -27,6 +27,12 @@ var pop = {
     email: '',
     password: ''
 };
+
+var state = {
+    login: false,
+    idle: false
+}
+
 var email = {
     to_emails: [],
     cc_emails: [],
@@ -36,6 +42,9 @@ var email = {
 
 function decodeData(data){
     simpleParser(data, (err, mail)=>{
+        if(mail.messageId){
+            email.messageId = mail.messageId;
+        }
         if(mail.to){
             for(msg in mail.to.value){
             email.to_emails.push(mail.to.value[msg].address);
@@ -59,7 +68,12 @@ function decodeData(data){
         if(mail.subject){
             email.subject = mail.subject;
         }
+        if(typeof mail.subject == 'undefined'){
+					email.subject = "No Subject";
+		}
+
         var message = new Message({
+            pop3_id: email.messageId,
             to_emails: email.to_emails,
             cc_emails: email.cc_emails,
             bcc_emails: email.bcc_emails,
@@ -71,35 +85,42 @@ function decodeData(data){
             //raw_content: json_data.content, //raw data
             //mailbox: 'inbox',
             //date: mail.date,
-            //pop3_id: json_data.id
         });
 
         //Save the message to the database
-        message.save(function (err, message) {
-          if (err) {
-            console.log(err);
-          } else {
-            User.findByIdAndUpdate(
-                email.creator,
-                { $push: {"inbox": message.id}},
-                {safe: true, upsert: true, new: true},
-                function(err, model) {
-                    if (err){
-                        console.log("ERROR: " + err);
-                    } else {
-                        console.log("RETR SAVE SUCCESS!")
+        Message.find({pop3_id: message.pop3_id}, function(error, cb){
+            if(cb.length == 0){
+            message.save(function (err, message) {
+              if (err) {
+                console.log(err);
+              } else {
+                User.findByIdAndUpdate(
+                    email.creator,
+                    { $push: {"inbox": message.id}},
+                    {safe: true, upsert: true, new: true},
+                    function(err, model) {
+                        if (err){
+                            console.log("ERROR: " + err);
+                        } else {
+                            console.log("RETR SAVE SUCCESS!")
+                            Pop3.sock.write("OUIT\r\n");
+                        }
                     }
+                    );
                 }
-                );
-            }
-          });
+              });
+              } else {
+                console.log("Email already saved");
+              }
+            });
+        Pop3.prototype.close();
     });
 };
 
 function onData(data) {
 	if(data){
 	    data = data.toString("ascii");
-	    if(count < 4){
+	    if(count < 5){
             var cmd = data.substr(0, 4).trim();
             // console.log("cmd: "  + cmd);
             if(cmd == "+OK") {
@@ -110,22 +131,21 @@ function onData(data) {
                     Pop3.sock.write("PASS " + pop.password + "\r\n");
                     count++;
                 } else if(count == 2) {
+                    state.login = true;
                     Pop3.sock.write("LIST\r\n");
                     count++;
                 } else if(count == 3) {
-                    Pop3.sock.write("RETR 2\r\n");
+                    Pop3.sock.write("RETR " + email_number + "\r\n");
                     count++;
                 }
             } else {
                 console.log("Received unknown command: " + cmd);
 			}
 		} else if(data.substring(data.length - 3, data.length) == ".\r\n"){
-		    console.log("SAVE");
             //Form the message to be saved
             packet += data;
             decodeData(packet);
         } else {
-            console.log("Data Packet Recieved");
 		    packet += data;
 		}
 	} else {
@@ -133,25 +153,37 @@ function onData(data) {
 	}
 }
 
+function onClose(data) {
+   state.login = false;
+   data = data.toString("ascii");
+   console.log("Closing session");
+}
+
 Pop3.prototype.connect = function(user, password){
 	email.creator = user.id;
     pop.email = user.email;
     pop.password = password;
-	Pop3.sock = tls.connect({
-			host: host,
-			port: port,
-			//rejectUnauthorized: !self.data.ignoretlserrs
-		}, function() {
+    Pop3.sock = tls.connect({
+            host: host,
+            port: port,
+            //rejectUnauthorized: !self.data.ignoretlserrs
+        }, function() {
 
-			if (Pop3.sock.authorized === false && self.data["ignoretlserrs"] === false) {
-					self.emit("tls-error", socket.authorizationError);
-					console.log("Error connecting to " + host + ":" + port);
-			} else {
-				console.log("Connected to " + host + ":" + port);
-			}
-		}
-	);
-	Pop3.sock.on('data', onData);
+            if (Pop3.sock.authorized === false && self.data["ignoretlserrs"] === false) {
+                    self.emit("tls-error", socket.authorizationError);
+                    console.log("Error connecting to " + host + ":" + port);
+            } else {
+                console.log("Connected to " + host + ":" + port);
+            }
+        }
+    );
+    Pop3.sock.on('data', onData);
+    Pop3.sock.on('close', onClose);
 };
 
+Pop3.prototype.close = function(){
+    Pop3.sock.write("OUIT\r\n");
+    state.login = false;
+    console.log("Closed connection to " + host + ":" + port);
+}
 module.exports = new Pop3();
