@@ -7,15 +7,15 @@
 </head>
 <body>
 			{{#if success_msg}}
-            <div class="alert alert-success">{{success_msg}}</div>
+            <div id="alert1" class="alert alert-success">{{success_msg}}</div>
             {{/if}}
 
             {{#if error_msg}}
-            <div class="alert alert-danger">{{error_msg}}</div>
+            <div id="alert2" class="alert alert-danger">{{error_msg}}</div>
             {{/if}}
 
             {{#if error}}
-            <div class="alert alert-danger">{{error}}</div>
+            <div id="alert3" class="alert alert-danger">{{error}}</div>
             {{/if}}
 {{{body}}}
 </body>

@@ -60,6 +60,19 @@
 	box-shadow: 2px 2px #9D4119;
 }
 
+#logout-button {
+	color: #fff;
+	background: #888888;
+	font-size: 100%;
+	margin: 0.5em 2.5em 1em 1.5em;
+	box-shadow: none;
+	border-radius: 20px;
+	padding: .5em 1em;
+	border: transparent;
+	cursor: pointer;
+	box-shadow: 2px 2px #9D4119;
+}
+
 .email-login {
   /*display: none;*/
   padding: 0.9em 1em;
@@ -315,4 +328,20 @@ text-transform: uppercase;
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+
+div #email-view-content {
+    
+   
+    padding-bottom: 56%; /* Change this till it fits the dimensions of your video */
+    position: relative;
+    overflow: hidden;
+}
+
+div iframe {
+    width: 80%;
+    
+    position: absolute;
+    display: block;    
+}
 

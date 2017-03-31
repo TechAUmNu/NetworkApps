@@ -101,6 +101,8 @@ function showEmail(){
 
 
 function reply(username, email) {
+	console.log(username);
+	console.log(email);
 	if(!replyActive){
 		replyActive = true;
 		emailViewReply = document.getElementById("email-view").innerHTML;
@@ -109,10 +111,12 @@ function reply(username, email) {
 		document.getElementById("email-view-controls").innerHTML = '<input type="image" type="submit"  class="draft" src="images/icon_send.png" type="submit" form="draft-email" title="Send"/>\
 			<input type="image" class="draft" src="images/icon_save.png" onclick="saveDraft()" title="Save Draft"/>\
 			<input type="image" class="draft" id="delete" src="images/icon_delete.png" title="Delete" onclick="deleteReply()"/>';
+		
+		
 			
 		document.getElementById("email-view-content").innerHTML = '\
 		<form id="draft-email" action="/emails/smtp">\
-			<p>To: <input id="to" class="field" type="email" name="tmail" required="required" multiple="multiple" value= '+username+'&nbsp;&lt;'+ email+'&gt;'+'></p>\
+			<p>To: <input id="to" class="field" type="email" name="tmail" required="required" multiple="multiple" value="'+email+'"></p>\
 			<p>Cc: <input id="cc" class="field" type="email" name="cc" placeholder="" multiple="multiple"/></p>\
 			<p>Bcc: <input id="bcc" class="field" type="email" name="bcc" placeholder="" multiple="multiple"/></p>\
 			<p><textarea id="file" rows="6" onfocus="clearContents(this);" cols="47" placeholder="Enter Email" id="page" required="required" ondragover="isOver(event)" ondrop="drop(event)"></textarea></p>\
@@ -127,9 +131,12 @@ function reply(username, email) {
 			
 		document.querySelector('#files').addEventListener('change', handleFileSelect, false);
 		selDiv = document.querySelector("#selectedfiles");
-	//]]>
+		loadIframe();
+	
 	}
 }
+
+
 
 function composeMessage(username, email){
 	if(!composingMessage){
@@ -150,7 +157,7 @@ function composeMessage(username, email){
 			
 		document.getElementById("email-view-content").innerHTML = '\
 			<form id="draft-email" action="/emails/smtp">\
-				<p>From: <input class="field" disabled="disabled" value= '+username+'&nbsp;&lt;'+ email+'&gt;'+'></p>\
+				<p>From: <input class="field" disabled="disabled" value='+ email+'></p>\
 				<p>To: <input id="to" class="field" type="email" name="tmail" placeholder="" required="required" multiple="multiple"/></p>\
 				<p>Cc: <input id="cc" class="field" type="email" name="cc" placeholder="" multiple="multiple"/></p>\
 				<p>Bcc: <input id="bcc" class="field" type="email" name="bcc" placeholder="" multiple="multiple"/></p>\
@@ -171,7 +178,32 @@ function viewEmail(id){
 	document.getElementById("email_" + id).classList.remove("email-item-unread");
 	document.getElementById("email_" + id).classList.add("email-item-selected");	
 	selectedEmail = document.getElementById("email_" + id);
+	
+	ajaxRequest("/emails/view?email_id=" + id, function() {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("email-view").innerHTML = this.responseText;
+			loadIframe();
+		
+		 
+		}
+	});
+	replyActive = false;
+	composingMessage = false;
+	
+	
+	
 }	
+
+function loadIframe(){
+	var doc = document.getElementById('email_content_frame').contentWindow.document;
+		
+	var content = document.getElementById('email_content_hidden').value;
+	doc.open();
+	doc.write(content);
+	doc.close();
+ 
+	document.getElementById('email_content_frame').style.height = doc.body.scrollHeight + 'px';
+}
 
 
 function send(){
@@ -182,6 +214,8 @@ function send(){
 function deleteReply() {
 	document.getElementById("email-view").innerHTML = emailViewReply;
 	replyActive = false;
+	
+	loadIframe();
 }
 
 function deleteCompose() {
@@ -193,6 +227,8 @@ function deleteCompose() {
 		document.getElementById("file").value = emailMessage;
 	}
 	composingMessage = false;
+	
+	loadIframe();
 }
 
 function isOver(e) {

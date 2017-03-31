@@ -23,6 +23,7 @@ Pop3.sock;
 
 var count = 0;
 var packet;
+var list_count = 1;
 var pop = {
     email: '',
     password: ''
@@ -37,7 +38,9 @@ var email = {
     to_emails: [],
     cc_emails: [],
     bcc_emails: [],
-    from_emails: []
+    from_emails: [],
+    from_email: '',
+    from_name: '',
 };
 
 function decodeData(data){
@@ -64,6 +67,8 @@ function decodeData(data){
             for(msg in mail.from.value){
             email.from_emails.push(mail.from.value[msg].address);
             }
+            email.from_email = mail.from.value[0].address;
+            email.from_name = mail.from.value[0].name;
         }
         if(mail.subject){
             email.subject = mail.subject;
@@ -73,20 +78,20 @@ function decodeData(data){
 		}
 
         var message = new Message({
-            pop3_id: email.messageId,
+            pop3_id: list_count,
             to_emails: email.to_emails,
             cc_emails: email.cc_emails,
             bcc_emails: email.bcc_emails,
             from_emails: email.from_emails,
-            subject: email.subject,
-            //content: mail.text,
-            creator: email.creator
-            //html: mail.html,
-            //raw_content: json_data.content, //raw data
-            //mailbox: 'inbox',
-            //date: mail.date,
+            from_email: email.from_email,
+            from_name: email.from_name,
+            subject: email.subject,                      
+            content: mail.text,
+            creator: email.creator,
+            html: mail.html,
+            mailbox: 'inbox',
+            date: mail.date,
         });
-
         //Save the message to the database
         Message.find({pop3_id: message.pop3_id}, function(error, cb){
             if(cb.length == 0){
@@ -103,24 +108,30 @@ function decodeData(data){
                             console.log("ERROR: " + err);
                         } else {
                             console.log("RETR SAVE SUCCESS!")
-                            Pop3.sock.write("OUIT\r\n");
+                            if(list_count < 50){
+                            list_count++;
+                            Pop3.sock.write("RETR " + list_count + "\r\n");
+                            }
                         }
                     }
                     );
                 }
               });
               } else {
+                if(list_count < 10){
+                list_count++;
+                Pop3.sock.write("RETR " + list_count + "\r\n");
+                }
                 console.log("Email already saved");
               }
             });
-        Pop3.prototype.close();
     });
 };
 
 function onData(data) {
 	if(data){
 	    data = data.toString("ascii");
-	    if(count < 5){
+	    if(count < 4){
             var cmd = data.substr(0, 4).trim();
             // console.log("cmd: "  + cmd);
             if(cmd == "+OK") {
@@ -135,7 +146,7 @@ function onData(data) {
                     Pop3.sock.write("LIST\r\n");
                     count++;
                 } else if(count == 3) {
-                    Pop3.sock.write("RETR " + email_number + "\r\n");
+                    Pop3.sock.write("RETR 1\r\n");
                     count++;
                 }
             } else {
