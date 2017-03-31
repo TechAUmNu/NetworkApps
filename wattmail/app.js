@@ -14,7 +14,7 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
 //mongodb://localhost/watt
-mongoose.connect("mongodb://aps31:abcaps31354@mongo-server-1:27017/aps31");
+mongoose.connect("mongodb://localhost/watt");
 var db = mongoose.connection;
 
 var app = express();
