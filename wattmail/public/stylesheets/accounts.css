@@ -178,10 +178,11 @@ input {
 }
 
 #alert1,#alert2,#alert3{
-	margin-left: 20%;
-	font-size: 35px;
+	margin-left: calc(172px + 10%);
+	font-size: 3vw;
 	color: #ff0000;
-	#margin-top: 5%;
+	position: absolute;
+	margin-top: -2%;
 )
 
 
