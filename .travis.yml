@@ -3,10 +3,19 @@ node_js:
   - "node"
 
 sudo: required
+addons:
+  apt:
+    sources:
+      - mongodb-upstart
+      - mongodb-3.0-precise
+    packages:
+      - mongodb-org-server
+      - mongodb-org-shell
 
 before_script:
+  - sleep 15
   - cd wattmail
   - npm install 
 
-script:
+after_script:
   - npm start
