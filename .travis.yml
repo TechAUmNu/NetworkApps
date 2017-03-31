@@ -6,7 +6,7 @@ sudo: required
 
 before_script:
   - cd wattmail
-  - npm install -g gulp
-  - cp default-config.js config.js
+  - npm install 
+
 script:
-  - gulp test
+  - npm start
