@@ -8,13 +8,6 @@
   margin-top: -5%;
 }
 
-/*
-.alert{
-	margin: 10;
-	font-size: 20px;
-)
-*/
-
 #nav.navreg {
   margin-top: -3%;
 }
@@ -183,3 +176,12 @@ input {
   margin-left:13%;
 	margin-top: -50%;
 }
+
+#alert1,#alert2,#alert3{
+	margin-left: 20%;
+	font-size: 35px;
+	color: #ff0000;
+	#margin-top: 5%;
+)
+
+
