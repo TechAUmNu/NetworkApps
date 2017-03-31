@@ -1,0 +1,23 @@
+<div id="email-view">
+
+	<!-- Email password pop-up -->
+	<!-- Email content -->
+	<div id="email-view-header">
+		<div id="email-view-info" class="column">
+			<h1 id="email-view-subject">{{ subject }}</h1>
+			<p id="email-view-from">
+			From <a>{{ from_name }}</a> at <span>{{ date }}</span>
+			</p>
+		</div>
+		<div id="email-view-controls" class="column">
+			<input onclick="reply('{{from_name}}', '{{from_email}}')" class="draft" src="images/icon_reply.png" title="Reply" alt="Reply" type="image">
+			<input id="email-addr" name="email-address" value="dr232@hw.ac.uk" type="hidden">
+			<input onclick="reply('','')" class="draft" src="images/icon_forward.png" title="Forward" alt="Forward" type="image">
+			<input class="draft" src="images/icon_move.png" title="Move" alt="Move" type="image">
+		</div>
+	</div>
+	<div id="email-view-content">
+		<iframe id="email_content_frame" frameBorder="0"> </iframe>
+		<input id="email_content_hidden" hidden value='{{html}}'/>
+	</div>
+</div>

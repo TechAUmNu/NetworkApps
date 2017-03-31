@@ -31,7 +31,9 @@ var email = {
     to_emails: [],
     cc_emails: [],
     bcc_emails: [],
-    from_emails: []
+    from_emails: [],
+    from_email: '',
+    from_name: '',
 };
 
 function decodeData(data){
@@ -55,6 +57,8 @@ function decodeData(data){
             for(msg in mail.from.value){
             email.from_emails.push(mail.from.value[msg].address);
             }
+            email.from_email = mail.from.value[0].address;
+            email.from_name = mail.from.value[0].name;
         }
         if(mail.subject){
             email.subject = mail.subject;
@@ -64,16 +68,17 @@ function decodeData(data){
             cc_emails: email.cc_emails,
             bcc_emails: email.bcc_emails,
             from_emails: email.from_emails,
-            subject: email.subject,
-            //content: mail.text,
-            creator: email.creator
-            //html: mail.html,
+            from_email: email.from_email,
+            from_name: email.from_name,
+            subject: email.subject,                      
+            content: mail.text,
+            creator: email.creator,
+            html: mail.html,
             //raw_content: json_data.content, //raw data
-            //mailbox: 'inbox',
-            //date: mail.date,
-            //pop3_id: json_data.id
-        });
-
+            mailbox: 'inbox',
+            date: mail.date,
+            pop3_id: data.id
+        });		
         //Save the message to the database
         message.save(function (err, message) {
           if (err) {
@@ -113,7 +118,7 @@ function onData(data) {
                     Pop3.sock.write("LIST\r\n");
                     count++;
                 } else if(count == 3) {
-                    Pop3.sock.write("RETR 2\r\n");
+                    Pop3.sock.write("RETR 3\r\n");
                     count++;
                 }
             } else {

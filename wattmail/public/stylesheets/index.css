@@ -316,3 +316,19 @@ text-transform: uppercase;
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 
+
+div #email-view-content {
+    
+   
+    padding-bottom: 56%; /* Change this till it fits the dimensions of your video */
+    position: relative;
+    overflow: hidden;
+}
+
+div iframe {
+    width: 80%;
+    
+    position: absolute;
+    display: block;    
+}
+
