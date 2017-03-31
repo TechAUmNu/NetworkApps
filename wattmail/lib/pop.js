@@ -23,7 +23,8 @@ Pop3.sock;
 
 var count = 0;
 var packet;
-var list_count = 1;
+var list_count = 2;
+var email_list_size = 0;
 var pop = {
     email: '',
     password: ''
@@ -34,17 +35,19 @@ var state = {
     idle: false
 }
 
-var email = {
-    to_emails: [],
-    cc_emails: [],
-    bcc_emails: [],
-    from_emails: [],
-    from_email: '',
-    from_name: '',
-};
+var creator;
 
 function decodeData(data){
-    simpleParser(data, (err, mail)=>{
+        var email = {
+            creator: creator,
+            to_emails: [],
+            cc_emails: [],
+            bcc_emails: [],
+            from_emails: [],
+            from_email: '',
+            from_name: '',
+        };
+        simpleParser(data, (err, mail)=>{
         if(mail.messageId){
             email.messageId = mail.messageId;
         }
@@ -78,7 +81,7 @@ function decodeData(data){
 		}
 
         var message = new Message({
-            pop3_id: list_count,
+            pop3_id: email.messageId,
             to_emails: email.to_emails,
             cc_emails: email.cc_emails,
             bcc_emails: email.bcc_emails,
@@ -110,6 +113,7 @@ function decodeData(data){
                             console.log("RETR SAVE SUCCESS!")
                             if(list_count < 50){
                             list_count++;
+                            packet = '';
                             Pop3.sock.write("RETR " + list_count + "\r\n");
                             }
                         }
@@ -118,8 +122,9 @@ function decodeData(data){
                 }
               });
               } else {
-                if(list_count < 10){
+                if(list_count < 50){
                 list_count++;
+                packet = '';
                 Pop3.sock.write("RETR " + list_count + "\r\n");
                 }
                 console.log("Email already saved");
@@ -146,7 +151,7 @@ function onData(data) {
                     Pop3.sock.write("LIST\r\n");
                     count++;
                 } else if(count == 3) {
-                    Pop3.sock.write("RETR 1\r\n");
+                    Pop3.sock.write("RETR " + list_count + "\r\n");
                     count++;
                 }
             } else {
@@ -156,7 +161,7 @@ function onData(data) {
             //Form the message to be saved
             packet += data;
             decodeData(packet);
-        } else {
+		} else {
 		    packet += data;
 		}
 	} else {
@@ -171,7 +176,7 @@ function onClose(data) {
 }
 
 Pop3.prototype.connect = function(user, password){
-	email.creator = user.id;
+	creator = user.id;
     pop.email = user.email;
     pop.password = password;
     Pop3.sock = tls.connect({

@@ -20,7 +20,8 @@ router.post('/sync',  ensureAuthenticated, function handler(req, res) {
 router.get('/list', ensureAuthenticated, function handler(req, res) {
 	Message
 	.find({ creator: req.user.id })
-	.exec(function (err, messages) {	
+    .sort({date: -1})
+    .exec(function (err, messages) {
 		//console.log(messages);		
 		res.render('list', {inbox: messages});
 	});
