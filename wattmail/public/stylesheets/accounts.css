@@ -180,9 +180,16 @@ input {
 #alert1,#alert2,#alert3{
 	margin-left: calc(172px + 10%);
 	font-size: 3vw;
-	color: #ff0000;
 	position: absolute;
 	margin-top: -2%;
-)
+}
+
+#alert1{
+	color: #0D2871;
+}
+
+#alert2,#alert3{
+	color: #ff0000;
+}
 
 
