@@ -19,3 +19,5 @@ before_script:
 
 after_script:
   - npm start
+  - ctrl-C
+  - ctrl-C
