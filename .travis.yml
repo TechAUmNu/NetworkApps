@@ -16,8 +16,3 @@ before_script:
   - sleep 15
   - cd wattmail
   - npm install 
-
-after_script:
-  - npm start
-  - ctrl-C
-  - ctrl-C
