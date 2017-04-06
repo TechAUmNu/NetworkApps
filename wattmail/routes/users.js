@@ -18,40 +18,104 @@ router.get('/login', function(req, res){
 // Register User
 router.post('/register', function(req, res){
 	var name = req.body.name;
+	var email = req.body.email;
 	var username = req.body.username;
 	var password = req.body.password;
 	var password2 = req.body.password2;
-	var email = req.body.email;
 
-	// Validation
+	// Basic validation
 	req.checkBody('name', 'Name is required').notEmpty();
+	req.checkBody('email', 'Email is required').notEmpty();
+	req.checkBody('email', 'Email is not valid').isEmail();
 	req.checkBody('username', 'Username is required').notEmpty();
 	req.checkBody('password', 'Password is required').notEmpty();
 	req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
-	req.checkBody('email', 'This is not a valid email').isEmail();
 
 	var errors = req.validationErrors();
 
-	if(errors){
-		console.log(errors);
-		res.render('users/register');
-	} else {	
-		var newUser = new User({
-			name: name,
-			email: email,
-			username: username,
-			password: password
-		});
+	// Validate username (checks if username has already been taken)
+    User.getUserByUsername(username, function(username_err, username_found){
+        if(username_err){
+            res.render('users/register',{
+                errors:errors
+            });
+        } else {
+            if(username_found){
+                if(errors){
+                    errors.push({
+                        param: 'username',
+                        msg: 'Username has already been taken',
+                        value: username
+                    });
+                    res.render('users/register',{
+                        errors:errors
+                    });
+                } else {
+                    errors = [{
+                        param: 'username',
+                        msg: 'Username has already been taken',
+                        value: username
+                    }];
+                    res.render('users/register',{
+                        errors: errors
+                    });
+                }
+            } else {
+                // Validate email (checks if email has already been taken)
+                User.findOne({email: email}, function(email_err, email_found){
+                    if(email_err){
+                        console.log("Register:" + email_err);
+                        res.render('users/register',{
+                            errors:errors
+                        });
+                    } else {
+                        if(email_found){
+                            if(errors){
+                                errors.push({
+                                    param: 'email',
+                                    msg: 'Email has already been taken',
+                                    value: email
+                                });
+                                res.render('users/register',{
+                                    errors:errors
+                                });
+                            } else {
+                                errors = [{
+                                    param: 'email',
+                                    msg: 'Email has already been taken',
+                                    value: email
+                                }];
+                                res.render('users/register',{
+                                    errors: errors
+                                });
+                            }
+                        } else {
+                            // Email and Username has not been used
+                            if(errors){
+                                res.render('users/register',{
+                                    errors:errors
+                                });
+                            } else {
+                                var newUser = new User({
+                                    name: name,
+                                    email:email,
+                                    username: username,
+                                    password: password
+                                });
 
-		User.createUser(newUser, function(err, user){
-			if(err) throw err;
-			console.log(user);
-		});
+                                User.createUser(newUser, function(err, user){
+                                    if(err) throw err;
+                                    console.log(user);
+                                });
 
-		req.flash('success_msg', 'You are registered and can now login');
-		
-		res.redirect('/users/login');
-	}
+                                res.redirect('/users/login');
+                            }
+                        }
+                    }
+                });
+            }
+        }
+	});
 });
 
 passport.use(new LocalStrategy(

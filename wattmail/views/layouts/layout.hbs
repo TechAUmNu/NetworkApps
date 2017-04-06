@@ -3,20 +3,10 @@
 <head>
     <meta charset="utf-8"/>
     <title> {{ title }} </title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css"/>
  	<link rel="stylesheet" href="/stylesheets/global.css"/>
 </head>
 <body>
-			{{#if success_msg}}
-            <div id="alert1" class="alert alert-success">{{success_msg}}</div>
-            {{/if}}
-
-            {{#if error_msg}}
-            <div id="alert2" class="alert alert-danger">{{error_msg}}</div>
-            {{/if}}
-
-            {{#if error}}
-            <div id="alert3" class="alert alert-danger">{{error}}</div>
-            {{/if}}
-{{{body}}}
+	{{{body}}}
 </body>
 </html>

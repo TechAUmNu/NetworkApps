@@ -20,23 +20,43 @@ var Pop3 = function(){};
 
 Pop3.sock;
 
-
-var count = 0;
-var packet;
-var list_count = 2;
-var email_list_size = 0;
 var pop = {
     email: '',
     password: ''
-};
+}
 
+// Received email data is stored in this packet
+var packet;
+
+// Stores the number of emails
+var email_list_count = 0;
+var email_list_size = 0;
+
+// The state that the POP3 connection is in
 var state = {
-    login: false,
-    idle: false
+    /*
+    Possible states are:
+     - NOT_SENT
+     - SENT
+     - OK
+     - ERROR
+     - EXTRA_DATA
+    */
+    USERNAME: 'NOT_SENT',
+    PASSWORD: 'NOT_SENT',
+    STAT: 'NOT_SENT',
+    LIST: 'NOT_SENT',
+    RETR: 'NOT_SENT',
+    QUIT: 'NOT_SENT',
+    LOGIN: false
 }
 
 var creator;
 
+/*
+* Name:         decodeData
+* Description:  Is used to parse the email data
+*/
 function decodeData(data){
         var email = {
             creator: creator,
@@ -81,7 +101,7 @@ function decodeData(data){
 		}
 
         var message = new Message({
-            pop3_id: email.messageId,
+            pop3_id: email_list_size,
             to_emails: email.to_emails,
             cc_emails: email.cc_emails,
             bcc_emails: email.bcc_emails,
@@ -110,11 +130,13 @@ function decodeData(data){
                         if (err){
                             console.log("ERROR: " + err);
                         } else {
-                            console.log("RETR SAVE SUCCESS!")
-                            if(list_count < 50){
-                            list_count++;
+                            if(email_list_count < 50){
+                            email_list_count++;
                             packet = '';
-                            Pop3.sock.write("RETR " + list_count + "\r\n");
+                            Pop3.sock.write("RETR " + email_list_size + "\r\n");
+                            email_list_size++;
+                            } else {
+                                Pop3.prototype.close();
                             }
                         }
                     }
@@ -122,13 +144,15 @@ function decodeData(data){
                 }
               });
               } else {
-                if(list_count < 50){
-                list_count++;
-                packet = '';
-                Pop3.sock.write("RETR " + list_count + "\r\n");
-                }
-                console.log("Email already saved");
-              }
+                    if(email_list_count < 50){
+                    email_list_count++;
+                    packet = '';
+                    Pop3.sock.write("RETR " + email_list_size + "\r\n");
+                    email_list_size++;
+                    } else {
+                        Pop3.prototype.close();
+                    }
+               }
             });
     });
 };
@@ -136,41 +160,89 @@ function decodeData(data){
 function onData(data) {
 	if(data){
 	    data = data.toString("ascii");
-	    if(count < 4){
-            var cmd = data.substr(0, 4).trim();
-            // console.log("cmd: "  + cmd);
-            if(cmd == "+OK") {
-                if(count == 0) {
-                    Pop3.sock.write("USER " + pop.email+ "\r\n");
-                    count++;
-                } else if(count == 1) {
-                    Pop3.sock.write("PASS " + pop.password + "\r\n");
-                    count++;
-                } else if(count == 2) {
-                    state.login = true;
-                    Pop3.sock.write("LIST\r\n");
-                    count++;
-                } else if(count == 3) {
-                    Pop3.sock.write("RETR " + list_count + "\r\n");
-                    count++;
+        var cmd = data.substr(0, 4).trim();
+        if(cmd == "+OK") {
+            if(state.USERNAME == 'NOT_SENT') {
+                Pop3.sock.write("USER " + pop.email + "\r\n");
+                state.USERNAME = 'SENT';
+            } else if(state.USERNAME == 'SENT') {
+                state.USERNAME = 'OK';
+                Pop3.sock.write("PASS " + pop.password + "\r\n");
+                state.PASSWORD = 'SENT';
+            } else if(state.PASSWORD == 'SENT') {
+                state.PASSWORD = 'OK';
+                Pop3.sock.write("LIST\r\n");
+                state.LIST = 'SENT';
+            } else if(state.LIST == 'SENT'){
+                var list_return = data.split("\r\n");
+                var temp_data;
+                for (var i = 0; i < list_return.length; i++) {
+                    temp_data = list_return[i].split(" ");
+                    if (temp_data[0] != "+OK" && temp_data[0] != "" && temp_data[0] != ".") {
+                        email_list_size++;
+                    }
                 }
+                if (data.substring(data.length - 3, data.length) == ".\r\n") {
+                    email_list_size -= 50;
+                    state.LIST = 'OK';
+                    Pop3.sock.write("RETR " + email_list_size + "\r\n");
+                } else {
+                    state.LIST = 'EXTRA_DATA';
+                }
+            } else if(state.QUIT == 'SENT'){
+                state.USERNAME = 'NOT_SENT';
+                state.PASSWORD = 'NOT_SENT';
+                state.STAT = 'NOT_SENT';
+                state.LIST = 'NOT_SENT';
+                state.RETR = 'NOT_SENT';
+                state.QUIT = 'NOT_SENT';
+                email_list_count = 0;
+                email_list_size = 0;
+                console.log("Connection closed to " + host + ":" + port);
+            }
+        } else {
+            if(state.USERNAME == 'SENT') {
+                state.USERNAME = 'ERROR';
+                console.log("Incorrect Email!");
+            } else if(state.PASSWORD == 'SENT') {
+                state.PASSWORD = 'ERROR';
+                console.log("Incorrect Password!");
+            } else if(state.LIST == 'SENT') {
+                state.LIST = 'ERROR';
+                console.log("List Error!");
+            } else if(state.QUIT == 'SENT'){
+                state.QUIT = 'ERROR';
+                console.log("Failed to close the connection!");
             } else {
-                console.log("Received unknown command: " + cmd);
-			}
-		} else if(data.substring(data.length - 3, data.length) == ".\r\n"){
-            //Form the message to be saved
-            packet += data;
-            decodeData(packet);
-		} else {
-		    packet += data;
-		}
+                if(state.LIST == 'EXTRA_DATA'){
+                    var list_return = data.split("\r\n");
+                    var temp_data;
+                    for (var i = 0; i < list_return.length; i++) {
+                        temp_data = list_return[i].split(" ");
+                        if (temp_data[0] != "+OK" && temp_data[0] != "" && temp_data[0] != ".") {
+                            email_list_size++;
+                        }
+                    }
+                    if (data.substring(data.length - 3, data.length) == ".\r\n") {
+                        email_list_size -= 50;
+                        Pop3.sock.write("RETR " + email_list_size + "\r\n");
+                        state.LIST = 'OK';
+                    }
+                } else if(data.substring(data.length - 3, data.length) == ".\r\n"){
+                    //Form the message to be saved
+                    packet += data;
+                    decodeData(packet);
+                } else {
+                    packet += data;
+                }
+            }
+        }
 	} else {
 		console.log("No data!");
 	}
 }
 
 function onClose(data) {
-   state.login = false;
    data = data.toString("ascii");
    console.log("Closing session");
 }
@@ -198,8 +270,8 @@ Pop3.prototype.connect = function(user, password){
 };
 
 Pop3.prototype.close = function(){
-    Pop3.sock.write("OUIT\r\n");
-    state.login = false;
-    console.log("Closed connection to " + host + ":" + port);
+    Pop3.sock.write("QUIT\r\n");
+    state.QUIT = 'SENT';
 }
+
 module.exports = new Pop3();
